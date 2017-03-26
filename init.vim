@@ -59,7 +59,7 @@ augroup pandoc_syntax
 augroup END
 let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh"]
 " let g:pandoc#folding#fold_fenced_codeblocks = 1
-" let g:pandoc#folding#fdc = 1
+" let g:pandoc#folding#fdc = 0
 " let g:pandoc#syntax#style#underline_special = 1
 
 " to recognize equations in any filetype
