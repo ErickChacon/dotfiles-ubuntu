@@ -9,7 +9,7 @@ Plug 'tomtom/tcomment_vim' " easy comment
 Plug 'vimwiki/vimwiki' " notes
 Plug 'kana/vim-textobj-indent' " copy indented block
 Plug 'kana/vim-textobj-user' " custom text object
-Plug 'Yggdroot/indentLine' " show indentation
+" Plug 'Yggdroot/indentLine' " show indentation, sets conceallevel=2
 Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets' " snippets scripts
 Plug 'scrooloose/nerdtree' " explore your filesystem and to open files
@@ -27,12 +27,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
 " markdown
 Plug 'godlygeek/tabular'
-" Plug 'plasticboy/vim-markdown' " generates problem to rmd
 Plug 'vim-pandoc/vim-pandoc-syntax' " great works with nvim-r
-Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc' " really nice for marldown
 Plug 'jalvesaq/Nvim-R'
+" Plug 'ErickChacon/Nvim-R'
 " git
-Plug 'airblade/vim-gitgutter' " shows added and remove lines of git
+" Plug 'airblade/vim-gitgutter' " shows added and remove lines of git
 " Initialize plugin system
 
 " Markdown
@@ -54,41 +54,34 @@ call plug#end()
 " to highlight r code in rmd
 " let rrst_syn_hl_chunk = 1
 let rmd_syn_hl_chunk = 1 " to highlight the fisrt line
-augroup pandoc_syntax
-      au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-augroup END
+" It is only required if vim-pandoc is not installed
+" augroup pandoc_syntax
+"       au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+" augroup END
+" augroup pandoc_syntax
+"       au! BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown.pandoc
+" augroup END
 let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh"]
 " let g:pandoc#folding#fold_fenced_codeblocks = 1
 " let g:pandoc#folding#fdc = 0
 " let g:pandoc#syntax#style#underline_special = 1
+let g:pandoc#syntax#conceal#use = 1 " pretty highlight
+" autocmd FileType * setlocal conceallevel=0 
 
-" to recognize equations in any filetype
-" call textobj#user#plugin('equation', {
-" \  'dollar-math-a': {
-" \     '*pattern*': '[$][^$]*[$]',
-" \     'select': 'a$',
-" \ },
-" \  'dollar-math-i': {
-" \     '*pattern*': '[$]\zs[^$]*\ze[$]',
-" \     'select': 'i$',
-" \ },
-" \ })
-"
-" let R_in_buffer = 0
 let R_in_buffer = 0
-" let R_applescript = 0
+let R_applescript = 0
 let R_tmux_split = 1
 let R_objbr_place = "script,right"
 " let R_editor_w = 30
 " let R_rconsole_width = 86
 " let R_rconsole_height = 30
-let R_rconsole_width = 0
+" let R_rconsole_width = 0
 " let R_show_args = 1 " show arguments in a new pane
 " let R_args_in_stline = 1 " show arguments on the status line
 let R_openhtml = 1
 let R_pdfviewer = "evince"
 
-let mapleader = " " " Leader - ( Spacebar )
+" let mapleader = " " " Leader - ( Spacebar ) \ by default
 let maplocalleader = "\\" " Leader - ( Spacebar )
 set backspace=2 " Backspace deletes like most programs in insert mode
 set nobackup " avoid create backup automatically
@@ -190,7 +183,8 @@ let g:airline#extensions#default#section_truncate_width = {
 " map <leader>tx :Tmuxline vim_statusline_3<CR>
 
 " swap background colors
-nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> \| :hi! link FoldColumn GruvboxRed<CR> \| :hi! link Folded GruvboxYellowSign<CR>
+" nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> \| :hi! link FoldColumn GruvboxRed<CR> \| :hi! link Folded GruvboxYellowSign<CR>
+nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> \| :hi! link FoldColumn GruvboxRed<CR>
 " Control P settings
 " let g:ctrlp_map = '<c-p>'
 " let g:ctrlp_cmd = 'CtrlP'
@@ -249,7 +243,7 @@ let g:terminal_color_15 = '#fe8019'
 " FOREGROUND_COLOR="#ebdbb2" # Text
 
 " indentline to exclude tex files
-" let g:indentLine_fileTypeExclude = ['tex', 'markdown']
+let g:indentLine_fileTypeExclude = ['tex', 'markdown', 'pandoc']
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -297,15 +291,18 @@ nnoremap <localleader>ll :VimtexCompileToggle<CR>
 nnoremap <localleader>lo :VimtexCompileSS<CR>
 nnoremap <localleader>le :VimtexErrors<CR>
 nnoremap <localleader>lc :VimtexClean<CR>
-
+let g:tex_conceal="abdmg"
+" let g:tex_conceal=""
+" let g:tex_fast= "bcmprsSvV"
+" let g:tex_fast= "b"
 
 " Vimkiwi setup
 let g:vimwiki_list = [{'path':'$HOME/Documents/Nvim/Vimwiki',
-                     \ 'syntax': 'markdown', 'ext': '.md'}]
+                     \ 'syntax': 'markdown', 'ext': '.wiki'}]
                      " \ {'path':'$HOME/Documents/Repositories/MyWebPage/_drafts',
                      " \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_table_mappings = 0
-let g:vimwiki_global_ext = 0 " do not override markdown outside vimwiki folder.
+" let g:vimwiki_global_ext = 0 " do not override markdown outside vimwiki folder.
 " let g:vimwiki_char_bold = '**'
 " let g:vimwiki_char_italic = '_'
 " inoremap <F13> <Esc>:VimwikiReturn 1 5<CR>
@@ -346,10 +343,8 @@ set foldmethod=marker
 set foldtext=MyFoldText()
 set foldlevel=1
 set foldcolumn=2
-" highlight FoldColumn guifg=#fb4934
-" highlight Folded guifg=#fabd2f
 hi! link FoldColumn GruvboxRed
-hi! link Folded GruvboxYellowSign
+" hi! link Folded GruvboxYellowSign
 " hi! link Folded VimCommentTitle
 "
 "
@@ -434,4 +429,7 @@ let g:tagbar_type_r = {
         \ 'v:FunctionVariables',
     \ ]
 \ }
+
+
+
 

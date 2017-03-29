@@ -1,3 +1,4 @@
+" setlocal conceallevel=0
 " "   syntax match rmdChunkDelim "^[ \t]*```{r" contained
 " "   syntax match rmdChunkDelim "}$" contained
 " "

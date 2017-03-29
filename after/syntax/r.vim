@@ -7,11 +7,21 @@ hi! link rFunction GruvboxAqua
 syntax match rDescr "\(Title\|Desc\|Input\|Output\|Author\|Date\|Status\):" containedin=rComment
 hi! link rDescr VimCommentTitle
 
+" syn region rRegion start=/\{/ matchgroup=Delimiter end=/}/ transparent containedin=ALL
+"
 " Fold
 " syn match rFolded "[a-z]" containedin=Folded
 " hi! link rFolded GruvboxRed
 " syn region rPlop matchgroup=Delimiter start=/{{{/ matchgroup=Delimiter end=/}}}/ transparent contains=ALLBUT,rError,rBraceError,rCurlyError fold
 "
+"
+"
+" syn region rRegion matchgroup=Delimiter start=/SEC/ matchgroup=Delimiter end=/-/ transparent containedin=rComment fold
+" syn region rRegion start=/{{{/  end=/3/ transparent containedin=rComment fold
+" This folding is working but need to be improved somehow
+" syn region rRegion start=/\s---/  end=/\s---/ transparent containedin=ALL fold
+" syn region rRegion start=/^#\s.*-----/  end=/}}}/ transparent containedin=rComment fold
+
 " Gruvbox colors
 " hi! link rComment GruvboxRed
 " hi! link rSpecial GruvboxRed

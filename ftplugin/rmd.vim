@@ -1,8 +1,10 @@
 setlocal spell
 setlocal foldmethod=syntax
 setlocal foldlevel=0
-UltiSnipsAddFiletypes r
-UltiSnipsAddFiletypes markdown
+" setlocal background=light
+" setlocal conceallevel=2
+UltiSnipsAddFiletypes rmd.markdown.r
+" UltiSnipsAddFiletypes markdown
 map <C-c>r :exe "SlimuxShellRun library(knitr); knit('" . expand("%:p") . "')"<CR>
 inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
 

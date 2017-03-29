@@ -1,4 +1,5 @@
 setlocal spell
+" setlocal background=light
 
 " to recognize equations in any filetype
 call textobj#user#plugin('equation', {
