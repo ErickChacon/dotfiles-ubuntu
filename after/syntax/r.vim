@@ -13,15 +13,22 @@ hi! link rDescr VimCommentTitle
 " syn match rFolded "[a-z]" containedin=Folded
 " hi! link rFolded GruvboxRed
 " syn region rPlop matchgroup=Delimiter start=/{{{/ matchgroup=Delimiter end=/}}}/ transparent contains=ALLBUT,rError,rBraceError,rCurlyError fold
+" "
 "
-"
+" syn region cMarkerFold matchgroup=Comment start="{{{" end="}}}" containedin=rComment contains=ALL keepend extend fold transparent
+" syn region myFold start="{{{" end="}}}" containedin=ALL transparent fold
 "
 " syn region rRegion matchgroup=Delimiter start=/SEC/ matchgroup=Delimiter end=/-/ transparent containedin=rComment fold
-" syn region rRegion start=/{{{/  end=/3/ transparent containedin=rComment fold
+" syn region rRegion start=/{{{/  end=/}}}/ transparent containedin=ALL fold
 " This folding is working but need to be improved somehow
 " syn region rRegion start=/\s---/  end=/\s---/ transparent containedin=ALL fold
 " syn region rRegion start=/^#\s.*-----/  end=/}}}/ transparent containedin=rComment fold
+" syn region rRegion start=/^#\s.*-----/  end=/}}}/ transparent containedin=ALL fold
 
+" from internet
+" syn region cMarkerFold matchgroup=Comment start="{{{" end="}}}"
+" containedin=cCommentL,cComment contains=ALL keepend extend fold
+" transparent
 " Gruvbox colors
 " hi! link rComment GruvboxRed
 " hi! link rSpecial GruvboxRed

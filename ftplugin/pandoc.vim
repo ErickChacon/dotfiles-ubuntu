@@ -1,4 +1,5 @@
 " setlocal foldcolumn=10
+UltiSnipsAddFiletypes markdown
 setlocal foldlevel=1
 " function! MyFoldText() " {{{
 "     let line = getline(v:foldstart)

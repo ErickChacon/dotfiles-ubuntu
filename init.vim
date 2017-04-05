@@ -3,6 +3,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox' " colorscheme
 " Make sure you use single quotes
 Plug 'sickill/vim-monokai' " colorscheme
+" Plug 'icymind/NeoSolarized'
+" Plug 'mhartington/oceanic-next'
+" Plug 'MaxSt/FlatColor'
 Plug 'ctrlpvim/ctrlp.vim' " for folders ans files
 Plug 'tpope/vim-surround' " sorround
 Plug 'tomtom/tcomment_vim' " easy comment
@@ -18,8 +21,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 " Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'icymind/NeoSolarized'
-Plug 'mhartington/oceanic-next'
 Plug 'epeli/slimux'
 " Plug 'edkolev/tmuxline.vim'
 Plug 'ap/vim-css-color'
@@ -32,7 +33,7 @@ Plug 'vim-pandoc/vim-pandoc' " really nice for marldown
 Plug 'jalvesaq/Nvim-R'
 " Plug 'ErickChacon/Nvim-R'
 " git
-" Plug 'airblade/vim-gitgutter' " shows added and remove lines of git
+Plug 'airblade/vim-gitgutter' " shows added and remove lines of git
 " Initialize plugin system
 
 " Markdown
@@ -72,6 +73,7 @@ let R_in_buffer = 0
 let R_applescript = 0
 let R_tmux_split = 1
 let R_objbr_place = "script,right"
+let R_tmux_title = "automatic"
 " let R_editor_w = 30
 " let R_rconsole_width = 86
 " let R_rconsole_height = 30
@@ -111,6 +113,10 @@ set background=dark " incompatible with colorscheme
 " highlight Normal ctermfg=grey ctermbg=darkblue
 " colorscheme desert
 " colorscheme solarized
+" colorscheme OceanicNext
+" colorscheme NeoSolarized
+" colorscheme flatcolor
+" colorscheme monokai
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_strings=1
 " let g:gruvbox_improved_strings=1 "maybe useful for c
@@ -302,6 +308,9 @@ let g:vimwiki_list = [{'path':'$HOME/Documents/Nvim/Vimwiki',
                      " \ {'path':'$HOME/Documents/Repositories/MyWebPage/_drafts',
                      " \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_table_mappings = 0
+let $blogdir = '/home/chaconmo/Documents/Repositories/erickchacon/'
+" let g:vimwiki_folding='list' # not very well implemented
+" let g:vimwiki_folding='expr'
 " let g:vimwiki_global_ext = 0 " do not override markdown outside vimwiki folder.
 " let g:vimwiki_char_bold = '**'
 " let g:vimwiki_char_italic = '_'
@@ -324,9 +333,17 @@ let g:vimwiki_table_mappings = 0
 " Fold setup
 function! MyFoldText() " {{{
     let line = getline(v:foldstart)
-
     let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 12
+    " let windowwidth = winwidth(0) - nucolwidth - 12
+    "
+     if g:gitgutter_enabled "g:gitgutter_sign_column_always
+       " exists('g:loaded_gitgutter') "&cp has('signs')
+       let plop = 2
+     else
+       let plop = 0
+     endif
+
+    let windowwidth = winwidth(0) - nucolwidth - 12 - plop
     let foldedlinecount = v:foldend - v:foldstart
 
     " expand tabs into spaces
@@ -335,11 +352,12 @@ function! MyFoldText() " {{{
 
     let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
     let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-    return line . ' ' . repeat(" ",fillcharcount) . '--> ' . foldedlinecount . ' lines ' . ' '
+    return line . ' ' . repeat(" ",fillcharcount) . '  ➜ ' . foldedlinecount . ' lines ' . '✤ ' "⤵
 endfunction " }}}
 
-set foldmethod=marker
+" set foldmethod=marker
 " set foldmethod=syntax
+set foldmethod=expr
 set foldtext=MyFoldText()
 set foldlevel=1
 set foldcolumn=2
@@ -432,4 +450,17 @@ let g:tagbar_type_r = {
 
 
 
+hi! link VimwikiHeader1 GruvboxRedBold
+hi! link VimwikiHeader2 GruvboxAquaBold
+hi! link VimwikiHeader3 GruvboxPurpleBold
+hi! link VimwikiHeader4 GruvboxYellowBold
+hi! link VimwikiHeader5 GruvboxBlueBold
+hi! link VimwikiHeader6 GruvboxGreenBold
 
+
+ino " ""<left>
+ino ' ''<left>
+ino ( ()<left>
+ino [ []<left>
+ino { {}<left>
+ino {<CR> {<CR>}<ESC>O
