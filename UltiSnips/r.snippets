@@ -1,0 +1,122 @@
+# ~/Documents/Nvim/UltiSnips/r.snippets
+
+# Change defaults snippets.
+snippet wh "while loop"
+while ($1) {
+	$2
+}
+endsnippet
+
+# New snippets
+
+# Function
+snippet fun1 "Define function in one line." b
+${1:fun} <- function ($2) $3
+endsnippet
+
+# Operators
+snippet switch
+switch (${1:object},
+	${2:case} = ${3:action}
+)
+endsnippet
+
+# Timing
+snippet syst "Time to run code." b
+${1:ini} <- Sys.time()
+${0}
+print(Sys.time() - $1)
+endsnippet
+
+# Manage dataset
+snippet save "Save dataset." b
+save(${1:data}, file = file.path(${2:path_tidy}, "${3:data}.RData"))
+endsnippet
+
+# Information
+snippet sec "Section label" b
+# ${1:SECTION}`!p snip.rv = (70 - len(t[1])) * "-" + "-----"`
+endsnippet
+# 72
+
+snippet title "Roxygen description" b
+#' @title ${1:title}.
+#'
+#' @description
+#' \code{${2:function}} ${3:description}.
+#'
+#' @details
+#' ${4:details}.
+#'
+#' @param ${5:par}.
+#'
+#' @return ${6:return}.
+#'
+#' @author ${7:Erick A. Chacon-Montalvan}
+#'
+#' @export
+endsnippet
+
+snippet descr "Script main description" b
+#############################################################################
+## Title: ${1:title}
+## Desc: ${2:description}
+## Input: ${3:input}
+## Output: ${4:output}
+## Status: ${5:running}
+## Author: ${6:Erick A. Chacon-Montalvan}
+## Date: `!v strftime("%d %b %Y")`
+#############################################################################
+
+endsnippet
+
+snippet progress "For loop with progress bar." b
+${0:ids} <- $1
+pb <- txtProgressBar(title = "plop", max = length($0), style = 3)
+for (i in $0) {
+	$2
+	setTxtProgressBar(pb, i)
+}
+close(pb)
+endsnippet
+
+snippet sink "Show output in an external file." b
+sink(file="/dev/null")
+sink()
+endsnippet
+
+# Starting an script.
+snippet rm "remove objects"
+# 0. LOAD PACKAGES AND READ DATA --------------------------------------------
+
+rm(list = ${0:ls()})
+
+path_repos <- system("find ~ -name Repositories 2>/dev/null", intern = T)
+devtools::load_all(file.path(path_repos, "day2day"))
+library(tidyverse)
+endsnippet
+
+snippet pathbw "Define paths for an study" b
+path_proj <- get_path("${0:food-security}.ecm")
+path_tidy <- file.path(path_proj, "4.TidyData")
+path_study <- file.path(path_proj, "5.Studies", "Birthweight")
+path_plots <- file.path(path_study, "6.Figures")
+endsnippet
+
+# Plots output.
+snippet pdf "Save plot output on pdf." b
+pdf(file.path(${0:path_plots}, "$1.pdf"), width = ${2:7})
+dev.off()
+endsnippet
+
+snippet png "Save plot output on png." b
+png2(file.path(${0:path_plots}, "$2.png"))
+dev.off()
+endsnippet
+
+snippet ifpng "Conditional to save plot output on png." b
+if (print) {
+	png2(file.path(${0:path_plots}, "$2.png"), ratio = ${3:0.9})
+	dev.off()
+}
+endsnippet

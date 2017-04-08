@@ -1,0 +1,27 @@
+snippet head "Header for r markdown" b
+---
+title: "Untitled"
+output: github_document
+---
+
+\`\`\`{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+\`\`\`
+
+
+\`\`\`{r packages}
+# Load packages.
+path_repos <- system("find ~ -name Repositories 2>/dev/null", intern = T)
+devtools::load_all(file.path(path_repos, "day2day"))
+library(tidyverse)
+library(geoR)
+library(mgcv)
+\`\`\`
+endsnippet
+
+snippet r "r chunk" b
+\`\`\`{r}
+$1
+\`\`\`
+endsnippet
+

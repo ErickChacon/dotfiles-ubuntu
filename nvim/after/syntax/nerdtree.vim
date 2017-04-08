@@ -11,7 +11,7 @@ syn match nerdStat "^\s\+.*\(R\|cpp\|RData\).\?$"
 syn match nerdPy "^\s\+.*\(py\).\?$"
 
 hi! link nerdText GruvboxGreen
-hi! link nerdCompile GruvboxYellow
+hi! link nerdCompile GruvboxGray
 hi! link nerdWeb GruvboxPurple
 hi! link nerdLow GruvboxRed
 hi! link nerdStat GruvboxBlue

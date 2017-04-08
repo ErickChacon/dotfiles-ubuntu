@@ -67,13 +67,14 @@ let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh"]
 " let g:pandoc#folding#fdc = 0
 " let g:pandoc#syntax#style#underline_special = 1
 let g:pandoc#syntax#conceal#use = 1 " pretty highlight
-" autocmd FileType * setlocal conceallevel=0 
+" autocmd FileType * setlocal conceallevel=0
 
 let R_in_buffer = 0
 let R_applescript = 0
 let R_tmux_split = 1
 let R_objbr_place = "script,right"
 let R_tmux_title = "automatic"
+ let R_assign = 2
 " let R_editor_w = 30
 " let R_rconsole_width = 86
 " let R_rconsole_height = 30

@@ -7,7 +7,8 @@ map <C-c>r :exe "SlimuxShellRun source('" . expand("%:p") . "')"<CR>
 inoremap <buffer> >> <Esc>:normal! a%>%<CR>a 
 inoremap <leader>, <C-x><C-o>
 " inoremap <Nul> <C-x><C-o>
-imap <C-space> <Plug>RCompleteArgs
+imap <leader>. <Plug>RCompleteArgs
+" imap <C-space> <Plug>RCompleteArgs
 
 nmap <LocalLeader>ll <Plug>RDSendLine
 
@@ -15,7 +16,12 @@ function! RFold()
   let this_line = getline(v:lnum)
 
   if match(this_line, '}') >= 0
+    if match(this_line, '{')
+      return '='
+      " if { and } matches on the same line do not do anything.
+    else
     return 's1'
+    endif
   elseif match(this_line, '{$') >= 0
     return 'a1'
   elseif this_line =~ '^#\s.*---'
