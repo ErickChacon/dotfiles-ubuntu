@@ -35,6 +35,7 @@ Plug 'jalvesaq/Nvim-R'
 " git
 Plug 'airblade/vim-gitgutter' " shows added and remove lines of git
 " Initialize plugin system
+Plug 'cespare/vim-toml'
 
 " Markdown
 " Plug 'suan/vim-instant-markdown' " does not work
@@ -74,10 +75,10 @@ let R_applescript = 0
 let R_tmux_split = 1
 let R_objbr_place = "script,right"
 let R_tmux_title = "automatic"
- let R_assign = 2
+let R_assign = 0
 " let R_editor_w = 30
 " let R_rconsole_width = 86
-" let R_rconsole_height = 30
+let R_rconsole_height = 10
 " let R_rconsole_width = 0
 " let R_show_args = 1 " show arguments in a new pane
 " let R_args_in_stline = 1 " show arguments on the status line
@@ -122,7 +123,7 @@ let g:gruvbox_italic=1
 let g:gruvbox_italicize_strings=1
 " let g:gruvbox_improved_strings=1 "maybe useful for c
 " set t_Co=256 " allow 256 colors and use external colorschemes
-" let g:gruvbox_contrast_dark = "soft"
+let g:gruvbox_contrast_dark = "soft"
 let g:gruvbox_contrast_light = "soft"
 " let g:gruvbox_italic = 1
 " let g:gruvbox_italicize_comments = 1

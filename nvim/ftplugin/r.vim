@@ -4,7 +4,8 @@ setlocal foldlevel=0
 
 setlocal spell
 map <C-c>r :exe "SlimuxShellRun source('" . expand("%:p") . "')"<CR>
-inoremap <buffer> >> <Esc>:normal! a%>%<CR>a 
+inoremap <buffer> >> <Esc>:normal! a%>%<CR>a
+inoremap <buffer> __ <Esc>:normal! a<-<CR>a
 inoremap <leader>, <C-x><C-o>
 " inoremap <Nul> <C-x><C-o>
 imap <leader>. <Plug>RCompleteArgs
@@ -16,11 +17,10 @@ function! RFold()
   let this_line = getline(v:lnum)
 
   if match(this_line, '}') >= 0
-    if match(this_line, '{')
-      return '='
-      " if { and } matches on the same line do not do anything.
-    else
-    return 's1'
+    if match(this_line, '{') >= 0
+      return '=' " if { and } matches on the same line do not do anything.
+    elseif match(this_line, '}$') >= 0
+      return 's1' " reduce fold only when finish with }
     endif
   elseif match(this_line, '{$') >= 0
     return 'a1'
