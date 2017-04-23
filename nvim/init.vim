@@ -9,6 +9,7 @@ Plug 'sickill/vim-monokai' " colorscheme
 Plug 'ctrlpvim/ctrlp.vim' " for folders ans files
 Plug 'tpope/vim-surround' " sorround
 Plug 'tomtom/tcomment_vim' " easy comment
+" Plug 'scrooloose/nerdcommenter' " orgasmic commenting
 Plug 'vimwiki/vimwiki' " notes
 Plug 'kana/vim-textobj-indent' " copy indented block
 Plug 'kana/vim-textobj-user' " custom text object
@@ -29,9 +30,8 @@ Plug 'lervag/vimtex'
 " markdown
 Plug 'godlygeek/tabular'
 Plug 'vim-pandoc/vim-pandoc-syntax' " great works with nvim-r
-Plug 'vim-pandoc/vim-pandoc' " really nice for marldown
+Plug 'vim-pandoc/vim-pandoc' " really nice for markdown
 Plug 'jalvesaq/Nvim-R'
-" Plug 'ErickChacon/Nvim-R'
 " git
 Plug 'airblade/vim-gitgutter' " shows added and remove lines of git
 " Initialize plugin system
@@ -303,6 +303,7 @@ let g:tex_conceal="abdmg"
 " let g:tex_conceal=""
 " let g:tex_fast= "bcmprsSvV"
 " let g:tex_fast= "b"
+" let g:vimtex_complete_recursive_bib = 1
 
 " Vimkiwi setup
 let g:vimwiki_list = [{'path':'$HOME/Documents/Nvim/Vimwiki',
@@ -465,4 +466,5 @@ ino ' ''<left>
 ino ( ()<left>
 ino [ []<left>
 ino { {}<left>
+ino $ $$<left>
 ino {<CR> {<CR>}<ESC>O

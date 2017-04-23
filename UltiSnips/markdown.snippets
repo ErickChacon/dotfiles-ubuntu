@@ -54,10 +54,14 @@ snippet code "Codeblock" b
 \`\`\`
 endsnippet
 
-snippet yaml "Yaml description" b
+snippet yaml "Yaml metadata" b
 ---
 title: "$1"
 date: `!v strftime("%Y-%m-%d %H:%M:%S")`.00 +01:00
+categories:
+- $2
+tags:
+- $3
 ---
 endsnippet
 
