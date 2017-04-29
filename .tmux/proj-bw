@@ -9,40 +9,41 @@ if has-session ; then
   # echo "Session already exists"
 else
   # main work directory:
-  cd ~/Documents/Projects/FoodSecurity/5.Studies/Birthweight
+  # cd ~/Documents/Projects/FoodSecurity/5.Studies/Birthweight
+  proj="/home/chaconmo/Documents/Projects/FoodSecurity/5.Studies/Birthweight/"
   # window 1: cleaning
-  tmux new-session -d -c "../../3.CleanScripts" -s 'bw'
+  tmux new-session -d -c $proj"../../3.CleanScripts" -s 'bw'
   tmux rename-window "Cleaning"
   tmux send-keys 'nvim' C-m
   # window 2: exploratory
-  tmux new-window -c "2.Exploratory"
+  tmux new-window -c $proj"2.Exploratory"
   tmux rename-window "Exploratory"
   tmux send-keys 'nvim' C-m
   # window 3: visualization
-  tmux new-window -c "5.Visualization"
+  tmux new-window -c $proj"5.Visualization"
   tmux rename-window "Visualization"
   tmux send-keys "nvim" C-m
   # window 4: writing
-  tmux new-window -c "7.Writing/UpgradeReport"
+  tmux new-window -c $proj"7.Writing/UpgradeReport"
   tmux rename-window "Writing"
   tmux send-keys "nvim report.tex" C-m
   # window 5: Modelling
-  tmux new-window -c "3.Modelling"
+  tmux new-window -c $proj"3.Modelling"
   tmux rename-window "Modelling"
   tmux send-keys "nvim" C-m
   # window 6: notes
-  tmux new-window -c "../../../../Nvim"
+  tmux new-window -c $proj"../../../../Nvim"
   tmux rename-window "Notes"
   tmux send-keys "nvim -c 'VimwikiIndex'" C-m
-  tmux split-window -c "../../../../Nvim/Vimwiki" -h -p 50
+  tmux split-window -c $proj"../../../../Nvim/Vimwiki" -h -p 50
   tmux send-keys "nvim Main\ Todo.wiki" C-m
   tmux split-window -c -h -p 30
   tmux send-keys "nvim -c 'VimwikiMakeDiaryNote'" C-m
   tmux selectp -t 1
-  # window 7: day2day
-  tmux new-window -c "../../../../Repositories/day2day/R"
-  tmux rename-window "Day2Day"
-  tmux send-keys "nvim" C-m
+  # # window 7: day2day
+  # tmux new-window -c "../../../../Repositories/day2day/R"
+  # tmux rename-window "Day2Day"
+  # tmux send-keys "nvim" C-m
   # focus on window:
   tmux select-window -t "Notes"
   tmux attach-session -d
