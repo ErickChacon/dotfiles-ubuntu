@@ -28,5 +28,6 @@ local({
 old <- getOption("defaultPackages")
 r <- getOption("repos")
 r["CRAN"] <- "https://cloud.r-project.org/"
+# options(defaultPackages = c(old), repos = r)
 options(defaultPackages = c(old, "colorout"), repos = r)
 })

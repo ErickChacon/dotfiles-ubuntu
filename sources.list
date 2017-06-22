@@ -1,4 +1,4 @@
-# deb cdrom:[Ubuntu 16.04.1 LTS _Xenial Xerus_ - Release amd64 (20160719)]/ xenial main restricted
+# deb cdrom:[Ubuntu 16.04.2 LTS _Xenial Xerus_ - Release amd64 (20170215.2)]/ xenial main restricted
 
 # See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
 # newer versions of the distribution.
@@ -11,10 +11,8 @@ deb http://gb.archive.ubuntu.com/ubuntu/ xenial-updates main restricted
 # deb-src http://gb.archive.ubuntu.com/ubuntu/ xenial-updates main restricted
 
 ## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
-## team, and may not be under a free licence. Please satisfy yourself as to
-## your rights to use the software. Also, please note that software in
-## universe WILL NOT receive any review or updates from the Ubuntu security
-## team.
+## team. Also, please note that software in universe WILL NOT receive any
+## review or updates from the Ubuntu security team.
 deb http://gb.archive.ubuntu.com/ubuntu/ xenial universe
 # deb-src http://gb.archive.ubuntu.com/ubuntu/ xenial universe
 deb http://gb.archive.ubuntu.com/ubuntu/ xenial-updates universe
@@ -42,7 +40,7 @@ deb http://gb.archive.ubuntu.com/ubuntu/ xenial-backports main restricted univer
 ## 'partner' repository.
 ## This software is not part of Ubuntu, but is offered by Canonical and the
 ## respective vendors as a service to Ubuntu users.
-deb http://archive.canonical.com/ubuntu xenial partner
+# deb http://archive.canonical.com/ubuntu xenial partner
 # deb-src http://archive.canonical.com/ubuntu xenial partner
 
 deb http://security.ubuntu.com/ubuntu xenial-security main restricted
@@ -52,5 +50,6 @@ deb http://security.ubuntu.com/ubuntu xenial-security universe
 deb http://security.ubuntu.com/ubuntu xenial-security multiverse
 # deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse
 
-# R
+## R
 deb https://cloud.r-project.org/bin/linux/ubuntu xenial/
+

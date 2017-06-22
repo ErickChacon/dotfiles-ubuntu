@@ -40,12 +40,16 @@ else
   tmux split-window -c -h -p 30
   tmux send-keys "nvim -c 'VimwikiMakeDiaryNote'" C-m
   tmux selectp -t 1
+  # window 6: slides
+  tmux new-window -c $proj"8.Slides"
+  tmux rename-window "Slides"
+  tmux send-keys "nvim upgrade-bw.tex" C-m
   # # window 7: day2day
   # tmux new-window -c "../../../../Repositories/day2day/R"
   # tmux rename-window "Day2Day"
   # tmux send-keys "nvim" C-m
   # focus on window:
-  tmux select-window -t "Notes"
+  tmux select-window -t "Slides"
   tmux attach-session -d
 fi
 
