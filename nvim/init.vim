@@ -277,7 +277,7 @@ function! MyFoldText() " {{{
     return line . ' ' . repeat(" ",fillcharcount) . '  ➜ ' . foldedlinecount . ' lines ' . '✤ ' "⤵
 endfunction " }}}
 
-set foldmethod=marker
+set foldmethod=marker " for vim
 " set foldmethod=syntax
 " set foldmethod=expr
 set foldtext=MyFoldText()

@@ -2,53 +2,24 @@
 # !/bin/bash
 
 function has-session {
-  tmux has-session -t 'HouseHold'  2>/dev/null
+  tmux has-session -t 'Household'  2>/dev/null
 }
 
 if has-session ; then
-  tmux a -t 'HouseHold'
+  tmux a -t 'Household'
   # echo "Session already exists"
 else
   # main work directory:
   proj="/home/chaconmo/Documents/Repositories/Food-Security-Amazonia-Erick/"
   # window 1: cleaning
-  tmux new-session -d -c $proj"2.Cleaning" -s 'HouseHold'
+  tmux new-session -d -c $proj"2.Cleaning" -s 'Household'
   tmux rename-window "Cleaning"
   tmux send-keys 'nvim' C-m
   # window 2: exploratory
   tmux new-window -c $proj"7.ExtraScripts"
   tmux rename-window "ExtraScripts"
   tmux send-keys 'nvim' C-m
-  # # window 3: visualization
-  # tmux new-window -c $proj"5.Visualization"
-  # tmux rename-window "Visualization"
-  # tmux send-keys "nvim" C-m
-  # # window 4: writing
-  # tmux new-window -c $proj"7.Writing/UpgradeReport"
-  # tmux rename-window "Writing"
-  # tmux send-keys "nvim report.tex" C-m
-  # # window 5: Modelling
-  # tmux new-window -c $proj"3.Modelling"
-  # tmux rename-window "Modelling"
-  # tmux send-keys "nvim" C-m
-  # # window 6: notes
-  # tmux new-window -c $proj"../../../../Nvim"
-  # tmux rename-window "Notes"
-  # tmux send-keys "nvim -c 'VimwikiIndex'" C-m
-  # tmux split-window -c $proj"../../../../Nvim/Vimwiki" -h -p 50
-  # tmux send-keys "nvim Main\ Todo.wiki" C-m
-  # tmux split-window -c -h -p 30
-  # tmux send-keys "nvim -c 'VimwikiMakeDiaryNote'" C-m
-  # tmux selectp -t 1
-  # # window 6: slides
-  # tmux new-window -c $proj"8.Slides"
-  # tmux rename-window "Slides"
-  # tmux send-keys "nvim upgrade-bw.tex" C-m
-  # # window 7: day2day
-  # tmux new-window -c "../../../../Repositories/day2day/R"
-  # tmux rename-window "Day2Day"
-  # tmux send-keys "nvim" C-m
-  # focus on window:
+  # select window and attach
   tmux select-window -t "Cleaning"
   tmux attach-session -d
 fi

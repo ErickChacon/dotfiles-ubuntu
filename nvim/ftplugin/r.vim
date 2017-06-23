@@ -1,4 +1,4 @@
-" setlocal foldmethod=marker
+setlocal foldmethod=expr
 setlocal foldlevel=0
 " setlocal conceallevel=0
 

@@ -11,3 +11,4 @@ cp ~/.config/redshift.conf .
 cp ~/.unison/default.prf .
 cp ~/.tmux.conf .
 cp -r ~/.tmux .
+cp ~/.ctags .
