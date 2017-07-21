@@ -12,7 +12,7 @@ inoremap <leader>, <C-x><C-o>
 " inoremap <Nul> <C-x><C-o>
 imap <leader>. <Plug>RCompleteArgs
 " imap <C-space> <Plug>RCompleteArgs
-nmap <LocalLeader>ll <Plug>RDSendLine
+nmap <LocalLeader>ll <Plug>RSendLine
 
 " r folding
 function! RFold()

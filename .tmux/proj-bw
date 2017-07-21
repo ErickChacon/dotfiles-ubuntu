@@ -31,15 +31,15 @@ else
   tmux new-window -c $proj"3.Modelling"
   tmux rename-window "Modelling"
   tmux send-keys "nvim" C-m
-  # window 6: notes
-  tmux new-window -c $proj"../../../../Nvim"
-  tmux rename-window "Notes"
-  tmux send-keys "nvim -c 'VimwikiIndex'" C-m
-  tmux split-window -c $proj"../../../../Nvim/Vimwiki" -h -p 50
-  tmux send-keys "nvim Main\ Todo.wiki" C-m
-  tmux split-window -c -h -p 30
-  tmux send-keys "nvim -c 'VimwikiMakeDiaryNote'" C-m
-  tmux selectp -t 1
+  # # window 6: notes
+  # tmux new-window -c $proj"../../../../Nvim"
+  # tmux rename-window "Notes"
+  # tmux send-keys "nvim -c 'VimwikiIndex'" C-m
+  # tmux split-window -c $proj"../../../../Nvim/Vimwiki" -h -p 50
+  # tmux send-keys "nvim Main\ Todo.wiki" C-m
+  # tmux split-window -c -h -p 30
+  # tmux send-keys "nvim -c 'VimwikiMakeDiaryNote'" C-m
+  # tmux selectp -t 1
   # window 6: slides
   tmux new-window -c $proj"8.Slides"
   tmux rename-window "Slides"
@@ -49,7 +49,12 @@ else
   # tmux rename-window "Day2Day"
   # tmux send-keys "nvim" C-m
   # focus on window:
-  tmux select-window -t "Slides"
+  # window 8: paper
+  tmux new-window -c $proj"7.Writing/Paper"
+  tmux rename-window "Paper"
+  tmux send-keys "nvim jrss-paper.tex" C-m
+  #
+  tmux select-window -t "Paper"
   tmux attach-session -d
 fi
 

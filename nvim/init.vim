@@ -1,4 +1,4 @@
-
+" testitexn"
 " Neovim settings
 " Language:	Vim
 " Last Change:	22 Jun 2017
@@ -40,7 +40,7 @@ Plug 'ctrlpvim/ctrlp.vim' " find files
 Plug 'scrooloose/nerdtree' " explore your filesystem and to open files
 
 " Development environment tools
-Plug 'epeli/slimux' " not using with r but maybe with python
+" Plug 'epeli/slimux' " not using with r but maybe with python
 Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets' " snippets scripts
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
@@ -52,6 +52,7 @@ Plug 'majutsushi/tagbar' " display tags
 Plug 'ap/vim-css-color'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'weihanglo/tmuxline.vim' " Plug 'edkolev/tmuxline.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Programs
 Plug 'vimwiki/vimwiki' " vimwiki: notes and agenda
@@ -134,8 +135,8 @@ set formatoptions=cqt " it changes depending of the filetype
 " set wrapmargin=0
 set colorcolumn=+1
 " let &colorcolumn="10,".join(range(70,999),",")
-" let &colorcolumn="".join(range(85,999),",")
-" let &colorcolumn=range(70,999)
+let &colorcolumn="".join(range(86,999),",")
+" let &colorcolumn=range(86,999)
 " highlight ColorColumn ctermbg=0 guibg=lightgrey
 " augroup vimrc_autocmds
 "   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
@@ -158,7 +159,7 @@ ino ' ''<left>
 ino ( ()<left>
 ino [ []<left>
 ino { {}<left>
-ino $ $$<left>
+" autocmd FileType tex markdown ino $ $$<left>
 ino {<CR> {<CR>}<ESC>O
 
 
@@ -172,6 +173,25 @@ map <right> <nop>
 imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
+
+" Mapping esc to jk and disable the old key
+inoremap jk <Esc>
+inoremap <esc> <nop>
+
+vnoremap jk <Esc>
+" vnoremap jk <Esc>gV
+" inoremap jk <Esc>
+" inoremap <esc> <nop>
+
+" Use ctrl-[hjkl] to select the active split!
+" nmap <silent> <c-k> :wincmd k<CR>
+" nmap <silent> <c-j> :wincmd j<CR>
+" nmap <silent> <c-h> :wincmd h<CR>
+" nmap <silent> <c-l> :wincmd l<CR>
+nmap <silent> gk :wincmd k<CR>
+nmap <silent> gj :wincmd j<CR>
+nmap <silent> gh :wincmd h<CR>
+nmap <silent> gl :wincmd l<CR>
 " }}}
 " COLORSCHEME {{{
 " Colorscheme vim options
@@ -390,18 +410,18 @@ inoremap <silent> <expr> <TAB> pumvisible() ? "\<C-n>" : "<C-R>=<SID>expand_snip
 au FileType vimwiki :UltiSnipsAddFiletypes markdown
 " }}}
 " IDE: SLIMUX PLUGIN {{{
-nmap <C-c><C-c> :SlimuxREPLSendBuffer<CR>
-nmap <C-j> V:SlimuxREPLSendLine<CR>j
-vmap <C-j> :SlimuxREPLSendLine<CR>
-cmap <C-j> SlimuxREPLSendLine<cr> " console
-vmap <C-s> :SlimuxREPLSendSelection<CR>
-" map <C-c>r :exe "SlimuxShellRun source('" . expand("%:p") . "')"<CR>
-" map \fn <C-R>=expand("%:t:r")<CR>
-" '+ exe ":normal i" . expand("%:t")'
-" map <C-c>r :SlimuxShellRun ls() . expand("%:h")<CR>
-" doeswork = expand("%:h") . ".bak"
-"
-" }}}
+" nmap <C-c><C-c> :SlimuxREPLSendBuffer<CR>
+" nmap <C-j> V:SlimuxREPLSendLine<CR>j
+" vmap <C-j> :SlimuxREPLSendLine<CR>
+" cmap <C-j> SlimuxREPLSendLine<cr> " console
+" vmap <C-s> :SlimuxREPLSendSelection<CR>
+" " map <C-c>r :exe "SlimuxShellRun source('" . expand("%:p") . "')"<CR>
+" " map \fn <C-R>=expand("%:t:r")<CR>
+" " '+ exe ":normal i" . expand("%:t")'
+" " map <C-c>r :SlimuxShellRun ls() . expand("%:h")<CR>
+" " doeswork = expand("%:h") . ".bak"
+" "
+" " }}}
 " IDE: TAGS {{{
 " tags
 let g:tagbar_type_r = {
@@ -508,8 +528,8 @@ let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 
 " Open R in a tmux split
 let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
-" let R_applescript = 0
-" let R_tmux_split = 1
+let R_applescript = 0
+let R_tmux_split = 1
 " Other tmux options
 let R_tmux_title = "automatic" " tmux window names
 let R_objbr_place = "script,right"
@@ -522,6 +542,7 @@ let R_rconsole_height = 10
 " let R_rconsole_width = 0
 " Functions arguments
 " let R_show_args = 1 " show arguments in a new pane after omnicompletion
+" let R_show_arg_help = 1 " show arguments help after completion
 let R_args_in_stline = 1 " show arguments on the status line
 " Markdown options
 let R_openhtml = 1

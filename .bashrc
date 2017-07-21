@@ -59,3 +59,6 @@ export TERM=xterm-256color-italic
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
+
+# Set vim navigation on terminal
+set -o vi

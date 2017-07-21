@@ -1,4 +1,18 @@
 # ~/Documents/Nvim/UltiSnips/r.snippets
+global !p
+
+def ada_case(word):
+	out = word[0].upper()
+	for i in range(1, len(word)):
+		if word[i] == '-':
+			out = out + '.'
+		elif word[i - 1] == '_' or word[i - 1] == '-':
+			out = out + word[i].upper()
+		else:
+			out = out + word[i]
+	return out
+
+endglobal
 
 # Change defaults snippets.
 snippet wh "while loop"
@@ -39,6 +53,28 @@ snippet sec "Section label" b
 endsnippet
 # 72
 
+snippet once "Include header once only guard"
+#ifndef ${1:`!p
+if not snip.c:
+	import random, string
+	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+	rand = ''.join(random.sample(string.ascii_letters+string.digits, 8))
+	snip.rv = ('%s_%s' % (name,rand)).upper()
+else:
+	snip.rv = snip.c`}
+endsnippet
+
+snippet pac "package"
+package ${1:`!p snip.rv = ada_case(snip.basename)`} is
+	$0
+end $1;
+endsnippet
+
+snippet paca "package"
+package ${1:`!p snip.rv = snip.basename.upper()`} is
+	$0
+end $1;
+endsnippet
 snippet title "Roxygen description" b
 #' @title ${1:title}.
 #'

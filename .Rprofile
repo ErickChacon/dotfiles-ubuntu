@@ -12,6 +12,7 @@ setHook(packageEvent("grDevices", "onLoad"),
 q <- function (save="no", ...) {
   quit(save=save, ...)
 }
+options(width = system("tput cols", intern = TRUE))
 
 
 # if(interactive()){
