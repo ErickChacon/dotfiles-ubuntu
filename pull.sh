@@ -12,3 +12,4 @@ cp ~/.unison/default.prf .
 cp ~/.tmux.conf .
 cp -r ~/.tmux .
 cp ~/.ctags .
+cp ~/.bash_it/aliases/custom.aliases.bash .
