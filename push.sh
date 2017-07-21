@@ -1,16 +1,7 @@
 #!/bin/bash
 echo "Working at home!"
 # cd ~/Documents/Repositories/dotfiles-ubuntu/
-cd ~
+# cd ~
 pwd
-cp -r ~/.config/nvim .
-# cp /etc/apt/sources.list .
-# cp /etc/R/Rprofile.site .
-# cp ~/.Rprofile .
-# cp ~/.bashrc .
-cp -r ~/Documents/Nvim/UltiSnips .
-# cp ~/.config/redshift.conf .
-# cp ~/.unison/default.prf .
-# cp ~/.tmux.conf .
-# cp -r ~/.tmux .
-# cp ~/.ctags .
+cp -r nvim ~/.config/nvim
+cp -r UltiSnips ~/Documents/Nvim/UltiSnips
