@@ -50,6 +50,7 @@ deb http://security.ubuntu.com/ubuntu xenial-security universe
 deb http://security.ubuntu.com/ubuntu xenial-security multiverse
 # deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse
 
-## R
+## R installation
 deb https://cloud.r-project.org/bin/linux/ubuntu xenial/
+# deb http://gb.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe
 

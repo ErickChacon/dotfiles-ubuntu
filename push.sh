@@ -6,7 +6,7 @@ elif [[ $HOSTNAME == "chaconmo-Precision-5510" ]]; then
 fi
 
 # cd ~/Documents/Repositories/dotfiles-ubuntu/
-
+pwd
 cp -r ~/.config/nvim .
 cp /etc/apt/sources.list .
 cp /etc/R/Rprofile.site .
