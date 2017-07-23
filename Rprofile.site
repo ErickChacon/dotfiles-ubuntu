@@ -21,13 +21,3 @@
 #  r["CRAN"] <- "http://my.local.cran"
 #  options(defaultPackages = c(old, "MASS"), repos = r)
 #})
-
-## Example of Rprofile.site
-local({
-# add colorout to the default packages and set a CRAN mirror
-old <- getOption("defaultPackages")
-r <- getOption("repos")
-r["CRAN"] <- "https://cloud.r-project.org/"
-# options(defaultPackages = c(old), repos = r)
-options(defaultPackages = c(old, "colorout"), repos = r)
-})

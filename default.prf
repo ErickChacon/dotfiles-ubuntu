@@ -31,3 +31,6 @@ times=true
 
 # for fat permission.
 fat=true
+
+# ignore .git files
+ignore = Name .git
