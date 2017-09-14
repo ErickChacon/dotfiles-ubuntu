@@ -2,7 +2,7 @@
 
 # UPDATE AND UPGRADE {{{1
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 sudo apt autoremove
 
 # SOFTWARE FOR INSTALLATION {{{1
@@ -88,7 +88,7 @@ R CMD INSTALL colorout
 rm -rf colorout
 
 # DOTFILES {{{1
-git clone --depth 1 git@github.com:ErickChacon/dotfiles-ubuntu.git
+git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
 cd dotfiles-ubuntu && ./pull.sh && cd ..
 rm -rf dotfiles-ubuntu
 
