@@ -82,6 +82,16 @@ r[\"CRAN\"] <- \"http://cloud.r-project.org/\"
 options(repos = r)
 })" | sudo tee /etc/R/Rprofile.site
 
+# devtools
+echo "
+userdir <- unlist(strsplit(Sys.getenv(\"R_LIBS_USER\"), .Platform$path.sep))[1L]
+.libPaths(c(userdir, .libPaths()))
+install.packages(\"devtools\")
+" > r-packages.R
+sudo apt-get install libcurl4-openssl-dev libssl-dev -y
+R CMD BATCH r-packages.R
+rm r-packages.R
+
 # colorout for R
 git clone --depth 1 https://github.com/jalvesaq/colorout.git
 R CMD INSTALL colorout
