@@ -66,7 +66,9 @@ rm -rf Gogh
 
 # R {{{1
 # install
-echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial/" | \
+echo "
+## Mirror for R software
+deb https://cloud.r-project.org/bin/linux/ubuntu xenial/" | \
   sudo tee -a /etc/apt/sources.list
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 sudo apt-get update
@@ -78,8 +80,7 @@ local({
 r <- getOption(\"repos\")
 r[\"CRAN\"] <- \"http://cloud.r-project.org/\"
 options(repos = r)
-})
-" | sudo tee /etc/R/Rprofile.site
+})" | sudo tee /etc/R/Rprofile.site
 
 # colorout for R
 git clone --depth 1 https://github.com/jalvesaq/colorout.git
@@ -88,7 +89,7 @@ rm -rf colorout
 
 # DOTFILES {{{1
 git clone --depth 1 git@github.com:ErickChacon/dotfiles-ubuntu.git
-dotfiles-ubuntu/pull.sh
+cd dotfiles-ubuntu && ./pull.sh && cd ..
 rm -rf dotfiles-ubuntu
 
 # ADDITIONAL SOFTWARE {{{1
@@ -122,7 +123,4 @@ sudo apt-get install spotify-client -y
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
-
-
-
 
