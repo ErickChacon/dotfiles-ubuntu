@@ -56,7 +56,7 @@ rm -rf fonts
 
 # Devicon font
 git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
-nerd-fonts/install.sh DroidSansMono
+cd nerd-fonts && ./install.sh DroidSansMono && cd ..
 rm -rf nerd-fonts
 
 # terminal colors
