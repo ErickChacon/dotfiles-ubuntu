@@ -61,7 +61,7 @@ rm -rf nerd-fonts
 
 # terminal colors
 git clone --depth 1 https://github.com/ErickChacon/Gogh.git
-Gogh/themes/gruvox.dark.soft.sh
+Gogh/themes/gruvbox.dark.soft.sh
 rm -rf Gogh
 
 # R {{{1
