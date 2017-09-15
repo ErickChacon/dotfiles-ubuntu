@@ -22,6 +22,7 @@ sudo gem install neovim
 sudo add-apt-repository ppa:neovim-ppa/stable -y
 sudo apt-get update
 sudo apt-get install neovim -y
+sudo apt-get install exuberant-ctags -y
 
 # plugin manager
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
