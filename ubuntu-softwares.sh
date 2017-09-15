@@ -85,6 +85,7 @@ options(repos = r)
 # devtools
 echo "
 userdir <- unlist(strsplit(Sys.getenv(\"R_LIBS_USER\"), .Platform\$path.sep))[1L]
+dir.create(userdir, recursive = TRUE)
 .libPaths(c(userdir, .libPaths()))
 install.packages(\"devtools\")
 " > r-packages.R
