@@ -100,7 +100,7 @@ rm -rf colorout
 
 # DOTFILES {{{1
 git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
-cd dotfiles-ubuntu && ./pull.sh && cd ..
+cd dotfiles-ubuntu && chmod +x pull.sh && ./pull.sh && cd ..
 rm -rf dotfiles-ubuntu
 
 # ADDITIONAL SOFTWARE {{{1
