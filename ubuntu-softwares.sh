@@ -121,7 +121,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 
 # ssh
-sudo apt-get install openssh-server
+sudo apt-get install openssh-server -y
 
 # MANAGMENT AND SYSTEM SOFTWARE {{{1
 
