@@ -5,17 +5,23 @@ elif [[ $HOSTNAME == "chaconmo-Precision-5510" ]]; then
   echo "Working at home!"
 fi
 
-# cd ~/Documents/Repositories/dotfiles-ubuntu/
-pwd
-cp -r ~/.config/nvim .
-cp /etc/apt/sources.list .
-cp /etc/R/Rprofile.site .
-cp ~/.Rprofile .
-cp ~/.bashrc .
-cp -r ~/Documents/Nvim/UltiSnips .
-# cp ~/.config/redshift.conf .
-cp ~/.unison/default.prf .
-cp ~/.tmux.conf .
-cp -r ~/.tmux .
-cp ~/.ctags .
-cp ~/.bash_it/aliases/custom.aliases.bash .
+# Terminal
+cp ~/.bashrc .bashrc
+cp ~/.bash_it/aliases/custom.aliases.bash custom.aliases.bash
+
+# Neovim
+cp -rT ~/.config/nvim nvim
+cp -rT ~/Documents/Nvim/UltiSnips UltiSnips
+
+# R
+sudo cp /etc/R/Rprofile.site Rprofile.site
+cp ~/.Rprofile Rprofile
+cp ~/.ctags .ctags
+
+# Unison
+cp ~/.unison/default.prf default.prf
+
+# Tmux
+cp ~/.tmux.conf .tmux.conf
+cp -rT ~/.tmux .tmux
+

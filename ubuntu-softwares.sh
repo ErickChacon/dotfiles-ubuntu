@@ -103,11 +103,6 @@ git clone --depth 1 https://github.com/jalvesaq/colorout.git
 R CMD INSTALL colorout
 rm -rf colorout
 
-# DOTFILES {{{1
-git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
-cd dotfiles-ubuntu && chmod +x pull.sh && ./pull.sh && cd ..
-rm -rf dotfiles-ubuntu
-
 # TERMINAL SOFTWARE {{{1
 
 # unison
@@ -176,3 +171,9 @@ sudo apt-get install virtualbox -y
 
 # video snapshot requirements for animation
 sudo apt-get install blender openshot -y
+
+# DOTFILES {{{1
+git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
+cd dotfiles-ubuntu && chmod +x pull.sh && ./pull.sh && cd ..
+rm -rf dotfiles-ubuntu
+

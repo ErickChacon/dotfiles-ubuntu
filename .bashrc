@@ -62,3 +62,5 @@ source $BASH_IT/bash_it.sh
 
 # Set vim navigation on terminal
 set -o vi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
