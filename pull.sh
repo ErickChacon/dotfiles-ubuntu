@@ -15,7 +15,7 @@ cp -r UltiSnips ~/Documents/Nvim/
 
 # R
 sudo cp  Rprofile.site /etc/R/Rprofile.site
-cp Rprofile ~/.Rprofile
+cp .Rprofile ~/.Rprofile
 cp .ctags ~/.ctags
 
 # Unison
