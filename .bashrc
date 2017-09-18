@@ -63,4 +63,6 @@ source $BASH_IT/bash_it.sh
 # Set vim navigation on terminal
 set -o vi
 
+# Fuzzy search for terminal: fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
