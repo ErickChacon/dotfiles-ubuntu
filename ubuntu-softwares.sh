@@ -141,6 +141,9 @@ sudo apt-get install evolution -y
 sudo apt-get install texlive-full -y
 sudo apt-get install latexmk -y
 
+# pdf viewer
+sudo apt-get install okular -y
+
 # SYNC SOFTWARE {{{1
 
 # Mendeley
