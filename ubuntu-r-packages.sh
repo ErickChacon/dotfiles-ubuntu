@@ -29,3 +29,11 @@ git clone https://github.com/ErickChacon/day2day.git
 R CMD INSTALL day2day
 rm -rf day2day
 
+# spatial packages
+echo "install.packages(\"spatstat\")" > r-packages.R
+echo "install.packages(\"fields\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
+# visualization
+echo "install.packages(\"viridis\")" > r-packages.R
+R CMD BATCH r-packages.R

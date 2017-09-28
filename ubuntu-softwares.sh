@@ -103,6 +103,12 @@ git clone --depth 1 https://github.com/jalvesaq/colorout.git
 R CMD INSTALL colorout
 rm -rf colorout
 
+# rstudio
+wget https://download1.rstudio.org/rstudio-xenial-1.0.153-amd64.deb
+sudo apt-get install libjpeg62 -y
+sudo dpkg -i rstudio-xenial-1.0.153-amd64.deb
+rm rstudio-xenial-1.0.153-amd64.deb
+
 # TERMINAL SOFTWARE {{{1
 
 # unison
@@ -149,6 +155,7 @@ sudo apt-get install okular -y
 # Mendeley
 wget https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
 sudo dpkg -i mendeleydesktop-latest
+rm mendeleydesktop-latest
 
 # dropbox
 sudo apt-get install nautilus-dropbox -y
@@ -167,6 +174,7 @@ echo deb http://repository.spotify.com stable non-free | \
 sudo apt-get update
 sudo apt-get install spotify-client -y
 
+
 # ADDITIONAL SOFTWARE {{{1
 
 # virtual box
@@ -180,3 +188,28 @@ git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
 cd dotfiles-ubuntu && chmod +x pull.sh && ./pull.sh && cd ..
 rm -rf dotfiles-ubuntu
 
+# WEB SOFTWARE {{{1
+
+# chrome
+sudo apt-get install libxss1 libappindicator1 libindicator7 -y
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+
+# PYTHON 2 {{{1
+pip install --upgrade pip
+pip install ipython --user
+
+# PYTHON 3 {{{1
+pip3 install --upgrade pip
+pip3 install ipython --user
+
+# data science packages
+pip3 install numpy --user
+pip3 install scipy --user
+sudo apt-get install python3-matplotlib -y
+pip3 install tensorflow --user
+
+# gpflow
+git clone --depth 1 https://github.com/GPflow/GPflow.git
+pip3 install GPflow/ --user
+rm -rf GPflow
