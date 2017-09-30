@@ -41,6 +41,7 @@ Plug 'scrooloose/nerdtree' " explore your filesystem and to open files
 
 " Development environment tools
 " Plug 'epeli/slimux' " not using with r but maybe with python
+Plug 'hkupty/iron.nvim' " Interactive Repls Over Neovim
 Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets' " snippets scripts
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion

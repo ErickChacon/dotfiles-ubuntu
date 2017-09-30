@@ -183,6 +183,9 @@ sudo apt-get install virtualbox -y
 # video snapshot requirements for animation
 sudo apt-get install blender openshot -y
 
+# color picker
+sudo apt-get install gpick -y
+
 # DOTFILES {{{1
 git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
 cd dotfiles-ubuntu && chmod +x pull.sh && ./pull.sh && cd ..
@@ -200,8 +203,10 @@ pip install --upgrade pip
 pip install ipython --user
 
 # PYTHON 3 {{{1
+
 pip3 install --upgrade pip
 pip3 install ipython --user
+pip3 install unidecode --user # for ultisnips
 
 # data science packages
 pip3 install numpy --user
