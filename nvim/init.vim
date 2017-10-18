@@ -39,6 +39,8 @@ Plug 'roosta/srcery'
 " Explore folder and documents
 Plug 'ctrlpvim/ctrlp.vim' " find files
 Plug 'scrooloose/nerdtree' " explore your filesystem and to open files
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim' " fuzzy matching
 
 " Development environment tools
 " Plug 'epeli/slimux' " not using with r but maybe with python
@@ -75,6 +77,9 @@ Plug 'cespare/vim-toml' " toml: syntax highlight
 Plug 'jalvesaq/Nvim-R' " R: run code, rmarkdown, help and more
 Plug 'tpope/vim-fugitive' " git: wrapper
 Plug 'airblade/vim-gitgutter' " git: shows added and remove lines of git
+" Plug 'ivanov/vim-ipython' " Python: two-way integration with ipython
+" Plug 'bfredl/nvim-ipy' " Python: jupyter front-end for neovim
+Plug 'zchee/deoplete-jedi' " Python: autocomplete
 
 " Motions
 Plug 'tpope/vim-surround' " sorround
@@ -149,11 +154,14 @@ let &colorcolumn="".join(range(86,999),",")
 "   autocmd BufEnter * match OverLength /\%50v.*/
 " augroup END
 " Highlight long lines (>80)
-
+ 
 " Statusline
-set noshowmode
+set noshowmode " hide the default status mode
 " }}}
 " ADDITIONAL NVIM SETTING {{{
+" to get out of terminal insert mode
+tnoremap jk <C-\><C-n>
+
 " Go to the last cursor location when a file is opened, unless this is a
 " git commit (in which case it's annoying)
 au BufReadPost *
@@ -200,6 +208,10 @@ nmap <silent> gk :wincmd k<CR>
 nmap <silent> gj :wincmd j<CR>
 nmap <silent> gh :wincmd h<CR>
 nmap <silent> gl :wincmd l<CR>
+
+" Forcing vimdiff to wrap lines
+autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+
 " }}}
 " COLORSCHEME {{{
 " Colorscheme vim options
@@ -572,8 +584,10 @@ let g:tex_flavor = 'tex'
 let g:vimtex_toc_secnumdepth=0
 " let g:vimtex_index_resize=1
 let g:vimtex_index_split_width=40
+let g:vimtex_index_split_pos = "vertical botright"
 " Latex shortcuts
-nnoremap <localleader>lt :VimtexTocOpen<CR>
+" nnoremap <localleader>lt :VimtexTocOpen<CR>
+nnoremap <localleader>lt :VimtexTocToggle<CR>
 nnoremap <localleader>lv :VimtexView<CR>
 nnoremap <localleader>ll :VimtexCompile<CR>
 nnoremap <localleader>lo :VimtexCompileSS<CR>
@@ -643,4 +657,7 @@ let g:vim_markdown_new_list_item_indent = 2
 " html yaml syntax highlighting
 " autocmd BufNewFile,BufRead *.html syntax match Comment /\%^---\_.\{-}---$/
 " }}}
-
+" PROGRAMS: PYTHON IRON.NVIM {{{
+nmap <localleader>r <Plug>(iron-send-motion)
+vmap <localleader>r <Plug>(iron-send-motion)
+" }}}
