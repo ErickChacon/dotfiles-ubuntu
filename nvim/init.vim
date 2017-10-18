@@ -12,6 +12,7 @@ Plug 'sickill/vim-monokai'
 Plug 'icymind/NeoSolarized'
 Plug 'mhartington/oceanic-next'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'MaxSt/FlatColor'
 Plug 'joshdick/onedark.vim'
 Plug 'nightsense/vim-crunchbang'
@@ -47,12 +48,15 @@ Plug 'honza/vim-snippets' " snippets scripts
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
 Plug 'vim-airline/vim-airline' " status and tab lines
 " Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim' " status and tab lines
 Plug 'ryanoasis/vim-devicons' " filetype icons
 Plug 'kshenoy/vim-signature' " display marks
 Plug 'majutsushi/tagbar' " display tags
 Plug 'ap/vim-css-color'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'weihanglo/tmuxline.vim' " Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
+" Plug 'weihanglo/tmuxline.vim'
+Plug 'CPWeaver/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Programs
@@ -76,7 +80,8 @@ Plug 'airblade/vim-gitgutter' " git: shows added and remove lines of git
 Plug 'tpope/vim-surround' " sorround
 Plug 'kana/vim-textobj-indent' " copy indented block
 Plug 'kana/vim-textobj-user' " custom text object
-Plug 'tomtom/tcomment_vim' " easy comment Plug 'scrooloose/nerdcommenter'
+Plug 'tomtom/tcomment_vim' " easy comment
+Plug 'scrooloose/nerdcommenter'
 Plug 'godlygeek/tabular'
 
 call plug#end()
@@ -145,6 +150,8 @@ let &colorcolumn="".join(range(86,999),",")
 " augroup END
 " Highlight long lines (>80)
 
+" Statusline
+set noshowmode
 " }}}
 " ADDITIONAL NVIM SETTING {{{
 " Go to the last cursor location when a file is opened, unless this is a
@@ -207,6 +214,7 @@ set background=dark " incompatible with colorscheme
 " colorscheme neodark " spelling problem
 " colorscheme synthwave " spelling problem
 " colorscheme dracula
+" colorscheme nord
 " colorscheme NeoSolarized
 " let g:deepspace_italics=1
 " colorscheme deep-space
@@ -336,6 +344,9 @@ let g:airline#extensions#default#section_truncate_width = {
 " let g:airline_theme='base16'
 " let g:airline_theme='jellybeans'
 " let g:airline_theme='sol'
+" let g:lightline = {
+"       \ 'colorscheme': 'seoul256',
+"       \ }
 " }}}
 " IDE: TMUXLINE {{{
 
@@ -564,7 +575,7 @@ let g:vimtex_index_split_width=40
 " Latex shortcuts
 nnoremap <localleader>lt :VimtexTocOpen<CR>
 nnoremap <localleader>lv :VimtexView<CR>
-nnoremap <localleader>ll :VimtexCompileToggle<CR>
+nnoremap <localleader>ll :VimtexCompile<CR>
 nnoremap <localleader>lo :VimtexCompileSS<CR>
 nnoremap <localleader>le :VimtexErrors<CR>
 nnoremap <localleader>lc :VimtexClean<CR>
