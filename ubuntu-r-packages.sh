@@ -4,6 +4,7 @@
 sudo apt-get install libxml2-dev -y
 echo "install.packages(\"tidyverse\")" > r-packages.R
 echo "devtools::install_github(\"tidyverse/ggplot2\")" >> r-packages.R
+echo "install.packages(\"purrrlyr\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # models
@@ -44,7 +45,16 @@ echo "install.packages(\"fields\")" >> r-packages.R
 echo "install.packages(\"maptools\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
-
 # visualization
 echo "install.packages(\"viridis\")" > r-packages.R
 R CMD BATCH r-packages.R
+
+# code efficiency
+echo "install.packages(\"microbenchmark\")" > r-packages.R
+echo "install.packages(\"rbenchmark\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
+# database connection
+echo "install.packages(\"rredis\")" > r-packages.R
+R CMD BATCH r-packages.R
+echo
