@@ -49,7 +49,7 @@ Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets' " snippets scripts
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
 Plug 'vim-airline/vim-airline' " status and tab lines
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim' " status and tab lines
 Plug 'ryanoasis/vim-devicons' " filetype icons
 Plug 'kshenoy/vim-signature' " display marks
@@ -223,10 +223,11 @@ set background=dark " incompatible with colorscheme
 " let g:one_allow_italics = 1
 " colorscheme one
 " colorscheme onedark " spelling problem
+" colorscheme nord
+" colorscheme OceanicNext
 " colorscheme neodark " spelling problem
 " colorscheme synthwave " spelling problem
 " colorscheme dracula
-" colorscheme nord
 " colorscheme NeoSolarized
 " let g:deepspace_italics=1
 " colorscheme deep-space
@@ -237,15 +238,16 @@ set background=dark " incompatible with colorscheme
 " let g:airline_theme='twofirewatch'
 " colorscheme flatcolor
 " colorscheme alduin
+" colorscheme jellybeans
 " "
 " colorscheme space-vim-dark
+" let g:airline_theme='bubblegum'
 " hi Comment cterm=italic
+" let g:airline_theme='base16'
 " colorscheme monokai
 " colorscheme abstract
 
-" colorscheme jellybeans
 " colorscheme material-theme " nice
-" colorscheme OceanicNext
 " colorscheme anderson
 " colorscheme crunchbang
 " colorscheme srcery
@@ -551,9 +553,11 @@ let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 " autocmd FileType * setlocal conceallevel=0
 
 " Open R in a tmux split
+" let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+" let R_applescript = 0
+" let R_tmux_split = 1
+" Open R in an external tmux terminal
 let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
-let R_applescript = 0
-let R_tmux_split = 1
 " Other tmux options
 let R_tmux_title = "automatic" " tmux window names
 let R_objbr_place = "script,right"
