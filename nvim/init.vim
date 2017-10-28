@@ -48,8 +48,11 @@ Plug 'hkupty/iron.nvim' " Interactive Repls Over Neovim
 Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets' " snippets scripts
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
-Plug 'vim-airline/vim-airline' " status and tab lines
-Plug 'vim-airline/vim-airline-themes'
+
+if !exists("g:gui_oni")
+  Plug 'vim-airline/vim-airline' " status and tab lines
+  Plug 'vim-airline/vim-airline-themes'
+endif
 " Plug 'itchyny/lightline.vim' " status and tab lines
 Plug 'ryanoasis/vim-devicons' " filetype icons
 Plug 'kshenoy/vim-signature' " display marks
@@ -101,13 +104,23 @@ set nobackup " avoid create backup automatically
 set nowritebackup " save: avoid new-delete-rename
 set history=50 " history of the last commands
 set ruler " row and column position
-set laststatus=2 " Always display the status line
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set autowrite     " Automatically :write before running commands
 set autoread      " Reload files changed outside vim
 au FocusGained,BufEnter * :silent! " Check if file has changed externally
 set showmatch " Show matching brackets just for a moment.
 set title " window title
+
+if exists("g:gui_oni")
+  " Turn off statusbar, because it is externalized
+  set noshowmode
+  set noruler
+  set laststatus=0 " 2: Always display the status line
+  set noshowcmd
+  set noshowmode " hide the default status mode
+else
+  set laststatus=2 " 2: Always display the status line
+endif
 
 set number " show line number
 set numberwidth=4
@@ -122,7 +135,7 @@ nnoremap <silent> <leader>, :noh<cr> " Stop highlight after searching
 set shiftwidth=2
 set softtabstop=2   " number of spaces in tab when editing
 set expandtab       " tabs are spaces
-set showcmd         " show incomplete command in bottom bar
+" set showcmd         " show incomplete command in bottom bar
 set cursorline      " highlight current line
 set visualbell      " stop the annoying beeping
 filetype indent on  " load filetype-specific indent files R,
@@ -138,7 +151,7 @@ set ttyfast
 set mouse=a
 
 " Make it obvious where 100 characters is
-set textwidth=86
+set textwidth=91
 set formatoptions=cqt " it changes depending of the filetype
 " set wrapmargin=0
  " set formatoptions=cq
@@ -146,7 +159,7 @@ set formatoptions=cqt " it changes depending of the filetype
 " set wrapmargin=0
 set colorcolumn=+1
 " let &colorcolumn="10,".join(range(70,999),",")
-let &colorcolumn="".join(range(86,999),",")
+let &colorcolumn="".join(range(91,999),",")
 " let &colorcolumn=range(86,999)
 " highlight ColorColumn ctermbg=0 guibg=lightgrey
 " augroup vimrc_autocmds
@@ -154,9 +167,6 @@ let &colorcolumn="".join(range(86,999),",")
 "   autocmd BufEnter * match OverLength /\%50v.*/
 " augroup END
 " Highlight long lines (>80)
- 
-" Statusline
-set noshowmode " hide the default status mode
 " }}}
 " ADDITIONAL NVIM SETTING {{{
 " to get out of terminal insert mode
@@ -171,11 +181,11 @@ au BufReadPost *
 
 
 ino " ""<left>
-ino ' ''<left>
+autocmd FileType r,python inoremap ' ''<left>
 ino ( ()<left>
 ino [ []<left>
 ino { {}<left>
-" autocmd FileType tex markdown ino $ $$<left>
+autocmd FileType tex inoremap $ $$<left>
 ino {<CR> {<CR>}<ESC>O
 
 
@@ -268,7 +278,18 @@ let g:gruvbox_contrast_light = "soft"
 " let g:gruvbox_vert_split='dark0_hard'
 " let g:gruvbox_number_column = "red"
 " let g:gruvbox_invert_signs = 1
-colorscheme gruvbox
+"
+
+if exists("g:gui_oni")
+  " colorscheme nord
+  colorscheme material-theme
+else
+  colorscheme gruvbox
+  " colorscheme dracula
+  " colorscheme material-theme
+endif
+
+
 
 " Toggle background colors
 " nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> \| :hi! link FoldColumn GruvboxRed<CR> \| :hi! link Folded GruvboxYellowSign<CR>
@@ -326,6 +347,7 @@ set foldmethod=marker " for vim
 set foldtext=MyFoldText()
 set foldlevel=1
 set foldcolumn=2
+" set foldcolumn=1
 hi! link FoldColumn Statement
 " hi! link FoldColumn GruvboxRed
 " hi! link Folded GruvboxYellowSign
@@ -341,6 +363,10 @@ let g:airline#extensions#default#section_truncate_width = {
       \ 'warning': 100,
       \ 'error': 100,
 \ }
+
+" let g:airline_left_sep=''
+"  let g:airline_right_sep=''
+
 " b: branch
 " x: filetype
 " y: encoding
@@ -489,7 +515,9 @@ set fillchars+=vert:\│
 " hi clear VertSplit
 " hi! link VertSplit Comment
 " hi VertSplit guibg=NONE
-hi VertSplit guibg=NONE guifg=black
+" hi VertSplit guibg=NONE guifg=black
+hi VertSplit guibg=NONE guifg=#1d2021 gui=none
+" hi VertSplit	guibg=black guifg=grey50 gui=none
 " hi VertSplit guibg=NONE guifg=['#1d2021', 234]
 " let g:gruvbox_vert_split='faded_red'
 " hi VertSplit guibg=none
@@ -552,12 +580,18 @@ let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh"]
 let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 " autocmd FileType * setlocal conceallevel=0
 
+
 " Open R in a tmux split
+if exists("gui_oni")
+  let R_in_buffer = 1 " 0 to not open in an nvim external terminal emulator
+else
+  let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+endif
 " let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
-" let R_applescript = 0
-" let R_tmux_split = 1
+let R_applescript = 0
+let R_tmux_split = 1
 " Open R in an external tmux terminal
-let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+" let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
 " Other tmux options
 let R_tmux_title = "automatic" " tmux window names
 let R_objbr_place = "script,right"
