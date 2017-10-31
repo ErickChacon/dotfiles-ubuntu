@@ -43,6 +43,7 @@ R CMD BATCH r-packages.R
 echo "install.packages(\"spatstat\")" > r-packages.R
 echo "install.packages(\"fields\")" >> r-packages.R
 echo "install.packages(\"maptools\")" >> r-packages.R
+echo "install.packages(\"raster\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # visualization
@@ -57,4 +58,22 @@ R CMD BATCH r-packages.R
 # database connection
 echo "install.packages(\"rredis\")" > r-packages.R
 R CMD BATCH r-packages.R
-echo
+
+# get database
+# echo "install.packages(\"trmm\")" > r-packages.R
+# R CMD BATCH r-packages.R
+
+# web
+echo "install.packages(\"blogdown\")" > r-packages.R
+echo "blogdown::install_hugo()" >> r-packages.R
+R CMD BATCH r-packages.R
+
+# c++ integration
+echo "install.packages(\"Rcpp\")" > r-packages.R
+echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
+# mcmc samplers
+echo "install.packages(\"nimble\")" > r-packages.R
+# echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
+R CMD BATCH r-packages.R
