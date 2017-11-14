@@ -583,18 +583,24 @@ let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh"]
 let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 " autocmd FileType * setlocal conceallevel=0
 
-
-" Open R in a tmux split
-if exists("gui_oni")
-  let R_in_buffer = 1 " 0 to not open in an nvim external terminal emulator
-else
-  let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+let hostname = substitute(system('hostname'), '\n', '', '')
+if hostname == "chaconmo-ThinkPad-L470-W10DG"
+  colorscheme gruvbox
 endif
-" let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
-let R_applescript = 0
-let R_tmux_split = 1
-" Open R in an external tmux terminal
-" let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+
+" Open R in terminal emulator only with oni
+if exists("gui_oni")
+  let R_in_buffer = 1 " open in an nvim terminal emulator
+else
+  let R_in_buffer = 0 " not open in an nvim terminal emulator
+endif
+
+" Open R in tmux in any machine except ThinkPad
+if hostname != "chaconmo-ThinkPad-L470-W10DG"
+  let R_applescript = 0
+  let R_tmux_split = 1
+endif
+
 " Other tmux options
 let R_tmux_title = "automatic" " tmux window names
 let R_objbr_place = "script,right"
