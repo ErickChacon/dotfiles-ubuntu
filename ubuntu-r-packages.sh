@@ -46,6 +46,8 @@ echo "install.packages(\"maptools\")" >> r-packages.R
 echo "install.packages(\"raster\")" >> r-packages.R
 echo "install.packages(\"gstat\")" >> r-packages.R
 echo "install.packages(\"ggmap\")" >> r-packages.R
+echo "install.packages(\"rgdal\")" >> r-packages.R
+echo "install.packages(\"rgeos\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # visualization
@@ -84,5 +86,4 @@ R CMD BATCH r-packages.R
 echo "install.packages(\"spBayes\")" > r-packages.R
 # echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
 R CMD BATCH r-packages.R
-
 
