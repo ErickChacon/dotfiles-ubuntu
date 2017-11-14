@@ -584,9 +584,6 @@ let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 " autocmd FileType * setlocal conceallevel=0
 
 let hostname = substitute(system('hostname'), '\n', '', '')
-if hostname == "chaconmo-ThinkPad-L470-W10DG"
-  colorscheme gruvbox
-endif
 
 " Open R in terminal emulator only with oni
 if exists("gui_oni")
