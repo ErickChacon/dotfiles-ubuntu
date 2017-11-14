@@ -37,13 +37,14 @@ sudo apt-get update
 sudo apt-get install libgdal-dev libgeos-dev libproj-dev libudunits2-dev \
   liblwgeom-dev -y
 echo "install.packages(\"sf\")" > r-packages.R
+R CMD BATCH r-packages.R
 
 # spatial packages
-R CMD BATCH r-packages.R
 echo "install.packages(\"spatstat\")" > r-packages.R
 echo "install.packages(\"fields\")" >> r-packages.R
 echo "install.packages(\"maptools\")" >> r-packages.R
 echo "install.packages(\"raster\")" >> r-packages.R
+echo "install.packages(\"gstat\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # visualization
@@ -77,3 +78,10 @@ R CMD BATCH r-packages.R
 echo "install.packages(\"nimble\")" > r-packages.R
 # echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
 R CMD BATCH r-packages.R
+
+# mcmc samplers
+echo "install.packages(\"spBayes\")" > r-packages.R
+# echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
+
