@@ -34,3 +34,7 @@ fat=true
 
 # ignore .git files
 ignore = Name .git
+
+# igone repositories
+ignore = Path Repositories/*
+ignorenot = Path Repositories/repos.ecm

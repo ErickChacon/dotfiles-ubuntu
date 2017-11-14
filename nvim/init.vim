@@ -284,7 +284,10 @@ if exists("g:gui_oni")
   " colorscheme nord
   colorscheme material-theme
 else
-  colorscheme gruvbox
+  colorscheme material-theme
+let g:airline_theme='deus'
+" let g:airline_theme='bubblegum'
+  " colorscheme gruvbox
   " colorscheme dracula
   " colorscheme material-theme
 endif

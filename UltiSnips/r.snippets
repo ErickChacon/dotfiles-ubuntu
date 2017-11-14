@@ -135,6 +135,10 @@ devtools::load_all(file.path(path_repos, "day2day"))
 library(tidyverse)
 endsnippet
 
+snippet lib "load library"
+library($0)
+endsnippet
+
 snippet pathbw "Define paths for an study" b
 path_proj <- get_path("${0:food-security}.ecm")
 path_tidy <- file.path(path_proj, "4.TidyData")
