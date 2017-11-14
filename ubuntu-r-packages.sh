@@ -45,6 +45,7 @@ echo "install.packages(\"fields\")" >> r-packages.R
 echo "install.packages(\"maptools\")" >> r-packages.R
 echo "install.packages(\"raster\")" >> r-packages.R
 echo "install.packages(\"gstat\")" >> r-packages.R
+echo "install.packages(\"ggmap\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # visualization
