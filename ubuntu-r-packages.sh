@@ -67,9 +67,10 @@ R CMD BATCH r-packages.R
 # echo "install.packages(\"trmm\")" > r-packages.R
 # R CMD BATCH r-packages.R
 
-# web
+# web and markdown
 echo "install.packages(\"blogdown\")" > r-packages.R
 echo "blogdown::install_hugo()" >> r-packages.R
+echo "install.packages(\"formatR\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # c++ integration
@@ -84,6 +85,11 @@ R CMD BATCH r-packages.R
 
 # mcmc samplers
 echo "install.packages(\"spBayes\")" > r-packages.R
+# echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
+# binary
+echo "install.packages(\"vcd\")" > r-packages.R
 # echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
