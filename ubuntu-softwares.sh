@@ -70,6 +70,9 @@ rm -rf Gogh
 
 # R {{{1
 
+# pandoc
+sudo apt-get install pandoc -y
+
 # install
 echo "
 ## Mirror for R software

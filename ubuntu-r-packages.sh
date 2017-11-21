@@ -5,10 +5,12 @@ sudo apt-get install libxml2-dev -y
 echo "install.packages(\"tidyverse\")" > r-packages.R
 echo "devtools::install_github(\"tidyverse/ggplot2\")" >> r-packages.R
 echo "install.packages(\"purrrlyr\")" >> r-packages.R
+echo "install.packages(\"data.table\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # models
 echo "install.packages(\"mgcv\")" > r-packages.R
+echo "install.packages(\"lme4\")" > r-packages.R
 echo "install.packages(\"gamlss\")" >> r-packages.R
 echo "install.packages(\"R2BayesX\")" >> r-packages.R
 R CMD BATCH r-packages.R
@@ -80,16 +82,16 @@ R CMD BATCH r-packages.R
 
 # mcmc samplers
 echo "install.packages(\"nimble\")" > r-packages.R
-# echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # mcmc samplers
 echo "install.packages(\"spBayes\")" > r-packages.R
-# echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # binary
 echo "install.packages(\"vcd\")" > r-packages.R
-# echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
+# package development
+echo "install.packages(\"testthat\")" > r-packages.R
+R CMD BATCH r-packages.R
