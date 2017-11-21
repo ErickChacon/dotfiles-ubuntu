@@ -77,7 +77,8 @@ endfunction
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " Plug 'suan/vim-instant-markdown' " does not work
 Plug 'cespare/vim-toml' " toml: syntax highlight
-Plug 'jalvesaq/Nvim-R' " R: run code, rmarkdown, help and more
+" Plug 'jalvesaq/Nvim-R' " R: run code, rmarkdown, help and more
+Plug 'jalvesaq/Nvim-R', {'commit': '511ac10'} " R: run code, rmarkdown, help and more
 Plug 'tpope/vim-fugitive' " git: wrapper
 Plug 'airblade/vim-gitgutter' " git: shows added and remove lines of git
 " Plug 'ivanov/vim-ipython' " Python: two-way integration with ipython
@@ -113,7 +114,6 @@ set title " window title
 
 if exists("g:gui_oni")
   " Turn off statusbar, because it is externalized
-  set noshowmode
   set noruler
   set laststatus=0 " 2: Always display the status line
   set noshowcmd
@@ -143,7 +143,7 @@ filetype plugin on " for markdown preview
 set wildmenu        " nice visual autocomplete for command menu
 set wildmode=list:longest,full " full menu
 set lazyredraw          " redraw only when we need to.
-set showmatch           " highlight matching [{()}]
+" set showmatch           " highlight matching [{()}]
 set clipboard=unnamedplus " copy to clipboard
 
 "Allow usage of mouse in iTerm
@@ -151,7 +151,7 @@ set ttyfast
 set mouse=a
 
 " Make it obvious where 100 characters is
-set textwidth=91
+set textwidth=85
 set formatoptions=cqt " it changes depending of the filetype
 " set wrapmargin=0
  " set formatoptions=cq
@@ -227,7 +227,13 @@ autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 " Colorscheme vim options
 set termguicolors
 syntax enable " allow syntax colors
-set background=dark " incompatible with colorscheme
+
+if exists("g:gui_oni")
+  " set background=light " incompatible with colorscheme
+  set background=dark " incompatible with colorscheme
+else
+  set background=dark " incompatible with colorscheme
+endif
 " set background=light " incompatible with colorscheme
 
 " let g:one_allow_italics = 1
@@ -282,12 +288,13 @@ let g:gruvbox_contrast_light = "soft"
 
 if exists("g:gui_oni")
   " colorscheme nord
-  colorscheme material-theme
+  " colorscheme material-theme
+  colorscheme gruvbox
 else
-  colorscheme material-theme
-let g:airline_theme='deus'
+  " colorscheme material-theme
+  " let g:airline_theme='deus'
 " let g:airline_theme='bubblegum'
-  " colorscheme gruvbox
+  colorscheme gruvbox
   " colorscheme dracula
   " colorscheme material-theme
 endif
@@ -583,21 +590,18 @@ let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh"]
 let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 " autocmd FileType * setlocal conceallevel=0
 
-let hostname = substitute(system('hostname'), '\n', '', '')
 
-" Open R in terminal emulator only with oni
+" Open R in a tmux split
 if exists("gui_oni")
-  let R_in_buffer = 1 " open in an nvim terminal emulator
+  let R_in_buffer = 1 " 0 to not open in an nvim external terminal emulator
 else
-  let R_in_buffer = 0 " not open in an nvim terminal emulator
+  let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
 endif
-
-" Open R in tmux in any machine except ThinkPad
-if hostname != "chaconmo-ThinkPad-L470-W10DG"
-  let R_applescript = 0
-  let R_tmux_split = 1
-endif
-
+" let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+let R_applescript = 0
+let R_tmux_split = 1
+" Open R in an external tmux terminal
+" let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
 " Other tmux options
 let R_tmux_title = "automatic" " tmux window names
 let R_objbr_place = "script,right"
