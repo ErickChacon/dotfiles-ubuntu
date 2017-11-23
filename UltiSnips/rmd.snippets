@@ -11,3 +11,18 @@ $1
 \`\`\`
 endsnippet
 
+snippet header "description"
+---
+title: "$1"
+author: "Erick A. Chacon-Montalvan"
+date: "`!v strftime("%d %b %Y")`"
+output: html_document
+---
+
+\`\`\`{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+knitr::opts_chunk$set(fig.width = 12, fig.height = 7)
+options(width = 100)
+\`\`\`
+endsnippet
+
