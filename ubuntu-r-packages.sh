@@ -88,10 +88,16 @@ R CMD BATCH r-packages.R
 echo "install.packages(\"spBayes\")" > r-packages.R
 R CMD BATCH r-packages.R
 
-# binary
+# binary data
 echo "install.packages(\"vcd\")" > r-packages.R
+echo "install.packages(\"mirt\")" >> r-packages.R
+echo "install.packages(\"polycor\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # package development
 echo "install.packages(\"testthat\")" > r-packages.R
+R CMD BATCH r-packages.R
+
+# exploratory data analysis
+echo "install.packages(\"corrplot\")" > r-packages.R
 R CMD BATCH r-packages.R
