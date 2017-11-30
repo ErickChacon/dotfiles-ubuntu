@@ -1,5 +1,27 @@
 # Text type
 
+snippet article "basic article structure"
+\documentclass[12pt]{article}
+
+\title{$1}
+\author{${2:Erick A. Chacon-Montalvan}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This is the paper's abstract \ldots
+\end{abstract}
+
+\section{Introduction}
+
+% \bibliographystyle{abbrv}
+% \bibliography{main}
+
+\end{document}
+endsnippet
+
 snippet bf "Inline Code" i
 \textbf{$0}
 endsnippet

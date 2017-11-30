@@ -18,6 +18,16 @@ if (interactive()) {
   if (!nzchar(Sys.getenv("RSTUDIO_USER_IDENTITY"))) {
     options(width = system("tput cols", intern = TRUE))
   }
+  library(inline)
+openblas.set.num.threads <- cfunction( signature(ipt="integer"),
+      body = 'openblas_set_num_threads(*ipt);',
+      otherdefs = c ('extern void openblas_set_num_threads(int);'),
+      libargs = c ('-L/opt/openblas/lib -lopenblas'),
+      language = "C",
+      convention = ".C"
+      )
+
+openblas.set.num.threads(4)
 
 }
 

@@ -78,6 +78,7 @@ R CMD BATCH r-packages.R
 # c++ integration
 echo "install.packages(\"Rcpp\")" > r-packages.R
 echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
+echo "install.packages(\"inline\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # mcmc samplers

@@ -113,7 +113,7 @@ sudo dpkg -i rstudio-xenial-1.0.153-amd64.deb
 rm rstudio-xenial-1.0.153-amd64.deb
 
 # openblas for multi-thread
-sudo apt-get install libopenblas-base -y
+sudo apt-get install libopenblas-base libopenblas-dev -y
 
 # TERMINAL SOFTWARE {{{1
 

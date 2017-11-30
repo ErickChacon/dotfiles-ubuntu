@@ -649,6 +649,10 @@ let g:tex_conceal="abdmg"
 " Partial solution to fix_paths
 let g:vimtex_quickfix_latexlog = {'fix_paths' : 0}
 let vimtex_fold_enabled = 1
+" work with okular
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
 " }}}
 " PROGRAMS: VIMWIKI {{{
 " Vimkiwi setup
