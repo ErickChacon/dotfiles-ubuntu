@@ -85,6 +85,30 @@ R CMD BATCH r-packages.R
 echo "install.packages(\"nimble\")" > r-packages.R
 R CMD BATCH r-packages.R
 
+# mcmc samplers STAN
+
+echo "dotR <- file.path(Sys.getenv(\"HOME\"), \".R\")" > r-packages.R
+echo "if (!file.exists(dotR)) dir.create(dotR)" >> r-packages.R
+echo "M <- file.path(dotR, \"Makevars\")" >> r-packages.R
+echo "if (!file.exists(M)) file.create(M)" >> r-packages.R
+echo "cat(paste0(\"\nCXXFLAGS=-O3 -mtune=native -march=native\"," >> r-packages.R
+echo "           \" -Wno-unused-variable -Wno-unused-function\")," >> r-packages.R
+echo "    file = M, sep = \"\n\", append = TRUE)" >> r-packages.R
+echo "cat(paste0(\"\nCXXFLAGS+=-flto -ffat-lto-objects \"," >> r-packages.R
+echo "           \" -Wno-unused-local-typedefs\")," >> r-packages.R
+echo "    file = M, sep = \"\n\", append = TRUE)" >> r-packages.R
+echo "cat(readLines(M), sep = \"\n\")" >> r-packages.R
+echo "cat(M)" >> r-packages.R
+echo "" >> r-packages.R
+echo "install.packages(\"rstan\"," >> r-packages.R
+echo "  repos = \"https://cloud.r-project.org/\"," >> r-packages.R
+echo "  dependencies = TRUE)" >> r-packages.R
+echo "fx <- inline::cxxfunction(" >> r-packages.R
+echo "  signature(x = \"integer\", y = \"numeric\" )," >> r-packages.R
+echo "  'return ScalarReal( INTEGER(x)[0] * REAL(y)[0] ) ;' )" >> r-packages.R
+echo "fx( 2L, 5 ) # should be 10" >> r-packages.R
+R CMD BATCH r-packages.R
+
 # mcmc samplers
 echo "install.packages(\"spBayes\")" > r-packages.R
 R CMD BATCH r-packages.R

@@ -115,6 +115,11 @@ rm rstudio-xenial-1.0.153-amd64.deb
 # openblas for multi-thread
 sudo apt-get install libopenblas-base libopenblas-dev -y
 
+# RSTAN {{{1
+
+# requeriments
+sudo apt-get install build-essential g++ clang-3.8 libssl-dev -y
+
 # TERMINAL SOFTWARE {{{1
 
 # unison
