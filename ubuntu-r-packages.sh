@@ -117,6 +117,8 @@ R CMD BATCH r-packages.R
 echo "install.packages(\"vcd\")" > r-packages.R
 echo "install.packages(\"mirt\")" >> r-packages.R
 echo "install.packages(\"polycor\")" >> r-packages.R
+echo "install.packages(\"eRm\")" >> r-packages.R
+echo "install.packages(\"ltm\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # package development
@@ -125,4 +127,10 @@ R CMD BATCH r-packages.R
 
 # exploratory data analysis
 echo "install.packages(\"corrplot\")" > r-packages.R
+R CMD BATCH r-packages.R
+
+# additional distributions
+echo "install.packages(\"truncnorm\")" > r-packages.R
+echo "devtools::install_github(repo = \"olmjo/RcppTN\",
+    ref = \"development\")" > r-packages.R
 R CMD BATCH r-packages.R
