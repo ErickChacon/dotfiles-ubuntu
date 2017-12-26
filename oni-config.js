@@ -1,0 +1,46 @@
+// For more information on customizing Oni,
+// check out our wiki page:
+// https://github.com/extr0py/oni/wiki/Configuration
+
+const activate = (oni) => {
+    console.log("config activated")
+
+    // Input
+    //
+    // Add input bindings here:
+    //
+    oni.input.bind("<c-enter>", () => console.log("Control+Enter was pressed"))
+
+    //
+    // Or remove the default bindings here by uncommenting the below line:
+    //
+    // oni.input.unbind("<c-p>")
+}
+
+const deactivate = () => {
+    console.log("config deactivated")
+}
+
+module.exports = {
+    activate,
+    deactivate,
+   //add custom config here, such as
+   "oni.useDefaultConfig": false, // default is true
+   //"oni.bookmarks": ["~/Documents",]
+   "oni.loadInitVim": true,
+   // "oni.statusbar.enabled": false, // yes by default
+    "statusbar.enabled": true, // yes by default
+   "statusbar.fontSize": "15px", // yes by default
+    //
+    "editor.fontSize": "16px",
+    // "editor.fontSize": "15px",
+//  "editor.fontFamily": "Fira Mono for Powerline",
+// "editor.fontFamily": "Droid Sans Mono Dotted for Powerline",
+// "editor.fontFamily": "Ubuntu Mono derivative Powerline Regular",
+  // "editor.fontFamily": "Source Code Pro",
+    // "editor.fullScreenOnStart": true,
+     // "editor.backgroundOpacity": 0.5,
+  //
+   //"editor.fontFamily": "Monaco"
+}
+

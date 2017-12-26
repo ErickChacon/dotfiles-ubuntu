@@ -25,3 +25,5 @@ cp ~/.unison/default.prf default.prf
 cp ~/.tmux.conf .tmux.conf
 cp -rT ~/.tmux .tmux
 
+# Oni
+cp ~/.oni/config.js oni-config.js
