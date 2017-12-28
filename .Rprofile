@@ -1,6 +1,7 @@
 if (interactive()) {
 
   grDevices::X11.options(width = 16, height = 16, pointsize = 24)
+
   library(colorout)
   setOutputColors(normal = 2, negnum = 0, zero = 3, number = 3, date = 3,
     string = 6, const = 1, false = c(1, 0, 0), true = c(1, 0, 2), infinite = 5,
@@ -11,24 +12,28 @@ if (interactive()) {
           function(...) grDevices::X11.options(width = 16, height = 16,
                                                pointsize = 24))
 
-  q <- function (save="no", ...) {
-    quit(save=save, ...)
+  q <- function (save = "no", ...) {
+    quit(save = save, ...)
   }
 
   if (!nzchar(Sys.getenv("RSTUDIO_USER_IDENTITY"))) {
     options(width = system("tput cols", intern = TRUE))
   }
-  library(inline)
-openblas.set.num.threads <- cfunction( signature(ipt="integer"),
-      body = 'openblas_set_num_threads(*ipt);',
-      otherdefs = c ('extern void openblas_set_num_threads(int);'),
-      libargs = c ('-L/opt/openblas/lib -lopenblas'),
-      language = "C",
-      convention = ".C"
-      )
 
-openblas.set.num.threads(4)
+  # library(inline)
+  openblas.set.num.threads <- inline::cfunction( signature(ipt="integer"),
+    body = 'openblas_set_num_threads(*ipt);',
+    otherdefs = c ('extern void openblas_set_num_threads(int);'),
+    libargs = c ('-L/opt/openblas/lib -lopenblas'),
+    language = "C",
+    convention = ".C"
+    )
 
+  openblas.set.num.threads(4)
+  # openblas.set.num.threads(4)
+
+  # rstan::rstan_options(auto_write = TRUE)
+  options(mc.cores = 4)
 }
 
 

@@ -77,13 +77,14 @@ endfunction
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " Plug 'suan/vim-instant-markdown' " does not work
 Plug 'cespare/vim-toml' " toml: syntax highlight
-" Plug 'jalvesaq/Nvim-R' " R: run code, rmarkdown, help and more
-Plug 'jalvesaq/Nvim-R', {'commit': '511ac10'} " R: run code, rmarkdown, help and more
+Plug 'jalvesaq/Nvim-R' " R: run code, rmarkdown, help and more
+" Plug 'jalvesaq/Nvim-R', {'commit': '511ac10'} " R: run code, rmarkdown, help and more
 Plug 'tpope/vim-fugitive' " git: wrapper
 Plug 'airblade/vim-gitgutter' " git: shows added and remove lines of git
 " Plug 'ivanov/vim-ipython' " Python: two-way integration with ipython
 " Plug 'bfredl/nvim-ipy' " Python: jupyter front-end for neovim
 Plug 'zchee/deoplete-jedi' " Python: autocomplete
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Motions
 Plug 'tpope/vim-surround' " sorround
@@ -713,3 +714,7 @@ let g:vim_markdown_new_list_item_indent = 2
 nmap <localleader>r <Plug>(iron-send-motion)
 vmap <localleader>r <Plug>(iron-send-motion)
 " }}}
+" PROGRAMS: CPP {{{
+let g:cpp_class_scope_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_concepts_highlight = 1

@@ -76,7 +76,7 @@ package ${1:`!p snip.rv = snip.basename.upper()`} is
 end $1;
 endsnippet
 snippet title "Roxygen description" b
-#' @title ${1:title}.
+#' @title ${1:title}
 #'
 #' @description
 #' \code{${2:function}} ${3:description}.
@@ -91,6 +91,7 @@ snippet title "Roxygen description" b
 #' @author ${7:Erick A. Chacon-Montalvan}
 #'
 #' @examples
+#'
 #' $8
 #'
 #' @export
@@ -99,15 +100,15 @@ endsnippet
 snippet descr "Script main description" b
 #############################################################################
 ## Title: ${1:title}
-## Desc: ${2:description}
-## Input: ${3:input}
-## Output: ${4:output}
+## Desc: ${1:description}
 ## Status: ${5:running}
 ## Author: ${6:Erick A. Chacon-Montalvan}
 ## Date: `!v strftime("%d %b %Y")`
 #############################################################################
 
 endsnippet
+## Input: ${3:input}
+## Output: ${4:output}
 
 snippet progress "For loop with progress bar." b
 ${0:ids} <- $1
@@ -126,13 +127,7 @@ endsnippet
 
 # Starting an script.
 snippet rm "remove objects"
-# 0. LOAD PACKAGES AND READ DATA --------------------------------------------
-
 rm(list = ${0:ls()})
-
-path_repos <- system("find ~ -name Repositories 2>/dev/null", intern = T)
-devtools::load_all(file.path(path_repos, "day2day"))
-library(tidyverse)
 endsnippet
 
 snippet lib "load library"
@@ -162,4 +157,26 @@ if (print) {
 	png2(file.path(${0:path_plots}, "$2.png"), ratio = ${3:0.9})
 	dev.off()
 }
+endsnippet
+
+# Sections
+
+snippet sclean "Clean workspace"
+# CLEAN WORKSPACE AND LOAD PACKAGES --------------------------------------------
+
+rm(list = ${0:ls()})
+
+$1
+endsnippet
+
+snippet ssimul "Simulate sections"
+# SIMULATE DATA ----------------------------------------------------------------
+
+$1
+endsnippet
+
+snippet srun "Run models"
+# RUN MODELS -------------------------------------------------------------------
+
+$1
 endsnippet

@@ -10,7 +10,7 @@ inoremap <buffer> >> <Esc>:normal! a%>%<CR>a
 inoremap <buffer> __ <Esc>:normal! a<-<CR>a
 inoremap <leader>, <C-x><C-o>
 " inoremap <Nul> <C-x><C-o>
-imap <leader>. <Plug>RCompleteArgs
+" imap <leader>. <Plug>RCompleteArgs
 " imap <C-space> <Plug>RCompleteArgs
 nmap <LocalLeader>ll <Plug>RSendLine
 
@@ -21,8 +21,8 @@ function! RFold()
   if match(this_line, '}') >= 0
     if match(this_line, '{') >= 0
       return '=' " if { and } matches on the same line do not do anything.
-    elseif match(this_line, '}$') >= 0
-      return 's1' " reduce fold only when finish with }
+    elseif match(this_line, '})\?$') >= 0
+      return 's1' " reduce fold only when finish with } or })
     endif
   elseif match(this_line, '{$') >= 0
     return 'a1'

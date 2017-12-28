@@ -14,10 +14,7 @@ NumericVector convolveCpp(NumericVector a, NumericVector b) {
 endsnippet
 
 snippet title "Roxygen description" b
-#include <Rcpp.h>
-using namespace Rcpp;
-
-//' @title ${1:title}.
+//' @title ${1:title}
 //'
 //' @description
 //' \code{${2:function}} ${3:description}.
@@ -30,6 +27,9 @@ using namespace Rcpp;
 //' @return ${6:return}.
 //'
 //' @author ${7:Erick A. Chacon-Montalvan}
+//'
+//' @examples
+//' $8
 //'
 //' @export
 // [[Rcpp::export]]
