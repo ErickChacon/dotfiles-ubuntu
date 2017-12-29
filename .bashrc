@@ -57,6 +57,9 @@ export SCM_CHECK=true
 
 export TERM=xterm-256color-italic
 
+# openblas set number of threads
+export OPENBLAS_NUM_THREADS=4
+
 # Load Bash It
 source $BASH_IT/bash_it.sh
 

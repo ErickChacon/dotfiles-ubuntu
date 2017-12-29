@@ -710,11 +710,8 @@ let g:vim_markdown_new_list_item_indent = 2
 " html yaml syntax highlighting
 " autocmd BufNewFile,BufRead *.html syntax match Comment /\%^---\_.\{-}---$/
 " }}}
-" PROGRAMS: PYTHON IRON.NVIM {{{
-nmap <localleader>r <Plug>(iron-send-motion)
-vmap <localleader>r <Plug>(iron-send-motion)
-" }}}
 " PROGRAMS: CPP {{{
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
+" }}}

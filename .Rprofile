@@ -29,11 +29,11 @@ if (interactive()) {
     convention = ".C"
     )
 
-  openblas.set.num.threads(4)
+  # openblas.set.num.threads(4)
   # openblas.set.num.threads(4)
 
   # rstan::rstan_options(auto_write = TRUE)
-  options(mc.cores = 4)
+  # options(mc.cores = 4)
 }
 
 
