@@ -14,7 +14,7 @@ cp -rT ~/.config/nvim nvim
 cp -rT ~/Documents/Nvim/UltiSnips UltiSnips
 
 # R
-sudo cp /etc/R/Rprofile.site Rprofile.site
+cp /etc/R/Rprofile.site Rprofile.site
 cp ~/.Rprofile .Rprofile
 cp ~/.ctags .ctags
 

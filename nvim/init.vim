@@ -13,7 +13,7 @@ Plug 'icymind/NeoSolarized'
 Plug 'mhartington/oceanic-next'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'MaxSt/FlatColor'
+" Plug 'MaxSt/FlatColor'
 Plug 'joshdick/onedark.vim'
 Plug 'nightsense/vim-crunchbang'
 Plug 'exitface/synthwave.vim'
@@ -84,6 +84,8 @@ Plug 'airblade/vim-gitgutter' " git: shows added and remove lines of git
 " Plug 'ivanov/vim-ipython' " Python: two-way integration with ipython
 " Plug 'bfredl/nvim-ipy' " Python: jupyter front-end for neovim
 Plug 'zchee/deoplete-jedi' " Python: autocomplete
+Plug 'vim-python/python-syntax' " Python: syntax highlighting
+" Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Motions
@@ -715,3 +717,4 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
 " }}}
+let python_highlight_all = 1
