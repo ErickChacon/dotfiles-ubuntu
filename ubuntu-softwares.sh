@@ -229,3 +229,6 @@ pip3 install tensorflow --user
 git clone --depth 1 https://github.com/GPflow/GPflow.git
 pip3 install GPflow/ --user
 rm -rf GPflow
+# JULIA {{{1
+# sudo ln -s ~/julia-d386e40c17/bin/julia /usr/local/bin/julia
+
