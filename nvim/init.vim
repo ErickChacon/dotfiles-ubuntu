@@ -44,6 +44,8 @@ Plug 'junegunn/fzf.vim' " fuzzy matching
 
 " Development environment tools
 " Plug 'epeli/slimux' " not using with r but maybe with python
+" Plug 'kassio/neoterm' " use terminal
+Plug 'jalvesaq/vimcmdline' " command line
 Plug 'hkupty/iron.nvim' " Interactive Repls Over Neovim
 Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets' " snippets scripts
@@ -83,10 +85,12 @@ Plug 'tpope/vim-fugitive' " git: wrapper
 Plug 'airblade/vim-gitgutter' " git: shows added and remove lines of git
 " Plug 'ivanov/vim-ipython' " Python: two-way integration with ipython
 " Plug 'bfredl/nvim-ipy' " Python: jupyter front-end for neovim
-Plug 'zchee/deoplete-jedi' " Python: autocomplete
+" Plug 'zchee/deoplete-jedi' " Python: autocomplete
 Plug 'vim-python/python-syntax' " Python: syntax highlighting
 " Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'JuliaEditorSupport/julia-vim'
+" Plug 'JuliaEditorSupport/deoplete-julia' " initialize problem
 
 " Motions
 Plug 'tpope/vim-surround' " sorround
@@ -498,6 +502,13 @@ let g:tagbar_type_r = {
     \ ]
 \ }
 " }}}
+" IDE: VIMCMDLINE {{{
+let cmdline_app           = {}
+let cmdline_app["python"] = "ipython"
+let cmdline_in_buffer          = 0      " Start the interpreter in a Neovim buffer
+" let cmdline_external_term_cmd = "gnome-terminal -e '%s'"
+" let cmdline_external_term_cmd = "xterm -e '%s' &"
+" }}}
 " VISUAL: DEVICONS {{{
 " vim-devisons
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 16
@@ -717,4 +728,9 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
 " }}}
+" PROGRAMS: PYTHON {{{
 let python_highlight_all = 1
+" }}}
+" PROGRAMS: JULIA {{{
+let g:default_julia_version = "current"
+" }}}

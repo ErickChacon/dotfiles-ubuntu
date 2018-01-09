@@ -231,4 +231,8 @@ pip3 install GPflow/ --user
 rm -rf GPflow
 # JULIA {{{1
 # sudo ln -s ~/julia-d386e40c17/bin/julia /usr/local/bin/julia
-
+# ATOM {{{1
+sudo add-apt-repository ppa:webupd8team/atom -y
+sudo apt-get update
+sudo apt-get install atom
+# }}}
