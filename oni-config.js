@@ -35,8 +35,8 @@ module.exports = {
   //
   "editor.fontSize": "19px",
   // "ui.colorscheme":"one",
-  "ui.colorscheme":"gruvbox",
-  // "ui.colorscheme":"flat",
+  // "ui.colorscheme":"gruvbox",
+  "ui.colorscheme":"flat",
   // "ui.colorscheme":"dracula",
   // "ui.colorscheme":"onedark",
   "ui.fontFamily": "Ubuntu",

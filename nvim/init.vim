@@ -9,6 +9,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'sickill/vim-monokai'
+" Plug 'ajh17/Spacegray.vim'
 Plug 'icymind/NeoSolarized'
 Plug 'mhartington/oceanic-next'
 Plug 'KeitaNakamura/neodark.vim'
@@ -287,7 +288,6 @@ let g:gruvbox_italicize_comments = 1
 let g:gruvbox_contrast_dark = "soft"
 let g:gruvbox_contrast_light = "soft"
 " let g:gruvbox_color_column = "bg2"
-" let g:gruvbox_improved_strings=1 "maybe useful for c
 " let g:gruvbox_vert_split='dark0_hard'
 " let g:gruvbox_number_column = "red"
 " let g:gruvbox_invert_signs = 1
@@ -295,13 +295,20 @@ let g:gruvbox_contrast_light = "soft"
 
 if exists("g:gui_oni")
   " colorscheme nord
-  " colorscheme material-theme
-  colorscheme gruvbox
+  colorscheme material-theme
+  " colorscheme gruvbox
 else
+" colorscheme space-vim-dark
   " colorscheme material-theme
+  " let g:nord_italic = 1
+  " let g:nord_italic_comments = 1
+  " let g:nord_comment_brightness = 20
+  " colorscheme nord
+  " colorscheme OceanicNext
   " let g:airline_theme='deus'
 " let g:airline_theme='bubblegum'
   colorscheme gruvbox
+  " colorscheme spacegray
   " colorscheme dracula
   " colorscheme material-theme
 endif
@@ -373,6 +380,11 @@ hi! link FoldColumn Statement
 " IDE: AIRLINE PLUGIN STATUS AND TAB LINES {{{
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#right_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#right_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_section_x = '%{&filetype}' " to no truncate filetype
 let g:airline#extensions#default#section_truncate_width = {
       \ 'b': 60,
@@ -727,6 +739,10 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+let c_no_curly_error=1
 " }}}
 " PROGRAMS: PYTHON {{{
 let python_highlight_all = 1
