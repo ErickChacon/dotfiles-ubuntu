@@ -271,6 +271,7 @@ endif
 " colorscheme monokai
 " colorscheme abstract
 
+" colorscheme lucid
 " colorscheme material-theme " nice
 " colorscheme anderson
 " colorscheme crunchbang
@@ -279,7 +280,6 @@ endif
 " colorscheme happy_hacking
 " colorscheme janah "spelling problem
 " colorscheme angr " spelling problem
-" colorscheme lucid
 
 " Gruvbox colorscheme
 let g:gruvbox_italic = 1
@@ -298,7 +298,9 @@ if exists("g:gui_oni")
   colorscheme material-theme
   " colorscheme gruvbox
 else
-" colorscheme space-vim-dark
+  " colorscheme space-vim-dark
+  " let g:airline_theme='violet'
+  " hi Comment cterm=italic
   " colorscheme material-theme
   " let g:nord_italic = 1
   " let g:nord_italic_comments = 1
@@ -310,7 +312,7 @@ else
   colorscheme gruvbox
   " colorscheme spacegray
   " colorscheme dracula
-  " colorscheme material-theme
+  " colorscheme monokai
 endif
 
 

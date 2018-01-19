@@ -1,18 +1,23 @@
+" Additional cpp syntax file
+" Language:	      c++
+" Maintainer: Erick Chacon
+" Description: Additional cpp syntax file
 
-  " hi! link Function GruvboxAqua
-  hi! link Function GruvboxAqua
-  hi! link cCustomFunc GruvboxAqua
-  hi! link cCustomScope GruvboxRed
-  " hi! link Operator GruvboxRed
-  hi! link cppRawDelimiter GruvboxRed
-  " hi! link StorageClass GruvboxRed
-
-  " hi! link cComment GruvboxRed
-
+" Matching delimiters
 syn match Special "\((\|)\|\[\|\]\|{\|}\)"
 
+" Matching operators
 syn match Operator "\(/\)" contains=ALLBUT,cComment
 syn match Operator "\(,\|:\|\.\|=\|;\|*\|+\|-\|<\|>\|!\)"
 
-hi! link Operator GruvboxRed
+" Namespace libraries
+hi! link cCustomClass Identifier
+" Scope ::
+hi! link cCustomScope Operator
 
+" Custom color using gruvbox colorscheme
+if g:colors_name == 'gruvbox'
+  " hi! link Function GruvboxAqua
+  hi! link cCustomFunc GruvboxAqua
+  hi! link Operator GruvboxRed
+endif

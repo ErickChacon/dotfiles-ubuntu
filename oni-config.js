@@ -25,8 +25,8 @@ module.exports = {
   activate,
   deactivate,
   //add custom config here, such as
-  "oni.useDefaultConfig": false, // default is true
-  "oni.loadInitVim": true,
+  // "oni.useDefaultConfig": false, // default is true
+  // "oni.loadInitVim": true,
   //"oni.bookmarks": ["~/Documents",]
   // "oni.statusbar.enabled": false, // yes by default
   "oni.useExternalPopupmenu": true,
@@ -36,7 +36,7 @@ module.exports = {
   "editor.fontSize": "19px",
   // "ui.colorscheme":"one",
   // "ui.colorscheme":"gruvbox",
-  "ui.colorscheme":"flat",
+  // "ui.colorscheme":"flat",
   // "ui.colorscheme":"dracula",
   // "ui.colorscheme":"onedark",
   "ui.fontFamily": "Ubuntu",
