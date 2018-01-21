@@ -6,6 +6,12 @@
 " Matching delimiters
 syn match Special "\((\|)\|\[\|\]\|{\|}\)"
 
+" Roxygen tags
+syn match Roxygen "@\w\+" containedin=cCommentL,cComment
+hi! link Roxygen Operator
+syn match roxTitle "\(@title.*\)" containedin=cCommentL,cComment contains=Roxygen
+hi! link roxTitle GruvboxGreenBold
+
 " Matching operators
 syn match Operator "\(/\)" contains=ALLBUT,cComment
 syn match Operator "\(,\|:\|\.\|=\|;\|*\|+\|-\|<\|>\|!\)"

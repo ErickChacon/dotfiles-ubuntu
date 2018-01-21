@@ -8,6 +8,10 @@ syn match rFunction "\v(\w|\.)+\(&(\w|\.)+"
 syn match rFunction "\(\w\|\.\)\+\s\(<-\|=\)\sfunction\&\(\w\|\.\)\+"
 " hi! link rFunction Function
 
+" Matching functions
+syn match rLibrary "\(\w\)\+::\&\(\w\)"
+hi! link rLibrary Identifier
+
 " Matching r additional arguments ...
 syn match rConstant "\.\.\."
 " hi! link rConstant Constant
