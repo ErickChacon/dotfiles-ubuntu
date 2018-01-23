@@ -25,8 +25,8 @@ module.exports = {
   activate,
   deactivate,
   //add custom config here, such as
-  // "oni.useDefaultConfig": false, // default is true
-  // "oni.loadInitVim": true,
+  "oni.useDefaultConfig": false, // default is true
+  "oni.loadInitVim": true,
   //"oni.bookmarks": ["~/Documents",]
   // "oni.statusbar.enabled": false, // yes by default
   "oni.useExternalPopupmenu": true,

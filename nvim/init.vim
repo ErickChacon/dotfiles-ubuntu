@@ -316,7 +316,6 @@ else
 endif
 
 
-
 " Toggle background colors
 " nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> \| :hi! link FoldColumn GruvboxRed<CR> \| :hi! link Folded GruvboxYellowSign<CR>
 nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> \| :hi! link FoldColumn GruvboxRed<CR>
@@ -618,16 +617,20 @@ let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh"]
 let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 " autocmd FileType * setlocal conceallevel=0
 
-
-" Open R in a tmux split
-if exists("gui_oni")
-  let R_in_buffer = 1 " 0 to not open in an nvim external terminal emulator
-else
+let hostname = substitute(system('hostname'), '\n', '', '')
+if hostname == "chaconmo-ThinkPad-L470-W10DG"
   let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+elseif hostname == "chaconmo-Precision-5510"
+  if exists("g:gui_oni")
+    let R_in_buffer = 1 " 0 to not open in an nvim external terminal emulator
+  else
+    let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+  endif
+  " Open R in a tmux split
+  let R_applescript = 0
+  let R_tmux_split = 1
 endif
-" let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
-let R_applescript = 0
-let R_tmux_split = 1
+
 " Open R in an external tmux terminal
 " let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
 " Other tmux options
