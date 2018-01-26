@@ -21,6 +21,8 @@ hi! link cCustomClass Identifier
 " Scope ::
 hi! link cCustomScope Operator
 
+" syn keyword cType mat vec NumericVector List
+
 " Custom color using gruvbox colorscheme
 if g:colors_name == 'gruvbox'
   " hi! link Function GruvboxAqua
