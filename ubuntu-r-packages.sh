@@ -134,3 +134,11 @@ echo "install.packages(\"truncnorm\")" > r-packages.R
 echo "devtools::install_github(repo = \"olmjo/RcppTN\",
     ref = \"development\")" > r-packages.R
 R CMD BATCH r-packages.R
+
+# Dependencies for openstreetmap
+sudo apt-get install libcgal-dev libglu1-mesa libglu1-mesa-dev -y
+
+# survival analysis
+sudo apt-get install r-cran-rjava -y
+echo "install.packages(\"spatsurv\")" >> r-packages.R
+R CMD BATCH r-packages.R
