@@ -234,5 +234,11 @@ rm -rf GPflow
 # ATOM {{{1
 sudo add-apt-repository ppa:webupd8team/atom -y
 sudo apt-get update
-sudo apt-get install atom
+sudo apt-get install atom -y
 # }}}
+# CPP {{{1
+sudo apt-get install libgoogle-perftools4 libgoogle-perftools-dev -y
+sudo apt-get install google-perftools -y
+
+# }}}
+
