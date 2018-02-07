@@ -39,6 +39,7 @@ module.exports = {
   // "ui.colorscheme":"flat",
   // "ui.colorscheme":"dracula",
   // "ui.colorscheme":"onedark",
+  "ui.colorscheme":"deus",
   "ui.fontFamily": "Ubuntu",
   // "editor.fontFamily": "'Ubuntu Mono', monospace",
   "editor.fontFamily": "Ubuntu Mono",

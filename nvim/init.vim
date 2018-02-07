@@ -36,6 +36,8 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'jacoborus/tender.vim'
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
+Plug 'nightsense/stellarized'
+Plug 'ajmwagar/vim-deus'
 
 " Explore folder and documents
 Plug 'ctrlpvim/ctrlp.vim' " find files
@@ -309,7 +311,10 @@ else
   " colorscheme OceanicNext
   " let g:airline_theme='deus'
 " let g:airline_theme='bubblegum'
+" let g:airline_theme='minimalist'
+  " colorscheme deus
   colorscheme gruvbox
+  " colorscheme stellarized_dark
   " colorscheme spacegray
   " colorscheme dracula
   " colorscheme monokai
