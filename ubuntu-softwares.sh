@@ -72,6 +72,7 @@ rm -rf Gogh
 
 # pandoc
 sudo apt-get install pandoc -y
+sudo apt-get install pandoc-citeproc -y
 
 # install
 echo "
