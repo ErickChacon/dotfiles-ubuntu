@@ -121,6 +121,10 @@ echo "install.packages(\"eRm\")" >> r-packages.R
 echo "install.packages(\"ltm\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
+# structural equation models
+echo "install.packages(\"lavaan\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
 # package development
 echo "install.packages(\"testthat\")" > r-packages.R
 R CMD BATCH r-packages.R
