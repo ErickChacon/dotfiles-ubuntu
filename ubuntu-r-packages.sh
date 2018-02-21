@@ -146,3 +146,8 @@ sudo apt-get install libcgal-dev libglu1-mesa libglu1-mesa-dev -y
 sudo apt-get install r-cran-rjava -y
 echo "install.packages(\"spatsurv\")" >> r-packages.R
 R CMD BATCH r-packages.R
+
+# # language client
+# echo "source(\"https://install-github.me/REditorSupport/languageserver\")" \
+#   > r-packages.R
+# R CMD BATCH r-packages.R
