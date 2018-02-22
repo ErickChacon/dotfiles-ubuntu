@@ -1,4 +1,5 @@
-set foldlevel=1
+setlocal foldlevel=1
+setlocal syntax=pandoc
 " function! s:expand_snippet_or_key(key) abort
 "   let g:ulti_expand_or_jump_res = 0
 "   let snippet = UltiSnips#ExpandSnippetOrJump()

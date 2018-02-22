@@ -33,13 +33,13 @@ module.exports = {
   "statusbar.enabled": true, // yes by default
   "statusbar.fontSize": "15px", // yes by default
   //
-  "editor.fontSize": "19px",
+  "editor.fontSize": "18px",
   // "ui.colorscheme":"one",
   // "ui.colorscheme":"gruvbox",
   // "ui.colorscheme":"flat",
   // "ui.colorscheme":"dracula",
   // "ui.colorscheme":"onedark",
-  "ui.colorscheme":"deus",
+  // "ui.colorscheme":"deus",
   "ui.fontFamily": "Ubuntu",
   // "editor.fontFamily": "'Ubuntu Mono', monospace",
   "editor.fontFamily": "Ubuntu Mono",

@@ -52,13 +52,18 @@ Plug 'jalvesaq/vimcmdline' " command line
 Plug 'hkupty/iron.nvim' " Interactive Repls Over Neovim
 Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets' " snippets scripts
+" Plug 'roxma/nvim-completion-manager'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
 if !exists("g:gui_oni")
-  Plug 'vim-airline/vim-airline' " status and tab lines
-  Plug 'vim-airline/vim-airline-themes'
+  " Plug 'vim-airline/vim-airline' " status and tab lines
+  " Plug 'vim-airline/vim-airline-themes'
+  Plug 'itchyny/lightline.vim' " status and tab lines
 endif
-" Plug 'itchyny/lightline.vim' " status and tab lines
 Plug 'ryanoasis/vim-devicons' " filetype icons
 Plug 'kshenoy/vim-signature' " display marks
 Plug 'majutsushi/tagbar' " display tags
@@ -296,8 +301,8 @@ let g:gruvbox_contrast_light = "soft"
 "
 
 if exists("g:gui_oni")
-  " colorscheme nord
-  colorscheme material-theme
+  colorscheme nord
+  " colorscheme material-theme
   " colorscheme gruvbox
 else
   " colorscheme space-vim-dark
@@ -308,6 +313,7 @@ else
   " let g:nord_italic_comments = 1
   " let g:nord_comment_brightness = 20
   " colorscheme nord
+  " let g:nord_statusline_uniform = 0
   " colorscheme OceanicNext
   " let g:airline_theme='deus'
 " let g:airline_theme='bubblegum'
@@ -386,8 +392,8 @@ hi! link FoldColumn Statement
 " IDE: AIRLINE PLUGIN STATUS AND TAB LINES {{{
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#right_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 " let g:airline#extensions#tabline#right_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -419,40 +425,134 @@ let g:airline#extensions#default#section_truncate_width = {
 " let g:airline_theme='base16'
 " let g:airline_theme='jellybeans'
 " let g:airline_theme='sol'
-" let g:lightline = {
-"       \ 'colorscheme': 'seoul256',
-"       \ }
+let g:lightline = {}
+" let g:lightline.colorscheme = 'nord'
+let g:lightline.colorscheme = 'yourcolorscheme'
+" let g:lightline.colorscheme = 'OldHope'
+" let g:lightline.colorscheme = 'PaperColor'
+" let g:lightline.colorscheme = 'wombat'
+" let g:lightline.colorscheme = 'jellybeans'
+" let g:lightline.colorscheme = 'Dracula'
+" let g:lightline.colorscheme = 'seoul256' ~ no
+let g:lightline.component = {
+      \ 'empty': '',
+      \ 'filepath': '%F'}
+let g:lightline.component_function = {
+      \ 'gitbranch': 'fugitive#head' }
+  "       \ 'component_function': {
+  "       \   'gitbranch': 'fugitive#head'
+  "       \ },
+let g:lightline.active = {
+      \ 'left': [ [ 'mode', 'paste' ], ['gitbranch'],
+      \           [ 'readonly', 'filename', 'modified' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'filetype', 'fileencoding',  'percent'  ] ] }
+let g:lightline.inactive = {
+      \ 'left': [ [ 'filepath' ] ],
+      \ 'right': [ ['empty'] ] }
+let g:lightline.tabline = {
+      \ 'left': [ [ 'tabs' ] ],
+      \ 'right': [ [ 'close' ] ] }
+" let s:nord0 = ["#2E3440", "NONE"]
+" let s:nord1 = ["#3B4252", 0]
+" let s:nord2 = ["#434C5E", "NONE"]
+" let s:nord3 = ["#4C566A", 8]
+" let s:nord4 = ["#D8DEE9", "NONE"]
+" let s:nord5 = ["#E5E9F0", 7]
+" let s:nord6 = ["#ECEFF4", 15]
+" let s:nord7 = ["#8FBCBB", 14]
+" let s:nord8 = ["#88C0D0", 6]
+" let s:nord9 = ["#81A1C1", 4]
+" let s:nord10 = ["#5E81AC", 12]
+" let s:nord11 = ["#BF616A", 1]
+" let s:nord12 = ["#D08770", 11]
+" let s:nord13 = ["#EBCB8B", 3]
+" let s:nord14 = ["#A3BE8C", 2]
+" let s:nord15 = ["#B48EAD", 5]
+
+let s:black = [ '#000000' , "NONE" ]
+let s:orange = [ '#f79375' , "NONE" ]
+let s:whiteUbuntu = [ '#dfdbd2', "NONE"]
+let s:grayUbuntu = [ '#44433E', "NONE"]
+let s:white = [ '#ffffff' , 15 ]
+let s:gray = [ '#686b78' , 242 ]
+let s:none = [ 'NONE' , 'NONE' ]
+" let s:yellow = ["#BF616A", 1]
+let s:yellow = ["#665C54", 1]
+
+" let s:yellow = [ '#e5cd52' , 221 ]
+let s:blue = [ '#4fb4d8' , 39 ]
+let s:red = [ '#f92672' , 161 ]
+let s:green = [ '#78bd65' , 41 ]
+" let s:orange = [ '#ef7c2a' , 202 ]
+let s:lightGray = [ '#848794' , 245 ]
+let s:darkGray = [ '#45474f' , 238 ]
+let s:veryDarkGray = [ '#1c1d21' , 234 ]
+
+let s:p = {'normal': {}, 'tabline': {}, 'insert':{}, 'visual':{}, 'inactive':{}}
+let s:p.normal.left = [
+      \ [ s:white, s:yellow, 'bold' ],
+      \ [ s:white, s:none ] ]
+let s:p.normal.middle = [ [ s:whiteUbuntu, s:grayUbuntu ] ]
+let s:p.normal.right = [
+      \ [ s:whiteUbuntu, s:none ],
+      \ [ s:whiteUbuntu, s:grayUbuntu] ]
+let s:p.tabline.left = [ [ s:whiteUbuntu, s:grayUbuntu ] ]
+let s:p.tabline.tabsel = [ [ s:white, s:none ] ]
+let s:p.tabline.middle = [ [ s:yellow, s:grayUbuntu ] ]
+let s:p.insert.left = [ [ s:black, s:whiteUbuntu, 'bold' ], [ s:white, s:none ] ]
+let s:p.insert.right = [ [ s:black, s:whiteUbuntu ], [ s:whiteUbuntu, s:grayUbuntu ] ]
+let s:p.visual.left = [ [ s:black, s:orange, 'bold' ], [ s:white, s:none ] ]
+let s:p.visual.right = [ [ s:black, s:orange ], [ s:whiteUbuntu, s:grayUbuntu ] ]
+let s:p.inactive.left = [ [ s:lightGray, s:grayUbuntu, 'italic' ], [ s:lightGray, s:grayUbuntu ] ]
+let s:p.inactive.right = [ [ s:lightGray, s:grayUbuntu], [ s:lightGray, s:grayUbuntu ] ]
+let s:p.inactive.middle = [ [ s:lightGray, s:grayUbuntu ] ]
+" let s:p.inactive.left = [ [ s:lightGray, s:darkGray ], [ s:white, s:darkGray ] ]
+" let s:p.inactive.middle = [ [ s:white, s:darkGray ] ]
+
+let g:lightline#colorscheme#yourcolorscheme#palette = lightline#colorscheme#flatten(s:p)
+
 " }}}
 " IDE: TMUXLINE {{{
 
 " Tmuxline does not work automatically without airline.
 " let g:airline#extensions#tmuxline#enabled = 0
-"  It can be activated with:
-" if exists('$TMUX')
-"     autocmd VimEnter * call tmuxline#set_statusline()
-"     " autocmd VimEnter * call tmuxline#set_statusline('vim_statusline_3')
-"     " autocmd VimEnter * call tmuxline#set_statusline('powerline') # default
-" endif
 " Preset can be configure with:
+" let g:tmuxline_powerline_separators = 0
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '<',
+    \ 'space' : ' '}
 let g:tmuxline_preset = {
       \'a'    : '#S',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W ✔'],
+      \'win'  : ['#I:#W'],
+      \'cwin' : ['#I:#W ✔'],
       \'x'    : '',
       \'y'    : ['%Y-%m-%d'],
       \'z'    : ['$USER: I ❤  Ⓡ '],
       \'options' : {'status-justify' : 'left'}}
-" The theme can be configured if g:airline#extensions#tmuxline#enabled = 0:
-" let g:tmuxline_theme = {
-"       \'a'    : [ 237, 109 ],
-"       \'b'    : [ 109, 236 ],
-"       \'bg'   : [ 240, 237 ],
-"       \'c'    : [ 240, 237 ],
-"       \'win'  : [ 230, 237 ],
-"       \'cwin' : [ 109, 236 ],
-"       \'x'    : [ 240, 237 ],
-"       \'y'    : [ 109, 236 ],
-"       \'z'    : [ 237, 109 ]}
+" let g:tmuxline_theme = 'jellybeans'
+" " The theme can be configured if g:airline#extensions#tmuxline#enabled = 0:
+      " \'a'    : [ 100, 109 ],
+let g:tmuxline_theme = {
+      \'a'    : [ s:whiteUbuntu[0], s:black[0], 'bold'],
+      \'b'    : [ s:whiteUbuntu[0], s:yellow[0] ],
+      \'bg'   : [ s:whiteUbuntu[0], s:grayUbuntu[0] ],
+      \'c'    : [ s:whiteUbuntu[0], s:yellow[0] ],
+      \'win'  : [ s:whiteUbuntu[0], s:grayUbuntu[0] ],
+      \'cwin' : [ s:whiteUbuntu[0], s:yellow[0] ],
+      \'x'   : [ s:whiteUbuntu[0], s:grayUbuntu[0] ],
+      \'y'   : [ s:whiteUbuntu[0], s:grayUbuntu[0] ],
+      \'z'    : [ s:whiteUbuntu[0], s:yellow[0], 'bold'] }
+"  It can be activated with:
+if exists('$TMUX')
+    " autocmd VimEnter * call tmuxline#set_statusline()
+    " autocmd VimEnter * call tmuxline#set_statusline('vim_statusline_3')
+    " autocmd VimEnter * call tmuxline#set_statusline('powerline') # default
+    autocmd VimEnter * call tmuxline#set_statusline()
+endif
 " }}}
 " IDE: NERDTREE PLUGIN {{{
 " :nmap \n :NERDTreeToggle<CR>
@@ -495,6 +595,7 @@ inoremap <silent> <expr> <TAB> pumvisible() ? "\<C-n>" : "<C-R>=<SID>expand_snip
 " 		return !col || getline('.')[col - 1]  =~ '\s'
 " endfunction"}}}
 au FileType vimwiki :UltiSnipsAddFiletypes markdown
+au FileType vimwiki set syntax=pandoc
 " }}}
 " IDE: SLIMUX PLUGIN {{{
 " nmap <C-c><C-c> :SlimuxREPLSendBuffer<CR>
@@ -527,6 +628,23 @@ let cmdline_in_buffer          = 0      " Start the interpreter in a Neovim buff
 " let cmdline_external_term_cmd = "gnome-terminal -e '%s'"
 " let cmdline_external_term_cmd = "xterm -e '%s' &"
 " }}}
+" IDE: LANGUAGE SERVER PROTOCOL {{{
+" set hidden
+"     " \ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()'],
+"     " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+" let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+"     \ 'javascript': ['javascript-typescript-stdio'],
+"     \ 'javascript.jsx': ['javascript-typescript-stdio'],
+"     \ 'cpp': ['clangd'],
+"     \ }
+" let g:LanguageClient_autoStart = 0
+" let g:LanguageClient_trace = 'verbose'
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+" let g:LanguageClient_loggingLevel = 'DEBUG'
+" " }}}
 " VISUAL: DEVICONS {{{
 " vim-devisons
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 16
@@ -694,6 +812,7 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 " Vimkiwi setup
 let g:vimwiki_list = [{'path':'$HOME/Documents/Nvim/Vimwiki',
                      \ 'syntax': 'markdown', 'ext': '.wiki'}]
+                     " \ 'syntax': 'markdown', 'ext': '.wiki'}]
                      " \ {'path':'$HOME/Documents/Repositories/MyWebPage/_drafts',
                      " \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_table_mappings = 0
