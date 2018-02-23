@@ -9,12 +9,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'sickill/vim-monokai'
-" Plug 'ajh17/Spacegray.vim'
+Plug 'ajh17/Spacegray.vim'
 Plug 'icymind/NeoSolarized'
 Plug 'mhartington/oceanic-next'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'arcticicestudio/nord-vim'
-" Plug 'MaxSt/FlatColor'
+Plug 'MaxSt/FlatColor'
 Plug 'joshdick/onedark.vim'
 Plug 'nightsense/vim-crunchbang'
 Plug 'exitface/synthwave.vim'
@@ -38,6 +38,7 @@ Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
 Plug 'nightsense/stellarized'
 Plug 'ajmwagar/vim-deus'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " Explore folder and documents
 Plug 'ctrlpvim/ctrlp.vim' " find files
@@ -251,43 +252,6 @@ else
 endif
 " set background=light " incompatible with colorscheme
 
-" let g:one_allow_italics = 1
-" colorscheme one
-" colorscheme onedark " spelling problem
-" colorscheme nord
-" colorscheme OceanicNext
-" colorscheme neodark " spelling problem
-" colorscheme synthwave " spelling problem
-" colorscheme dracula
-" colorscheme NeoSolarized
-" let g:deepspace_italics=1
-" colorscheme deep-space
-" let g:airline_theme='deep_space'
-" colorscheme hybrid
-" colorscheme tender
-" colorscheme two-firewatch
-" let g:airline_theme='twofirewatch'
-" colorscheme flatcolor
-" colorscheme alduin
-" colorscheme jellybeans
-" "
-" colorscheme space-vim-dark
-" let g:airline_theme='bubblegum'
-" hi Comment cterm=italic
-" let g:airline_theme='base16'
-" colorscheme monokai
-" colorscheme abstract
-
-" colorscheme lucid
-" colorscheme material-theme " nice
-" colorscheme anderson
-" colorscheme crunchbang
-" colorscheme srcery
-" colorscheme nefertiti
-" colorscheme happy_hacking
-" colorscheme janah "spelling problem
-" colorscheme angr " spelling problem
-
 " Gruvbox colorscheme
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
@@ -298,33 +262,68 @@ let g:gruvbox_contrast_light = "soft"
 " let g:gruvbox_vert_split='dark0_hard'
 " let g:gruvbox_number_column = "red"
 " let g:gruvbox_invert_signs = 1
-"
+
+" Nord colorscheme
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_comment_brightness = 20
+let g:nord_statusline_uniform = 0
+
+" Deus colorscheme
+let g:deus_bold=0
+let g:deus_italic=1
+
+
+" colorscheme nord
+" colorscheme gruvbox
+" colorscheme material-theme
+" colorscheme deus
+" colorscheme neodark " spelling problem
+" colorscheme onedark " spelling problem
+
+" let g:one_allow_italics = 1
+" colorscheme one
+" colorscheme monokai
+" colorscheme spacegray
+" colorscheme dracula
+" colorscheme space-vim-dark
+" colorscheme flatcolor
+" colorscheme OceanicNext
+" colorscheme two-firewatch
+" let g:airline_theme='twofirewatch'
+" colorscheme srcery
+" colorscheme anderson
+" colorscheme crunchbang
+" colorscheme nefertiti
+" colorscheme happy_hacking
+
+" colorscheme NeoSolarized
+" colorscheme stellarized_dark
+" colorscheme synthwave " spelling problem
+" let g:deepspace_italics=1
+" colorscheme deep-space
+" colorscheme hybrid
+" colorscheme alduin
+" colorscheme jellybeans
+" colorscheme lucid
+" colorscheme janah "spelling problem
+
+" colorscheme abstract
+" colorscheme tender
+" colorscheme angr " spelling problem
+
 
 if exists("g:gui_oni")
   colorscheme nord
   " colorscheme material-theme
   " colorscheme gruvbox
 else
-  colorscheme gruvbox
   " colorscheme nord
-  " colorscheme space-vim-dark
-  " let g:airline_theme='violet'
-  " hi Comment cterm=italic
-  " colorscheme material-theme
-  " let g:nord_italic = 1
-  " let g:nord_italic_comments = 1
-  " let g:nord_comment_brightness = 20
-  " let g:nord_statusline_uniform = 0
-  " colorscheme OceanicNext
-  " let g:airline_theme='deus'
-" let g:airline_theme='bubblegum'
-" let g:airline_theme='minimalist'
+  " colorscheme gruvbox
+  colorscheme material-theme
   " colorscheme deus
-  " let g:airline_theme='bubblegum'
-  " colorscheme stellarized_dark
-  " colorscheme spacegray
-  " colorscheme dracula
-  " colorscheme monokai
+  " colorscheme neodark " spelling problem
+  " colorscheme onedark " spelling problem
 endif
 
 
