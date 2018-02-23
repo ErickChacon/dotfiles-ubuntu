@@ -273,6 +273,9 @@ let g:nord_statusline_uniform = 0
 let g:deus_bold=0
 let g:deus_italic=1
 
+" Neodark colorscheme
+" let g:neodark#use_256color = 1
+
 
 " colorscheme nord
 " colorscheme gruvbox
@@ -318,12 +321,12 @@ if exists("g:gui_oni")
   " colorscheme material-theme
   " colorscheme gruvbox
 else
-  " colorscheme nord
+  colorscheme nord
   " colorscheme gruvbox
-  colorscheme material-theme
+  " colorscheme material-theme
   " colorscheme deus
-  " colorscheme neodark " spelling problem
   " colorscheme onedark " spelling problem
+  " colorscheme neodark " spelling problem
 endif
 
 
@@ -428,13 +431,6 @@ let g:airline#extensions#default#section_truncate_width = {
 "
 let g:lightline = {}
 let g:lightline.colorscheme = 'yourcolorscheme'
-" let g:lightline.colorscheme = 'OldHope'
-" let g:lightline.colorscheme = 'PaperColor'
-" let g:lightline.colorscheme = 'wombat'
-" let g:lightline.colorscheme = 'jellybeans'
-" let g:lightline.colorscheme = 'Dracula'
-" let g:lightline.colorscheme = 'seoul256' ~ no
-"
 
 function! MyFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
@@ -515,6 +511,32 @@ if g:colors_name == 'nord'
   let s:bg_insert = [ '#BF616A' , "NONE" ]
   let s:bg_visual = [ '#d08770' , "NONE" ]
   let s:fg_inactive = [ '#5E81AC' , "NONE" ]
+  let s:none = [ 'NONE' , 'NONE' ]
+endif
+
+if g:colors_name == 'material-theme'
+  let s:fg_focus = [ '#ffffff' , "NONE" ]
+  let s:bg_focus = ["#5C7E8C", "NONE"]
+  let s:fg_hard = [ '#cDD3DE', "NONE"]
+  let s:bg_hard = [ '#4C566A' , "NONE" ]
+  let s:fg_soft = [ '#cDD3DE', "NONE"]
+  let s:bg_soft = [ '#37474F', "NONE"]
+  let s:bg_insert = [ '#BF616A' , "NONE" ]
+  let s:bg_visual = [ '#d08770' , "NONE" ]
+  let s:fg_inactive = [ '#7986CB' , "NONE" ]
+  let s:none = [ 'NONE' , 'NONE' ]
+endif
+
+if g:colors_name == 'deus'
+  let s:fg_focus = [ '#2C313A' , "NONE" ]
+  let s:bg_focus = ["#83a598", "NONE"]
+  let s:fg_hard = [ '#ebdbb2', "NONE"]
+  let s:bg_hard = [ '#2C313A' , "NONE" ]
+  let s:fg_soft = [ '#ebdbb2', "NONE"]
+  let s:bg_soft = [ '#3c3836', "NONE"]
+  let s:bg_insert = [ '#BF616A' , "NONE" ]
+  let s:bg_visual = [ '#d08770' , "NONE" ]
+  let s:fg_inactive = [ '#928374' , "NONE" ]
   let s:none = [ 'NONE' , 'NONE' ]
 endif
 
