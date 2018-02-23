@@ -305,6 +305,8 @@ if exists("g:gui_oni")
   " colorscheme material-theme
   " colorscheme gruvbox
 else
+  colorscheme gruvbox
+  " colorscheme nord
   " colorscheme space-vim-dark
   " let g:airline_theme='violet'
   " hi Comment cterm=italic
@@ -312,14 +314,13 @@ else
   " let g:nord_italic = 1
   " let g:nord_italic_comments = 1
   " let g:nord_comment_brightness = 20
-  " colorscheme nord
   " let g:nord_statusline_uniform = 0
   " colorscheme OceanicNext
   " let g:airline_theme='deus'
 " let g:airline_theme='bubblegum'
 " let g:airline_theme='minimalist'
   " colorscheme deus
-  colorscheme gruvbox
+  " let g:airline_theme='bubblegum'
   " colorscheme stellarized_dark
   " colorscheme spacegray
   " colorscheme dracula
@@ -392,8 +393,8 @@ hi! link FoldColumn Statement
 " IDE: AIRLINE PLUGIN STATUS AND TAB LINES {{{
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#right_sep = ' '
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#right_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 " let g:airline#extensions#tabline#right_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -425,8 +426,8 @@ let g:airline#extensions#default#section_truncate_width = {
 " let g:airline_theme='base16'
 " let g:airline_theme='jellybeans'
 " let g:airline_theme='sol'
+"
 let g:lightline = {}
-" let g:lightline.colorscheme = 'nord'
 let g:lightline.colorscheme = 'yourcolorscheme'
 " let g:lightline.colorscheme = 'OldHope'
 " let g:lightline.colorscheme = 'PaperColor'
@@ -434,81 +435,124 @@ let g:lightline.colorscheme = 'yourcolorscheme'
 " let g:lightline.colorscheme = 'jellybeans'
 " let g:lightline.colorscheme = 'Dracula'
 " let g:lightline.colorscheme = 'seoul256' ~ no
+"
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFiletypeIcon(n)
+  return winwidth(0) > 70 ? (strlen(&filetype) ?  WebDevIconsGetFileTypeSymbol() : '') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+function! Lightlinegit()
+    let l:branch = fugitive#head()
+    return l:branch ==# '' ? '' : "\uE0A0" . " " . l:branch
+endfunction
 let g:lightline.component = {
       \ 'empty': '',
       \ 'filepath': '%F'}
 let g:lightline.component_function = {
-      \ 'gitbranch': 'fugitive#head' }
-  "       \ 'component_function': {
-  "       \   'gitbranch': 'fugitive#head'
-  "       \ },
+      \ 'gitbranch': 'Lightlinegit',
+      \ 'filetype': 'MyFiletype',
+      \ 'fileformat': 'MyFileformat'
+      \ }
+let g:lightline.tab_component_function = {
+      \ 'filetypeicon': 'MyFiletypeIcon',
+      \ }
 let g:lightline.active = {
       \ 'left': [ [ 'mode', 'paste' ], ['gitbranch'],
       \           [ 'readonly', 'filename', 'modified' ] ],
-      \ 'right': [ [ 'lineinfo' ],
-      \            [ 'filetype', 'fileencoding',  'percent'  ] ] }
+      \ 'right': [ [ 'percent' , 'lineinfo' ],
+      \            [ 'fileencoding'],
+      \           [ 'filetype'] ] }
 let g:lightline.inactive = {
       \ 'left': [ [ 'filepath' ] ],
       \ 'right': [ ['empty'] ] }
 let g:lightline.tabline = {
       \ 'left': [ [ 'tabs' ] ],
       \ 'right': [ [ 'close' ] ] }
-" let s:nord0 = ["#2E3440", "NONE"]
-" let s:nord1 = ["#3B4252", 0]
-" let s:nord2 = ["#434C5E", "NONE"]
-" let s:nord3 = ["#4C566A", 8]
-" let s:nord4 = ["#D8DEE9", "NONE"]
-" let s:nord5 = ["#E5E9F0", 7]
-" let s:nord6 = ["#ECEFF4", 15]
-" let s:nord7 = ["#8FBCBB", 14]
-" let s:nord8 = ["#88C0D0", 6]
-" let s:nord9 = ["#81A1C1", 4]
-" let s:nord10 = ["#5E81AC", 12]
-" let s:nord11 = ["#BF616A", 1]
-" let s:nord12 = ["#D08770", 11]
-" let s:nord13 = ["#EBCB8B", 3]
-" let s:nord14 = ["#A3BE8C", 2]
-" let s:nord15 = ["#B48EAD", 5]
+let g:lightline.tab = {
+      \ 'active': [ 'tabnum', 'filename', 'filetypeicon', 'modified' ],
+      \ 'inactive': [ 'tabnum', 'filename', 'modified' ]
+      \ }
+let g:lightline.separator = { 'left': "\ue0b0", 'right': '' }
+let g:lightline.subseparator = { 'left': '|', 'right': '' }
 
-let s:black = [ '#000000' , "NONE" ]
-let s:orange = [ '#f79375' , "NONE" ]
-let s:whiteUbuntu = [ '#dfdbd2', "NONE"]
-let s:grayUbuntu = [ '#44433E', "NONE"]
-let s:white = [ '#ffffff' , 15 ]
-let s:gray = [ '#686b78' , 242 ]
+let s:fg_focus = [ '#ffffff' , "NONE" ]
+let s:bg_focus = ["#665C54", "NONE"]
+let s:fg_hard = [ '#dfdbd2', "NONE"]
+let s:bg_hard = [ '#332927' , "NONE" ]
+let s:fg_soft = [ '#dfdbd2', "NONE"]
+let s:bg_soft = [ '#3c3836', "NONE"]
+let s:bg_visual = [ '#d08770' , "NONE" ]
+let s:bg_insert = [ '#BF616A' , "NONE" ]
+let s:fg_inactive = [ '#a89984' , "NONE" ]
 let s:none = [ 'NONE' , 'NONE' ]
-" let s:yellow = ["#BF616A", 1]
-let s:yellow = ["#665C54", 1]
 
-" let s:yellow = [ '#e5cd52' , 221 ]
-let s:blue = [ '#4fb4d8' , 39 ]
-let s:red = [ '#f92672' , 161 ]
-let s:green = [ '#78bd65' , 41 ]
-" let s:orange = [ '#ef7c2a' , 202 ]
-let s:lightGray = [ '#848794' , 245 ]
-let s:darkGray = [ '#45474f' , 238 ]
-let s:veryDarkGray = [ '#1c1d21' , 234 ]
+if g:colors_name == 'gruvbox'
+  let s:fg_focus = [ '#282828' , "NONE" ]
+  let s:bg_focus = ["#a89984", "NONE"]
+  let s:fg_hard = [ '#a89984', "NONE"]
+  let s:bg_hard = [ '#504945' , "NONE" ]
+  let s:fg_soft = [ '#a89984', "NONE"]
+  let s:bg_soft = [ '#3c3836', "NONE"]
+  let s:bg_visual = [ '#f79375' , "NONE" ]
+  let s:bg_insert = [ '#dfdbd2' , "NONE" ]
+  let s:fg_inactive = [ '#a89984' , "NONE" ]
+  let s:none = [ 'NONE' , 'NONE' ]
+endif
+
+if g:colors_name == 'nord'
+  let s:fg_focus = [ '#eCEFF4' , "NONE" ]
+  let s:bg_focus = ["#5E81AC", "NONE"]
+  let s:fg_hard = [ '#d8DEE9', "NONE"]
+  let s:bg_hard = [ '#4C566A' , "NONE" ]
+  let s:fg_soft = [ '#d8DEE9', "NONE"]
+  let s:bg_soft = [ '#3B4252', "NONE"]
+  let s:bg_insert = [ '#BF616A' , "NONE" ]
+  let s:bg_visual = [ '#d08770' , "NONE" ]
+  let s:fg_inactive = [ '#5E81AC' , "NONE" ]
+  let s:none = [ 'NONE' , 'NONE' ]
+endif
+
 
 let s:p = {'normal': {}, 'tabline': {}, 'insert':{}, 'visual':{}, 'inactive':{}}
 let s:p.normal.left = [
-      \ [ s:white, s:yellow, 'bold' ],
-      \ [ s:white, s:none ] ]
-let s:p.normal.middle = [ [ s:whiteUbuntu, s:grayUbuntu ] ]
+      \ [ s:fg_focus, s:bg_focus, 'bold' ],
+      \ [ s:fg_hard, s:bg_hard ],
+      \]
+let s:p.normal.middle = [
+      \ [ s:fg_soft, s:bg_soft ] ]
 let s:p.normal.right = [
-      \ [ s:whiteUbuntu, s:none ],
-      \ [ s:whiteUbuntu, s:grayUbuntu] ]
-let s:p.tabline.left = [ [ s:whiteUbuntu, s:grayUbuntu ] ]
-let s:p.tabline.tabsel = [ [ s:white, s:none ] ]
-let s:p.tabline.middle = [ [ s:yellow, s:grayUbuntu ] ]
-let s:p.insert.left = [ [ s:black, s:whiteUbuntu, 'bold' ], [ s:white, s:none ] ]
-let s:p.insert.right = [ [ s:black, s:whiteUbuntu ], [ s:whiteUbuntu, s:grayUbuntu ] ]
-let s:p.visual.left = [ [ s:black, s:orange, 'bold' ], [ s:white, s:none ] ]
-let s:p.visual.right = [ [ s:black, s:orange ], [ s:whiteUbuntu, s:grayUbuntu ] ]
-let s:p.inactive.left = [ [ s:lightGray, s:grayUbuntu, 'italic' ], [ s:lightGray, s:grayUbuntu ] ]
-let s:p.inactive.right = [ [ s:lightGray, s:grayUbuntu], [ s:lightGray, s:grayUbuntu ] ]
-let s:p.inactive.middle = [ [ s:lightGray, s:grayUbuntu ] ]
-" let s:p.inactive.left = [ [ s:lightGray, s:darkGray ], [ s:white, s:darkGray ] ]
-" let s:p.inactive.middle = [ [ s:white, s:darkGray ] ]
+      \ [ s:fg_focus, s:bg_focus, 'bold' ],
+      \ [ s:fg_hard, s:bg_hard ],
+      \ [ s:fg_soft, s:bg_soft ] ]
+let s:p.tabline.left = [ [ s:fg_hard, s:bg_hard ] ]
+let s:p.tabline.tabsel = [ [ s:fg_focus, s:bg_focus ] ]
+let s:p.tabline.middle = [ [ s:fg_soft, s:bg_soft ] ]
+let s:p.insert.left = [
+      \ [ s:fg_focus, s:bg_insert, 'bold' ],
+      \ [ s:fg_hard, s:bg_hard ]
+      \ ]
+let s:p.insert.right = [
+      \ [ s:fg_focus, s:bg_insert, 'bold' ],
+      \ [ s:fg_hard, s:bg_hard ]
+      \ ]
+let s:p.visual.left = [
+      \ [ s:fg_focus, s:bg_visual, 'bold' ],
+      \ [ s:fg_hard, s:bg_hard ]
+      \ ]
+let s:p.visual.right = [
+      \ [ s:fg_focus, s:bg_visual, 'bold' ],
+      \ [ s:fg_hard, s:bg_hard ]
+      \ ]
+let s:p.inactive.left = [ [ s:fg_inactive, s:bg_soft, 'italic' ], [ s:fg_inactive, s:bg_soft ] ]
+let s:p.inactive.right = [ [ s:fg_inactive, s:bg_soft], [ s:fg_inactive, s:bg_soft ] ]
+let s:p.inactive.middle = [ [ s:fg_inactive, s:bg_soft ] ]
 
 let g:lightline#colorscheme#yourcolorscheme#palette = lightline#colorscheme#flatten(s:p)
 
@@ -522,8 +566,8 @@ let g:lightline#colorscheme#yourcolorscheme#palette = lightline#colorscheme#flat
 let g:tmuxline_separators = {
     \ 'left' : '',
     \ 'left_alt': '',
-    \ 'right' : '',
-    \ 'right_alt' : '<',
+    \ 'right' : '',
+    \ 'right_alt' : '',
     \ 'space' : ' '}
 let g:tmuxline_preset = {
       \'a'    : '#S',
@@ -531,26 +575,20 @@ let g:tmuxline_preset = {
       \'cwin' : ['#I:#W ✔'],
       \'x'    : '',
       \'y'    : ['%Y-%m-%d'],
-      \'z'    : ['$USER: I ❤  Ⓡ '],
+      \'z'    : ['$USER ' . '\uF080' . ' '],
       \'options' : {'status-justify' : 'left'}}
-" let g:tmuxline_theme = 'jellybeans'
-" " The theme can be configured if g:airline#extensions#tmuxline#enabled = 0:
-      " \'a'    : [ 100, 109 ],
 let g:tmuxline_theme = {
-      \'a'    : [ s:whiteUbuntu[0], s:black[0], 'bold'],
-      \'b'    : [ s:whiteUbuntu[0], s:yellow[0] ],
-      \'bg'   : [ s:whiteUbuntu[0], s:grayUbuntu[0] ],
-      \'c'    : [ s:whiteUbuntu[0], s:yellow[0] ],
-      \'win'  : [ s:whiteUbuntu[0], s:grayUbuntu[0] ],
-      \'cwin' : [ s:whiteUbuntu[0], s:yellow[0] ],
-      \'x'   : [ s:whiteUbuntu[0], s:grayUbuntu[0] ],
-      \'y'   : [ s:whiteUbuntu[0], s:grayUbuntu[0] ],
-      \'z'    : [ s:whiteUbuntu[0], s:yellow[0], 'bold'] }
+      \'a'    : [ s:fg_focus[0], s:bg_focus[0], 'bold'],
+      \'b'    : [ s:fg_soft[0], s:bg_soft[0] ],
+      \'bg'   : [ s:fg_soft[0], s:bg_soft[0] ],
+      \'c'    : [ s:fg_soft[0], s:bg_soft[0] ],
+      \'win'  : [ s:fg_soft[0], s:bg_soft[0] ],
+      \'cwin' : [ s:fg_hard[0], s:bg_hard[0] ],
+      \'x'   : [ s:fg_soft[0], s:bg_soft[0] ],
+      \'y'   : [ s:fg_hard[0], s:bg_hard[0] ],
+      \'z'    : [ s:fg_focus[0], s:bg_focus[0], 'bold'] }
 "  It can be activated with:
 if exists('$TMUX')
-    " autocmd VimEnter * call tmuxline#set_statusline()
-    " autocmd VimEnter * call tmuxline#set_statusline('vim_statusline_3')
-    " autocmd VimEnter * call tmuxline#set_statusline('powerline') # default
     autocmd VimEnter * call tmuxline#set_statusline()
 endif
 " }}}
