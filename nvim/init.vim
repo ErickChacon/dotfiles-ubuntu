@@ -315,16 +315,37 @@ let g:deus_italic=1
 " colorscheme tender
 " colorscheme angr " spelling problem
 
+let g:nvim_id = system("pgrep -x 'nvim' | sed -n 1p")
+" echo g:nvim_id
+
+function! Random()
+python3 << EOF
+import random
+import vim
+random.seed(int(vim.eval("g:nvim_id")))
+value = random.randrange(1, 5)
+vim.command("let g:random_number = %s"% value)
+EOF
+endfunction
+
+call Random()
+" echo g:random_number
+
 
 if exists("g:gui_oni")
   colorscheme nord
   " colorscheme material-theme
   " colorscheme gruvbox
 else
-  colorscheme nord
-  " colorscheme gruvbox
-  " colorscheme material-theme
-  " colorscheme deus
+  " if g:random_number == 1
+    colorscheme nord
+  " elseif g:random_number == 2
+  "   colorscheme gruvbox
+  " elseif g:random_number == 3
+  "   colorscheme material-theme
+  " elseif g:random_number == 4
+  "   colorscheme deus
+  " endif
   " colorscheme onedark " spelling problem
   " colorscheme neodark " spelling problem
 endif
