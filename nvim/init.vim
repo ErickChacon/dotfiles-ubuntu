@@ -551,13 +551,19 @@ if g:colors_name == 'material-theme'
   let s:none = [ 'NONE' , 'NONE' ]
 endif
 
+
 if g:colors_name == 'deus'
-  let s:fg_focus = [ '#2C313A' , "NONE" ]
-  let s:bg_focus = ["#83a598", "NONE"]
+  " let s:fg_focus = [ '#2C313A' , "NONE" ]
+  let s:fg_focus = [ '#ebdbb2' , "NONE" ]
+  " let s:bg_focus = ["#83a598", "NONE"]
+  let s:bg_focus = ["#665c54", "NONE"]
   let s:fg_hard = [ '#ebdbb2', "NONE"]
-  let s:bg_hard = [ '#2C313A' , "NONE" ]
+  " let s:bg_hard = [ '#2C313A' , "NONE" ]
+  let s:bg_hard = [ '#3A3B3F' , "NONE" ]
   let s:fg_soft = [ '#ebdbb2', "NONE"]
-  let s:bg_soft = [ '#3c3836', "NONE"]
+  " let s:bg_soft = [ '#3c3836', "NONE"]
+  let s:bg_soft = [ '#292f37', "NONE"]
+  " let s:bg_soft = [ '#242a32', "NONE"]
   let s:bg_insert = [ '#BF616A' , "NONE" ]
   let s:bg_visual = [ '#d08770' , "NONE" ]
   let s:fg_inactive = [ '#928374' , "NONE" ]
