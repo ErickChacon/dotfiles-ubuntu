@@ -275,45 +275,46 @@ let g:deus_italic=1
 
 " Neodark colorscheme
 " let g:neodark#use_256color = 1
+let g:neodark#italics = 1
 
 
-" colorscheme nord
-" colorscheme gruvbox
-" colorscheme material-theme
-" colorscheme deus
-" colorscheme neodark " spelling problem
-" colorscheme onedark " spelling problem
-
-" let g:one_allow_italics = 1
-" colorscheme one
-" colorscheme monokai
+" spelling problem
+" colorscheme neodark
+" colorscheme onedark
 " colorscheme spacegray
-" colorscheme dracula
 " colorscheme space-vim-dark
 " colorscheme flatcolor
-" colorscheme OceanicNext
-" colorscheme two-firewatch
-" let g:airline_theme='twofirewatch'
-" colorscheme srcery
-" colorscheme anderson
-" colorscheme crunchbang
-" colorscheme nefertiti
-" colorscheme happy_hacking
-
-" colorscheme NeoSolarized
-" colorscheme stellarized_dark
-" colorscheme synthwave " spelling problem
-" let g:deepspace_italics=1
-" colorscheme deep-space
+" colorscheme synthwave
 " colorscheme hybrid
 " colorscheme alduin
-" colorscheme jellybeans
-" colorscheme lucid
-" colorscheme janah "spelling problem
+" colorscheme janah
+" colorscheme angr
 
+" high contrast
+" colorscheme OceanicNext
+" colorscheme dracula
+" colorscheme monokai
+" colorscheme srcery
+" colorscheme lucid
+" colorscheme happy_hacking
+" let g:deepspace_italics=1
+" colorscheme deep-space
+" colorscheme jellybeans
 " colorscheme abstract
 " colorscheme tender
-" colorscheme angr " spelling problem
+
+" low contrast
+" let g:neosolarized_contrast = "high"
+" let g:neosolarized_bold = 1
+" let g:neosolarized_underline = 1
+" let g:neosolarized_italic = 1
+" colorscheme NeoSolarized
+" colorscheme stellarized_dark
+" colorscheme anderson
+" colorscheme crunchbang
+" colorscheme two-firewatch
+" let g:airline_theme='twofirewatch'
+" colorscheme nefertiti
 
 let g:nvim_id = system("pgrep -x 'nvim' | sed -n 1p")
 " echo g:nvim_id
@@ -323,7 +324,7 @@ python3 << EOF
 import random
 import vim
 random.seed(int(vim.eval("g:nvim_id")))
-value = random.randrange(1, 5)
+value = random.randrange(1, 6)
 vim.command("let g:random_number = %s"% value)
 EOF
 endfunction
@@ -337,17 +338,19 @@ if exists("g:gui_oni")
   " colorscheme material-theme
   " colorscheme gruvbox
 else
-  " if g:random_number == 1
+  if g:random_number == 1
     colorscheme nord
-  " elseif g:random_number == 2
-  "   colorscheme gruvbox
-  " elseif g:random_number == 3
-  "   colorscheme material-theme
-  " elseif g:random_number == 4
-  "   colorscheme deus
-  " endif
-  " colorscheme onedark " spelling problem
-  " colorscheme neodark " spelling problem
+  elseif g:random_number == 2
+    colorscheme gruvbox
+  elseif g:random_number == 3
+    colorscheme material-theme
+  elseif g:random_number == 4
+    colorscheme deus
+  elseif g:random_number == 5
+    let g:one_allow_italics = 1
+    colorscheme one
+    call one#highlight('Folded', '5c6370', '2c323c', 'italic')
+  endif
 endif
 
 
@@ -560,6 +563,22 @@ if g:colors_name == 'deus'
   let s:fg_inactive = [ '#928374' , "NONE" ]
   let s:none = [ 'NONE' , 'NONE' ]
 endif
+
+if g:colors_name == 'one'
+  let s:fg_focus = [ '#abb2bf' , "NONE" ]
+  " let s:fg_focus = [ '#2c323c' , "NONE" ]
+  " let s:bg_focus = ["#98c379", "NONE"]
+  let s:bg_focus = ["#4b5263", "NONE"]
+  let s:fg_hard = [ '#abb2bf', "NONE"]
+  let s:bg_hard = [ '#3b4048' , "NONE" ]
+  let s:fg_soft = [ '#abb2bf', "NONE"]
+  let s:bg_soft = [ '#2c323c', "NONE"]
+  let s:bg_insert = [ '#5E81AC' , "NONE" ]
+  let s:bg_visual = [ '#528bff' , "NONE" ]
+  let s:fg_inactive = [ '#5c6370' , "NONE" ]
+  let s:none = [ 'NONE' , 'NONE' ]
+endif
+
 
 
 let s:p = {'normal': {}, 'tabline': {}, 'insert':{}, 'visual':{}, 'inactive':{}}
