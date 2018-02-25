@@ -343,6 +343,7 @@ if exists("g:gui_oni")
 else
   if g:random_number == 1
     colorscheme nord
+    hi Folded gui=none guibg=#3b4252 guifg=#7b88a1
   elseif g:random_number == 2
     colorscheme gruvbox
   elseif g:random_number == 3
@@ -360,6 +361,7 @@ else
   elseif g:random_number == 7
     colorscheme neodark
     hi SpellBad guibg=none guifg=none gui=underline
+    hi Folded guibg=#263a45 guifg=#658595
   elseif g:random_number == 8
     colorscheme space-vim-dark
     hi Conceal guibg=none guifg=#2aa1ae
