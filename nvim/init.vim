@@ -14,7 +14,8 @@ Plug 'icymind/NeoSolarized'
 Plug 'mhartington/oceanic-next'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'MaxSt/FlatColor'
+" Plug 'MaxSt/FlatColor'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'joshdick/onedark.vim'
 Plug 'nightsense/vim-crunchbang'
 Plug 'exitface/synthwave.vim'
@@ -39,6 +40,8 @@ Plug 'roosta/srcery'
 Plug 'nightsense/stellarized'
 Plug 'ajmwagar/vim-deus'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 " Explore folder and documents
 Plug 'ctrlpvim/ctrlp.vim' " find files
@@ -279,11 +282,9 @@ let g:neodark#italics = 1
 
 
 " spelling problem
-" colorscheme neodark
-" colorscheme onedark
+" let g:spacegray_low_contrast = 1
 " colorscheme spacegray
-" colorscheme space-vim-dark
-" colorscheme flatcolor
+" guifg=#8be9fd gui=none
 " colorscheme synthwave
 " colorscheme hybrid
 " colorscheme alduin
@@ -291,8 +292,9 @@ let g:neodark#italics = 1
 " colorscheme angr
 
 " high contrast
+" colorscheme base16-tomorrow-night
 " colorscheme OceanicNext
-" colorscheme dracula
+" colorscheme base16-default-dark
 " colorscheme monokai
 " colorscheme srcery
 " colorscheme lucid
@@ -304,6 +306,7 @@ let g:neodark#italics = 1
 " colorscheme tender
 
 " low contrast
+" colorscheme Tomorrow-Night
 " let g:neosolarized_contrast = "high"
 " let g:neosolarized_bold = 1
 " let g:neosolarized_underline = 1
@@ -324,7 +327,7 @@ python3 << EOF
 import random
 import vim
 random.seed(int(vim.eval("g:nvim_id")))
-value = random.randrange(1, 6)
+value = random.randrange(1, 10)
 vim.command("let g:random_number = %s"% value)
 EOF
 endfunction
@@ -350,8 +353,27 @@ else
     let g:one_allow_italics = 1
     colorscheme one
     call one#highlight('Folded', '5c6370', '2c323c', 'italic')
+  elseif g:random_number == 6
+    colorscheme dracula
+    hi Conceal guibg=NONE guifg=#8be9fd gui=none
+    hi Folded guibg=#333333 guifg=#6272a4 gui=none
+  elseif g:random_number == 7
+    colorscheme neodark
+    hi SpellBad guibg=none guifg=none gui=underline
+  elseif g:random_number == 8
+    colorscheme space-vim-dark
+    hi Conceal guibg=none guifg=#2aa1ae
+    hi SpellBad guibg=none guifg=none gui=underline
+    hi Function gui=none
+    hi Folded gui=none
+  elseif g:random_number == 9
+    colorscheme challenger_deep
+    hi Conceal guibg=none guifg=#ff5458
+    hi Folded gui=none guibg=#100e23 guifg=#767676
+    hi SpellBad guibg=none guifg=none gui=underline
   endif
 endif
+
 
 
 " Toggle background colors
@@ -553,17 +575,12 @@ endif
 
 
 if g:colors_name == 'deus'
-  " let s:fg_focus = [ '#2C313A' , "NONE" ]
   let s:fg_focus = [ '#ebdbb2' , "NONE" ]
-  " let s:bg_focus = ["#83a598", "NONE"]
   let s:bg_focus = ["#665c54", "NONE"]
   let s:fg_hard = [ '#ebdbb2', "NONE"]
-  " let s:bg_hard = [ '#2C313A' , "NONE" ]
   let s:bg_hard = [ '#3A3B3F' , "NONE" ]
   let s:fg_soft = [ '#ebdbb2', "NONE"]
-  " let s:bg_soft = [ '#3c3836', "NONE"]
   let s:bg_soft = [ '#292f37', "NONE"]
-  " let s:bg_soft = [ '#242a32', "NONE"]
   let s:bg_insert = [ '#BF616A' , "NONE" ]
   let s:bg_visual = [ '#d08770' , "NONE" ]
   let s:fg_inactive = [ '#928374' , "NONE" ]
@@ -572,8 +589,6 @@ endif
 
 if g:colors_name == 'one'
   let s:fg_focus = [ '#abb2bf' , "NONE" ]
-  " let s:fg_focus = [ '#2c323c' , "NONE" ]
-  " let s:bg_focus = ["#98c379", "NONE"]
   let s:bg_focus = ["#4b5263", "NONE"]
   let s:fg_hard = [ '#abb2bf', "NONE"]
   let s:bg_hard = [ '#3b4048' , "NONE" ]
@@ -584,6 +599,59 @@ if g:colors_name == 'one'
   let s:fg_inactive = [ '#5c6370' , "NONE" ]
   let s:none = [ 'NONE' , 'NONE' ]
 endif
+
+if g:colors_name == 'dracula'
+  let s:fg_focus = [ '#f8f8f2' , "NONE" ]
+  let s:bg_focus = ["#6272a4 ", "NONE"]
+  let s:fg_hard = [ '#f8f8f2', "NONE"]
+  let s:bg_hard = [ '#3b4048' , "NONE" ]
+  let s:fg_soft = [ '#abb2bf', "NONE"]
+  let s:bg_soft = [ '#333333', "NONE"]
+  let s:bg_insert = [ '#bd93f9' , "NONE" ]
+  let s:bg_visual = [ '#ff79c6' , "NONE" ]
+  let s:fg_inactive = [ '#5c6370' , "NONE" ]
+  let s:none = [ 'NONE' , 'NONE' ]
+endif
+
+if g:colors_name == 'neodark'
+  let s:fg_focus    = [ '#1F2F38' , "NONE" ]
+  let s:bg_focus    = [ "#AABBC4" , "NONE" ]
+  let s:fg_hard     = [ '#AABBC4' , "NONE" ]
+  let s:bg_hard     = [ '#475C69' , "NONE" ]
+  let s:fg_soft     = [ '#AABBC4' , "NONE" ]
+  let s:bg_soft     = [ '#263A45' , "NONE" ]
+  let s:bg_insert   = [ '#B888E2' , "NONE" ]
+  let s:bg_visual   = [ '#E69CA0' , "NONE" ]
+  let s:fg_inactive = [ '#658595' , "NONE" ]
+  let s:none        = [ 'NONE'    , 'NONE' ]
+endif
+
+if g:colors_name == 'space-vim-dark'
+  let s:fg_focus    = [ '#292b2e' , "NONE" ]
+  let s:bg_focus    = [ '#d4b261' , "NONE" ]
+  let s:fg_hard     = [ '#b2b2b2' , "NONE" ]
+  let s:bg_hard     = [ '#3B414E' , "NONE" ]
+  let s:fg_soft     = [ '#999999' , "NONE" ]
+  let s:bg_soft     = [ '#34323e' , "NONE" ]
+  let s:bg_insert   = [ '#b4d1b6' , "NONE" ]
+  let s:bg_visual   = [ '#FF73B9' , "NONE" ]
+  let s:fg_inactive = [ '#2aa1ae' , "NONE" ]
+  let s:none        = [ 'NONE'    , 'NONE' ]
+endif
+
+if g:colors_name == 'challenger_deep'
+  let s:fg_focus    = [ '#f3f3f3' , "NONE" ]
+  let s:bg_focus    = [ '#767676' , "NONE" ]
+  let s:fg_hard     = [ '#b2b2b2' , "NONE" ]
+  let s:bg_hard     = [ '#2C2A3A' , "NONE" ]
+  let s:fg_soft     = [ '#999999' , "NONE" ]
+  let s:bg_soft     = [ '#100e23' , "NONE" ]
+  let s:bg_insert   = [ '#c991e1' , "NONE" ]
+  let s:bg_visual   = [ '#62d196' , "NONE" ]
+  let s:fg_inactive = [ '#767676' , "NONE" ]
+  let s:none        = [ 'NONE'    , 'NONE' ]
+endif
+
 
 
 
