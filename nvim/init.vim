@@ -1056,6 +1056,10 @@ hi! link VimwikiHeader3 Boolean
 hi! link VimwikiHeader4 Type
 hi! link VimwikiHeader5 Identifier
 hi! link VimwikiHeader6 String
+" hi! link pandocSetexHeader WarningMsg
+" hi! link Title WarningMsg
+" hi! link Title Define
+" hi Title gui=bold
 
 " hi! link VimwikiHeader1 GruvboxRedBold
 " hi! link VimwikiHeader2 GruvboxAquaBold
