@@ -343,6 +343,7 @@ if exists("g:gui_oni")
 else
   if g:random_number == 1
     colorscheme nord
+    hi Conceal guibg=NONE guifg=#8be9fd gui=none
     hi Folded gui=none guibg=#3b4252 guifg=#7b88a1
   elseif g:random_number == 2
     colorscheme gruvbox

@@ -1,0 +1,69 @@
+# !/bin/bash
+
+function has-session {
+  tmux has-session -t 'FoodInsecurity'  2>/dev/null
+}
+
+if has-session ; then
+  tmux a -t 'FoodInsecurity'
+  # echo "Session already exists"
+else
+  # main work directory:
+  proj="/home/chaconmo/Documents/Projects/FoodSecurity/5.Studies/MapFoodInse/"
+  # tmux new-session -d -c $proj"7.Writing/paper-spmirt" -s 'FoodInsecurity'
+  tmux new-session -d -c $proj -s 'FoodInsecurity'
+  # window: todo
+  tmux rename-window "Todo"
+  tmux send-keys \
+    'nvim ~/Documents/Nvim/Vimwiki/Food\ Insecurity\ Study\ Todo.wiki' C-m
+  # window: notes
+  tmux new-window
+  tmux rename-window "Notes"
+  tmux send-keys \
+    'nvim ~/Documents/Nvim/Vimwiki/Food\ Insecurity\ Study\ Notes.wiki' C-m
+  # window 2: exploratory
+  # tmux new-window -c $proj"2.Exploratory"
+  # tmux rename-window "Exploratory"
+  # tmux send-keys 'nvim' C-m
+  # window 3: visualization
+  # tmux new-window -c $proj"5.Visualization"
+  # tmux rename-window "Visualization"
+  # tmux send-keys "nvim" C-m
+  # # window 4: writing
+  # tmux new-window -c $proj"7.Writing/paper-spmirt"
+  # tmux rename-window "Paper"
+  # tmux send-keys "nvim 00-spmirt.tex" C-m
+  # # window 5: Modelling
+  # tmux new-window -c $proj"3.Modelling"
+  # tmux rename-window "Modelling"
+  # tmux send-keys "nvim" C-m
+  # # window 6: notes
+  # tmux new-window -c $proj"../../../../Nvim"
+  # tmux rename-window "Notes"
+  # tmux send-keys "nvim -c 'VimwikiIndex'" C-m
+  # tmux split-window -c $proj"../../../../Nvim/Vimwiki" -h -p 50
+  # tmux send-keys "nvim Main\ Todo.wiki" C-m
+  # tmux split-window -c -h -p 30
+  # tmux send-keys "nvim -c 'VimwikiMakeDiaryNote'" C-m
+  # tmux selectp -t 1
+  # # window 6: slides
+  # tmux new-window -c $proj"8.Slides"
+  # tmux rename-window "Slides"
+  # tmux send-keys "nvim upgrade-bw.tex" C-m
+  # window: paper
+  tmux new-window -c $proj"7.Writing/paper-spmirt"
+  tmux rename-window "Paper"
+  tmux send-keys "nvim 00-spmirt.tex" C-m
+  # focus on window:
+  tmux select-window -t "Paper"
+  tmux attach-session -d
+fi
+
+
+# Some notes on tmux:
+# We can load R on the terminal with:
+# tmux send-keys "nvim -c 'term R'" C-m
+# Split window, change directory, horizontal, 50% and load R on terminal emul
+# tmux split-window -c "2.Exploratory" -h -p 50 "nvim -c 'term R'"
+# select pane
+# tmux selectp -t 1 # select the first (0) pane
