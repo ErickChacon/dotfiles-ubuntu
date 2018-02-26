@@ -376,6 +376,41 @@ else
   endif
 endif
 
+let g:profile_id = system('dconf read /org/gnome/terminal/legacy/profiles:/default')
+let g:profile_id = substitute(g:profile_id, "\n", "", "g")
+let g:profile_id = substitute(g:profile_id, "'", "", "g")
+let g:nvim_background = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
+let g:nvim_foreground = synIDattr(synIDtrans(hlID('Normal')), 'fg', 'gui')
+call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id . '/background-color ' . "'".'"' . g:nvim_background . '"'."'")
+call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id . '/foreground-color ' . "'".'"' . g:nvim_foreground . '"'."'")
+
+let g:COLOR_01 = synIDattr(synIDtrans(hlID('Visual')), 'bg', 'gui')
+let g:COLOR_02 = synIDattr(synIDtrans(hlID('WarningMsg')), 'fg', 'gui')
+let g:COLOR_03 = synIDattr(synIDtrans(hlID('Identifier')), 'fg', 'gui') " Precision
+" let g:COLOR_03 = synIDattr(synIDtrans(hlID('Conceal')), 'fg', 'gui') " Precision
+let g:COLOR_04 = synIDattr(synIDtrans(hlID('Type')), 'fg', 'gui')
+let g:COLOR_05 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
+let g:COLOR_06 = synIDattr(synIDtrans(hlID('Identifier')), 'fg', 'gui')
+" let g:COLOR_07 = synIDattr(synIDtrans(hlID('DiffAdd')), 'fg', 'gui')
+let g:COLOR_07 = synIDattr(synIDtrans(hlID('String')), 'fg', 'gui')
+let g:COLOR_08 = synIDattr(synIDtrans(hlID('Special')), 'fg', 'gui')
+" "
+" let g:COLOR_09 = synIDattr(synIDtrans(hlID('MatchParen')), 'bg', 'gui')
+let g:COLOR_09 = synIDattr(synIDtrans(hlID('Visual')), 'bg', 'gui')
+let g:COLOR_10 = synIDattr(synIDtrans(hlID('Statement')), 'fg', 'gui')
+" let g:COLOR_11 = synIDattr(synIDtrans(hlID('PreProc')), 'fg', 'gui') " chaconmo
+" let g:COLOR_11 = synIDattr(synIDtrans(hlID('Structure')), 'fg', 'gui') " chaconmo
+" let g:COLOR_11 = synIDattr(synIDtrans(hlID('Include')), 'fg', 'gui') " chaconmo
+let g:COLOR_11 = synIDattr(synIDtrans(hlID('Define')), 'fg', 'gui') " chaconmo
+" let g:COLOR_12 = synIDattr(synIDtrans(hlID('DiffText')), 'fg', 'gui')
+let g:COLOR_12 = synIDattr(synIDtrans(hlID('CursorLineNr')), 'fg', 'gui')
+" let g:COLOR_12 = synIDattr(synIDtrans(hlID('Search')), 'fg', 'gui')
+let g:COLOR_13 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
+let g:COLOR_14 = synIDattr(synIDtrans(hlID('DiffChange')), 'fg', 'gui')
+let g:COLOR_15 = synIDattr(synIDtrans(hlID('Function')), 'fg', 'gui')
+let g:COLOR_16 = synIDattr(synIDtrans(hlID('TypeDef')), 'fg', 'gui')
+
+call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id . '/palette "[' . "'" . g:COLOR_01 . "', '" . g:COLOR_02 . "', '" . g:COLOR_03 . "', '" . g:COLOR_04 . "', '" . g:COLOR_05 . "', '" . g:COLOR_06 . "', '" . g:COLOR_07 . "', '" . g:COLOR_08 . "', '" . g:COLOR_09 . "', '" . g:COLOR_10 . "', '" . g:COLOR_11 . "', '" . g:COLOR_12 . "', '" . g:COLOR_13 . "', '" . g:COLOR_14 . "', '" . g:COLOR_15 . "', '" . g:COLOR_16 . "'" . ']"')
 
 
 " Toggle background colors
@@ -385,21 +420,23 @@ nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark"
 " NVIM TERMINAL {{{
 " Neovim terminal emulator colors, based on gruvbox
 " let g:terminal_color_0 = '#665c54'
-let g:terminal_color_1 = '#fb4934'
-let g:terminal_color_2 = '#83a598'
-let g:terminal_color_3 = '#d79921'
-let g:terminal_color_4 = '#b16286'
-let g:terminal_color_5 = '#458588'
-let g:terminal_color_6 = '#b8bb26'
-let g:terminal_color_7 = '#d65d0e'
-let g:terminal_color_8 = '#a89984'
-let g:terminal_color_9 = '#fb4934'
-let g:terminal_color_10 = '#8ec07c'
-let g:terminal_color_11 = '#fabd2f'
-let g:terminal_color_12 = '#d3869b'
-let g:terminal_color_13 = '#689d6a'
-let g:terminal_color_14 = '#98971a'
-let g:terminal_color_15 = '#fe8019'
+" let g:terminal_color_0 = g:COLOR_16
+let g:terminal_color_1 = g:COLOR_02
+let g:terminal_color_2 = g:COLOR_03
+let g:terminal_color_3 = g:COLOR_04
+let g:terminal_color_4 = g:COLOR_05
+let g:terminal_color_5 = g:COLOR_06
+let g:terminal_color_6 = g:COLOR_07
+let g:terminal_color_7 = g:COLOR_08
+let g:terminal_color_8 = g:COLOR_09
+let g:terminal_color_9 = g:COLOR_10
+let g:terminal_color_10 = g:COLOR_11
+let g:terminal_color_11 = g:COLOR_12
+let g:terminal_color_12 = g:COLOR_13
+let g:terminal_color_13 = g:COLOR_14
+let g:terminal_color_14 = g:COLOR_15
+let g:terminal_color_15 = g:COLOR_16
+" let g:terminal_color_16 = g:COLOR_16
 " BACKGROUND_COLOR="#282828"  # Background Color
 " FOREGROUND_COLOR="#ebdbb2" # Text
 " }}}
