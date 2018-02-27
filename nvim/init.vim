@@ -348,8 +348,10 @@ else
     hi Title gui=bold guifg=#d8dee9
   elseif g:random_number == 2
     colorscheme gruvbox
+    hi link Function GruvboxAqua
   elseif g:random_number == 3
     colorscheme material-theme
+    hi Conceal guibg=NONE guifg=#F77669 gui=none
   elseif g:random_number == 4
     colorscheme deus
   hi texBeginEnd gui=bold,italic guifg=#ffffff
@@ -391,10 +393,17 @@ call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id 
 call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id . '/foreground-color ' . "'".'"' . g:nvim_foreground . '"'."'")
 
 let g:COLOR_01 = synIDattr(synIDtrans(hlID('Visual')), 'bg', 'gui')
-let g:COLOR_02 = synIDattr(synIDtrans(hlID('WarningMsg')), 'fg', 'gui')
+" let g:COLOR_02 = synIDattr(synIDtrans(hlID('WarningMsg')), 'fg', 'gui')
+" let g:COLOR_02 = synIDattr(synIDtrans(hlID('WarningMsg')), 'bg', 'gui')
+" let g:COLOR_02 = synIDattr(synIDtrans(hlID('Statement')), 'fg', 'gui')
+let g:COLOR_02 = synIDattr(synIDtrans(hlID('Type')), 'fg', 'gui')
 let g:COLOR_03 = synIDattr(synIDtrans(hlID('Identifier')), 'fg', 'gui') " Precision
+" let g:COLOR_03 = synIDattr(synIDtrans(hlID('Function')), 'fg', 'gui') " Precision
+" let g:COLOR_03 = synIDattr(synIDtrans(hlID('Normal')), 'fg', 'gui') " Precision
+" let g:COLOR_03 = synIDattr(synIDtrans(hlID('Comment')), 'fg', 'gui') " Precision
 " let g:COLOR_03 = synIDattr(synIDtrans(hlID('Conceal')), 'fg', 'gui') " Precision
-let g:COLOR_04 = synIDattr(synIDtrans(hlID('Type')), 'fg', 'gui')
+" let g:COLOR_04 = synIDattr(synIDtrans(hlID('Type')), 'fg', 'gui')
+let g:COLOR_04 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
 let g:COLOR_05 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
 let g:COLOR_06 = synIDattr(synIDtrans(hlID('Identifier')), 'fg', 'gui')
 " let g:COLOR_07 = synIDattr(synIDtrans(hlID('DiffAdd')), 'fg', 'gui')
@@ -404,6 +413,14 @@ let g:COLOR_08 = synIDattr(synIDtrans(hlID('Special')), 'fg', 'gui')
 " let g:COLOR_09 = synIDattr(synIDtrans(hlID('MatchParen')), 'bg', 'gui')
 let g:COLOR_09 = synIDattr(synIDtrans(hlID('Visual')), 'bg', 'gui')
 let g:COLOR_10 = synIDattr(synIDtrans(hlID('Statement')), 'fg', 'gui')
+" let g:COLOR_10 = synIDattr(synIDtrans(hlID('WarningMsg')), 'bg', 'gui')
+" let g:COLOR_10 = synIDattr(synIDtrans(hlID('Todo')), 'fg', 'gui')
+" let g:COLOR_10 = synIDattr(synIDtrans(hlID('ErrorMsg')), 'fg', 'gui')
+" let g:COLOR_10 = synIDattr(synIDtrans(hlID('ErrorMsg')), 'fg', 'gui')
+" if g:COLOR_10[0:5] == g:nvim_foreground[0:5]
+"   let g:COLOR_10 = synIDattr(synIDtrans(hlID('ErrorMsg')), 'bg', 'gui')
+" endif
+" let g:COLOR_10 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
 " let g:COLOR_11 = synIDattr(synIDtrans(hlID('PreProc')), 'fg', 'gui') " chaconmo
 " let g:COLOR_11 = synIDattr(synIDtrans(hlID('Structure')), 'fg', 'gui') " chaconmo
 " let g:COLOR_11 = synIDattr(synIDtrans(hlID('Include')), 'fg', 'gui') " chaconmo
@@ -415,6 +432,26 @@ let g:COLOR_13 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
 let g:COLOR_14 = synIDattr(synIDtrans(hlID('DiffChange')), 'fg', 'gui')
 let g:COLOR_15 = synIDattr(synIDtrans(hlID('Function')), 'fg', 'gui')
 let g:COLOR_16 = synIDattr(synIDtrans(hlID('TypeDef')), 'fg', 'gui')
+
+" let g:COLOR_01 = "#ffffff"
+" let g:COLOR_02 = "#ffffff" " na and git files
+" let g:COLOR_03 = "#ffffff" " R normal text
+" let g:COLOR_04 = "#ffffff" " R numbers
+" let g:COLOR_05 = "#ffffff"
+
+" let g:COLOR_06 = "#ffffff"
+" let g:COLOR_07 = "#ffffff" " R string
+" let g:COLOR_08 = "#ffffff"
+
+" let g:COLOR_09 = "#ffffff"
+" let g:COLOR_10 = "#ffffff" " error message in R
+
+" let g:COLOR_11 = "#ffffff"
+" let g:COLOR_12 = "#ffffff"
+" let g:COLOR_13 = "#ffffff"
+" let g:COLOR_14 = "#ffffff"
+" let g:COLOR_15 = "#ffffff"
+" let g:COLOR_16 = "#ffffff"
 
 call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id . '/palette "[' . "'" . g:COLOR_01 . "', '" . g:COLOR_02 . "', '" . g:COLOR_03 . "', '" . g:COLOR_04 . "', '" . g:COLOR_05 . "', '" . g:COLOR_06 . "', '" . g:COLOR_07 . "', '" . g:COLOR_08 . "', '" . g:COLOR_09 . "', '" . g:COLOR_10 . "', '" . g:COLOR_11 . "', '" . g:COLOR_12 . "', '" . g:COLOR_13 . "', '" . g:COLOR_14 . "', '" . g:COLOR_15 . "', '" . g:COLOR_16 . "'" . ']"')
 
