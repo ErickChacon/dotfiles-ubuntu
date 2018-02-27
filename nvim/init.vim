@@ -345,16 +345,20 @@ else
     colorscheme nord
     hi Conceal guibg=NONE guifg=#8be9fd gui=none
     hi Folded gui=none guibg=#3b4252 guifg=#7b88a1
+    hi Title gui=bold guifg=#d8dee9
   elseif g:random_number == 2
     colorscheme gruvbox
   elseif g:random_number == 3
     colorscheme material-theme
   elseif g:random_number == 4
     colorscheme deus
+  hi texBeginEnd gui=bold,italic guifg=#ffffff
   elseif g:random_number == 5
     let g:one_allow_italics = 1
     colorscheme one
     call one#highlight('Folded', '5c6370', '2c323c', 'italic')
+    " call one#highlight('Conceal', '5c6370', '2c323c')
+    hi Conceal guibg=NONE guifg=#e5c07b gui=none
   elseif g:random_number == 6
     colorscheme dracula
     hi Conceal guibg=NONE guifg=#8be9fd gui=none
@@ -369,6 +373,7 @@ else
     hi SpellBad guibg=none guifg=none gui=underline
     hi Function gui=none
     hi Folded gui=none
+    hi Comment gui=italic guifg=#2A6B74
   elseif g:random_number == 9
     colorscheme challenger_deep
     hi Conceal guibg=none guifg=#ff5458
