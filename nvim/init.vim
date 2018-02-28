@@ -95,6 +95,7 @@ Plug 'jalvesaq/Nvim-R' " R: run code, rmarkdown, help and more
 " Plug 'jalvesaq/Nvim-R', {'commit': '511ac10'} " R: run code, rmarkdown, help and more
 Plug 'tpope/vim-fugitive' " git: wrapper
 Plug 'airblade/vim-gitgutter' " git: shows added and remove lines of git
+Plug 'mhinz/vim-signify'
 " Plug 'ivanov/vim-ipython' " Python: two-way integration with ipython
 " Plug 'bfredl/nvim-ipy' " Python: jupyter front-end for neovim
 " Plug 'zchee/deoplete-jedi' " Python: autocomplete
@@ -575,19 +576,53 @@ function! Lightlinegit()
     let l:branch = fugitive#head()
     return l:branch ==# '' ? '' : "\uE0A0" . " " . l:branch
 endfunction
+
+" function! LightLineGitGutter()
+"   if exists('*GitGutterGetHunkSummary')
+"     let [ added, modified, removed ] = GitGutterGetHunkSummary()
+"     return printf('+%d ~%d -%d', added, modified, removed)
+"   endif
+"   return ''
+" endfunction
+
+function! Sy_stats_wrapper()
+  let symbols = ['+', '-', '~']
+  let [added, modified, removed] = sy#repo#get_stats()
+  let stats = [added, removed, modified]  " reorder
+  let hunkline = ''
+
+  for i in range(3)
+    if stats[i] > 0
+      let hunkline .= printf('%s%s ', symbols[i], stats[i])
+    endif
+  endfor
+
+  if !empty(hunkline)
+    let hunkline = printf(' [%s]', hunkline[:-2])
+  endif
+
+  return hunkline
+endfunction
+
 let g:lightline.component = {
       \ 'empty': '',
       \ 'filepath': '%F'}
 let g:lightline.component_function = {
       \ 'gitbranch': 'Lightlinegit',
+      \ 'gitstatus': 'Sy_stats_wrapper',
       \ 'filetype': 'MyFiletype',
-      \ 'fileformat': 'MyFileformat'
+      \ 'fileformat': 'MyFileformat',
       \ }
+      " \ 'gitbranch': 'Lightlinegit',
+      " \ 'gitbranch': 'fugitive#statusline',
+      " \ 'gitbranch': '%{fugitive#statusline()}',
+
+
 let g:lightline.tab_component_function = {
       \ 'filetypeicon': 'MyFiletypeIcon',
       \ }
 let g:lightline.active = {
-      \ 'left': [ [ 'mode', 'paste' ], ['gitbranch'],
+      \ 'left': [ [ 'mode', 'paste' ], ['gitbranch', 'gitstatus'],
       \           [ 'readonly', 'filename', 'modified' ] ],
       \ 'right': [ [ 'percent' , 'lineinfo' ],
       \            [ 'fileencoding'],
