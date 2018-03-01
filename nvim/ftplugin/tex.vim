@@ -9,3 +9,4 @@ setlocal conceallevel=2
 "
 " " Basic setup
 " set foldtext=MyFoldText()
+let g:surround_{char2nr('c')} = "\\\1command\1{\r}"

@@ -100,6 +100,7 @@ Plug 'mhinz/vim-signify'
 " Plug 'bfredl/nvim-ipy' " Python: jupyter front-end for neovim
 " Plug 'zchee/deoplete-jedi' " Python: autocomplete
 Plug 'vim-python/python-syntax' " Python: syntax highlighting
+" Plug 'coyotebush/vim-pweave'
 " Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'JuliaEditorSupport/julia-vim'
@@ -1016,14 +1017,15 @@ endfunction
 " to highlight r code in rmd
 " let rrst_syn_hl_chunk = 1
 let rmd_syn_hl_chunk = 1 " to highlight the fisrt line
+let g:rmd_syn_langs = ["r", "python", "c"]
 " It is only required if vim-pandoc is not installed
 " augroup pandoc_syntax
 "       au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 " augroup END
 " augroup pandoc_syntax
-"       au! BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown.pandoc
+"       au! BufNewFile,BufFilePre,BufRead *.pmd set filetype=markdown.pandoc
 " augroup END
-let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh"]
+let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh", "python"]
 " let g:pandoc#folding#fold_fenced_codeblocks = 1
 " let g:pandoc#folding#fdc = 0
 " let g:pandoc#syntax#style#underline_special = 1

@@ -223,8 +223,24 @@ pip3 install unidecode --user # for ultisnips
 # data science packages
 pip3 install numpy --user
 pip3 install scipy --user
+pip3 install sklearn --user
 sudo apt-get install python3-matplotlib -y
 pip3 install tensorflow --user
+
+# images
+pip3 install imageio --user
+
+# compressed
+pip3 install tarfile --user
+
+# markdown
+# pip3 install --upgrade Pweave --user
+
+
+# notebooks
+#  apt-get install build-essential -y # already installed
+sudo apt-get install python3-dev -y
+pip3 install jupyter --user
 
 # gpflow
 git clone --depth 1 https://github.com/GPflow/GPflow.git
