@@ -53,7 +53,7 @@ else
   # window: paper
   tmux new-window -c $proj"7.Writing/paper-spmirt"
   tmux rename-window "Paper"
-  tmux send-keys "nvim 00-spmirt.tex" C-m
+  tmux send-keys "nvim 00-paper.tex" C-m
   # focus on window:
   tmux select-window -t "Paper"
   tmux attach-session -d

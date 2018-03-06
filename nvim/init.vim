@@ -929,7 +929,7 @@ let cmdline_in_buffer          = 0      " Start the interpreter in a Neovim buff
 "     \ 'javascript.jsx': ['javascript-typescript-stdio'],
 "     \ 'cpp': ['clangd'],
 "     \ }
-" let g:LanguageClient_autoStart = 0
+" let g:LanguageClient_autoStart = 1
 " let g:LanguageClient_trace = 'verbose'
 " nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -1148,6 +1148,7 @@ hi! link VimwikiHeader6 String
 " hi! link VimwikiHeader6 GruvboxGreenBold
 " }}}
 " PROGRAMS: MARKDOWN {{{
+au BufNewFile,BufRead *.Rmarkdown set filetype=rmd
 " let g:markdown_composer_browser = "firefox"
 let g:markdown_composer_autostart = 0
 
