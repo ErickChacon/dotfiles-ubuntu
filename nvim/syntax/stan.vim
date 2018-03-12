@@ -7,42 +7,18 @@ if exists("b:current_syntax")
   finish
 endif
 
+" Read the C syntax to start with
+runtime! syntax/cpp.vim
+unlet b:current_syntax
+
+
 syntax match stanFunction "\v(data|model|parameters|transformed|generated|quantities)"
-" highlight link stanKeyword Keyword
+hi! link stanFunction Keyword
 
-syntax keyword stanKeyword int real for in vector row_vector
+syntax keyword stanTypes int real vector row_vector matrix
+highlight link stanTypes Type
 
-highlight link stanKeyword Keyword
-syntax match stanComment "\v(//|#).*$"
-highlight link stanComment Comment
-syntax match stanOperator "\v\*"
-" syntax match stanOperator "\v/"
-syntax match stanOperator "\v\+"
-syntax match stanOperator "\v-"
-syntax match stanOperator "\v\?"
-syntax match stanOperator "\v\*\="
-syntax match stanOperator "\v/\="
-syntax match stanOperator "\v\+\="
-syntax match stanOperator "\v-\="
-syntax match stanOperator "\v\="
-syntax match stanOperator "\v\:"
-syntax match stanOperator "\v\|"
-syntax match stanOperator "\v\("
-syntax match stanOperator "\v\)"
-syntax match stanOperator "\v\["
-syntax match stanOperator "\v\]"
-syntax match stanOperator "\v\<"
-syntax match stanOperator "\v\>"
-syntax match stanOperator "\v\,"
+syntax match stanOperator "\v\~"
+hi! link stanOperator Operator
 
-hi! link stanOperator GruvboxYellow
-syntax match stanEnd "\v\;"
-hi! link stanEnd GruvboxBlue
-syntax match stanBrace "\v(\{|\})"
-hi! link stanBrace GruvboxOrange
-" highlight link stanOperator Operator
-" " Match syntax
-" syn match stanFunction "\v^(\w|\s)+\{"
-hi! link stanFunction GruvboxAqua
-" echom "Our syntax highlighting code will go here."
-let b:current_syntax = "syntax"
+let b:current_syntax = "stan"
