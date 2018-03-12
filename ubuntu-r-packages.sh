@@ -110,6 +110,10 @@ echo "fx( 2L, 5 ) # should be 10" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # mcmc samplers
+echo "install.packages(\"MCMCpack\")" > r-packages.R
+R CMD BATCH r-packages.R
+
+# mcmc packages
 echo "install.packages(\"spBayes\")" > r-packages.R
 R CMD BATCH r-packages.R
 
