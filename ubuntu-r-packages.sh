@@ -155,3 +155,8 @@ R CMD BATCH r-packages.R
 # echo "source(\"https://install-github.me/REditorSupport/languageserver\")" \
 #   > r-packages.R
 # R CMD BATCH r-packages.R
+
+# references
+echo "install.packages(\"RefManageR\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
