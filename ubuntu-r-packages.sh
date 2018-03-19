@@ -140,7 +140,7 @@ R CMD BATCH r-packages.R
 # additional distributions
 echo "install.packages(\"truncnorm\")" > r-packages.R
 echo "devtools::install_github(repo = \"olmjo/RcppTN\",
-    ref = \"development\")" > r-packages.R
+    ref = \"development\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # Dependencies for openstreetmap
@@ -148,7 +148,7 @@ sudo apt-get install libcgal-dev libglu1-mesa libglu1-mesa-dev -y
 
 # survival analysis
 sudo apt-get install r-cran-rjava -y
-echo "install.packages(\"spatsurv\")" >> r-packages.R
+echo "install.packages(\"spatsurv\")" > r-packages.R
 R CMD BATCH r-packages.R
 
 # # language client
@@ -156,7 +156,11 @@ R CMD BATCH r-packages.R
 #   > r-packages.R
 # R CMD BATCH r-packages.R
 
-# references
-echo "install.packages(\"RefManageR\")" >> r-packages.R
-R CMD BATCH r-packages.R
+# # references
+# echo "install.packages(\"RefManageR\")" >> r-packages.R
+# R CMD BATCH r-packages.R
 
+# hdf5
+echo "source(\"http://bioconductor.org/biocLite.R\")" > r-packages.R
+echo "biocLite(\"rhdf5\")" >> r-packages.R
+R CMD BATCH r-packages.R
