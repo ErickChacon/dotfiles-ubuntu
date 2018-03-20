@@ -164,3 +164,10 @@ R CMD BATCH r-packages.R
 echo "source(\"http://bioconductor.org/biocLite.R\")" > r-packages.R
 echo "biocLite(\"rhdf5\")" >> r-packages.R
 R CMD BATCH r-packages.R
+
+# assuming you have the correlation matrix called cor_mat
+cor2 <- corrplot::corrplot(pred.plot, order = "hclust", tl.cex = 0.75,
+                           tl.col = "black", tl.srt = 45,
+                            col = brewer.pal(10, "RdBu"))
+
+

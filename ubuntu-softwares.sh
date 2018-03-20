@@ -198,6 +198,9 @@ sudo apt-get install blender openshot -y
 # color picker
 sudo apt-get install gpick -y
 
+# DOCUMENTATION SOFTWARE {{{1
+sudo apt-get install zeal -y
+
 # DOTFILES {{{1
 git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
 cd dotfiles-ubuntu && chmod +x pull.sh && ./pull.sh && cd ..
@@ -273,3 +276,4 @@ curl https://sh.rustup.rs -sSf | sh
 rustup update
 rustup component add rls-preview rust-analysis rust-src
 # }}}
+
