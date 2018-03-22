@@ -165,9 +165,11 @@ echo "source(\"http://bioconductor.org/biocLite.R\")" > r-packages.R
 echo "biocLite(\"rhdf5\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
-# assuming you have the correlation matrix called cor_mat
-cor2 <- corrplot::corrplot(pred.plot, order = "hclust", tl.cex = 0.75,
-                           tl.col = "black", tl.srt = 45,
-                            col = brewer.pal(10, "RdBu"))
-
+# dags
+sudo apt-get install -y libv8-3.14-dev librsvg2-dev
+echo "devtools::install_github(\"rich-iannone/DiagrammeR\")" > r-packages.R
+echo "devtools::install_github(\"rich-iannone/DiagrammeRsvg\")" >> r-packages.R
+echo "install.packages(\"rsvg\")" >> r-packages.R
+echo "install.packages(\"dagitty\")" >> r-packages.R
+R CMD BATCH r-packages.R
 
