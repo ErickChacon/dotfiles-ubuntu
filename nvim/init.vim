@@ -66,8 +66,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
 if !exists("g:gui_oni")
   " Plug 'vim-airline/vim-airline' " status and tab lines
   " Plug 'vim-airline/vim-airline-themes'
-  Plug 'itchyny/lightline.vim' " status and tab lines
 endif
+Plug 'itchyny/lightline.vim' " status and tab lines
 Plug 'ryanoasis/vim-devicons' " filetype icons
 Plug 'kshenoy/vim-signature' " display marks
 Plug 'majutsushi/tagbar' " display tags
