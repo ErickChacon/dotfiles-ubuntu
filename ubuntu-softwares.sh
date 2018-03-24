@@ -201,8 +201,24 @@ sudo apt-get install blender openshot -y
 # color picker
 sudo apt-get install gpick -y
 
+
 # DOCUMENTATION SOFTWARE {{{1
 sudo apt-get install zeal -y
+
+# DEVELOOPMENT SOFTWARE {{{1
+
+# Setup docker repository
+sudo apt-get update
+sudo apt-get install apt-transport-https -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+# Install docker community edition
+sudo apt-get update
+sudo apt-get install docker-ce -y
+# Add the current user to the docker group
+sudo usermod -a -G docker $USER
+# Verifying installation
+docker run hello-world
 
 # DOTFILES {{{1
 git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
