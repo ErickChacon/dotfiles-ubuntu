@@ -1,6 +1,6 @@
 setlocal spell
 setlocal foldmethod=syntax
-setlocal foldlevel=0
+" setlocal foldlevel=0
 " call tcomment#DefineType('rmd',         "<!-- %s -->"    )
 " call tcomment#DefineType('rmd',         "# %s"    )
 " setlocal background=light

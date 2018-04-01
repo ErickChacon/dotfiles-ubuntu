@@ -81,7 +81,8 @@ Plug 'christoomey/vim-tmux-navigator'
 " Programs
 Plug 'vimwiki/vimwiki' " vimwiki: notes and agenda
 Plug 'lervag/vimtex' " latex
-Plug 'vim-pandoc/vim-pandoc-syntax' " markdown: great works with nvim-r
+" Plug 'vim-pandoc/vim-pandoc-syntax' " markdown: great works with nvim-r
+Plug 'ErickChacon/vim-pandoc-syntax' " markdown: great works with nvim-r
 Plug 'vim-pandoc/vim-pandoc' " markdown: really nice for markdown
 function! BuildComposer(info) " markdown preview
   if a:info.status != 'unchanged' || a:info.force
@@ -175,7 +176,7 @@ set mouse=a
 set textwidth=85
 set formatoptions=cqt " it changes depending of the filetype
 " set wrapmargin=0
- " set formatoptions=cq
+" set formatoptions=cq
 " set formatoptions=qrn1
 " set wrapmargin=0
 set colorcolumn=+1
@@ -329,7 +330,7 @@ python3 << EOF
 import random
 import vim
 random.seed(int(vim.eval("g:nvim_id")))
-value = random.randrange(1, 10)
+value = random.randrange(1, 9)
 vim.command("let g:random_number = %s"% value)
 EOF
 endfunction
@@ -343,47 +344,47 @@ if exists("g:gui_oni")
   " colorscheme material-theme
   " colorscheme gruvbox
 else
-  if g:random_number == 1
-    colorscheme nord
-    hi Conceal guibg=NONE guifg=#8be9fd gui=none
-    hi Folded gui=none guibg=#3b4252 guifg=#7b88a1
-    hi Title gui=bold guifg=#d8dee9
-  elseif g:random_number == 2
+  " if g:random_number == 1
+  "   colorscheme nord
+  "   hi Conceal guibg=NONE guifg=#8be9fd gui=none
+  "   hi Folded gui=none guibg=#3b4252 guifg=#7b88a1
+  "   hi Title gui=bold guifg=#d8dee9
+  " elseif g:random_number == 2
     colorscheme gruvbox
     hi link Function GruvboxAqua
-  elseif g:random_number == 3
-    colorscheme material-theme
-    hi Conceal guibg=NONE guifg=#F77669 gui=none
-  elseif g:random_number == 4
-    colorscheme deus
-  hi texBeginEnd gui=bold,italic guifg=#ffffff
-  elseif g:random_number == 5
-    let g:one_allow_italics = 1
-    colorscheme one
-    call one#highlight('Folded', '5c6370', '2c323c', 'italic')
-    " call one#highlight('Conceal', '5c6370', '2c323c')
-    hi Conceal guibg=NONE guifg=#e5c07b gui=none
-  elseif g:random_number == 6
-    colorscheme dracula
-    hi Conceal guibg=NONE guifg=#8be9fd gui=none
-    hi Folded guibg=#333333 guifg=#6272a4 gui=none
-  elseif g:random_number == 7
-    colorscheme neodark
-    hi SpellBad guibg=none guifg=none gui=underline
-    hi Folded guibg=#263a45 guifg=#658595
-  elseif g:random_number == 8
-    colorscheme space-vim-dark
-    hi Conceal guibg=none guifg=#2aa1ae
-    hi SpellBad guibg=none guifg=none gui=underline
-    hi Function gui=none
-    hi Folded gui=none
-    hi Comment gui=italic guifg=#2A6B74
-  elseif g:random_number == 9
-    colorscheme challenger_deep
-    hi Conceal guibg=none guifg=#ff5458
-    hi Folded gui=none guibg=#100e23 guifg=#767676
-    hi SpellBad guibg=none guifg=none gui=underline
-  endif
+  " elseif g:random_number == 3
+  "   colorscheme material-theme
+  "   hi Conceal guibg=NONE guifg=#F77669 gui=none
+  " elseif g:random_number == 4
+  "   colorscheme deus
+  " hi texBeginEnd gui=bold,italic guifg=#ffffff
+  " elseif g:random_number == 5
+  "   let g:one_allow_italics = 1
+  "   colorscheme one
+  "   call one#highlight('Folded', '5c6370', '2c323c', 'italic')
+  "   " call one#highlight('Conceal', '5c6370', '2c323c')
+  "   hi Conceal guibg=NONE guifg=#e5c07b gui=none
+  " elseif g:random_number == 6
+  "   colorscheme dracula
+  "   hi Conceal guibg=NONE guifg=#8be9fd gui=none
+  "   hi Folded guibg=#333333 guifg=#6272a4 gui=none
+  " elseif g:random_number == 7
+  "   colorscheme neodark
+  "   hi SpellBad guibg=none guifg=none gui=underline
+  "   hi Folded guibg=#263a45 guifg=#658595
+  " elseif g:random_number == 8
+  "   colorscheme space-vim-dark
+  "   hi Conceal guibg=none guifg=#2aa1ae
+  "   hi SpellBad guibg=none guifg=none gui=underline
+  "   hi Function gui=none
+  "   hi Folded gui=none
+  "   hi Comment gui=italic guifg=#2A6B74
+  " " elseif g:random_number == 9
+  " "   colorscheme challenger_deep
+  " "   hi Conceal guibg=none guifg=#ff5458
+  " "   hi Folded gui=none guibg=#100e23 guifg=#767676
+  " "   hi SpellBad guibg=none guifg=none gui=underline
+  " endif
 endif
 
 let g:profile_id = system('dconf read /org/gnome/terminal/legacy/profiles:/default')
@@ -1028,9 +1029,14 @@ let g:rmd_syn_langs = ["r", "python", "c"]
 let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "r", "bash=sh", "python"]
 " let g:pandoc#folding#fold_fenced_codeblocks = 1
 " let g:pandoc#folding#fdc = 0
-" let g:pandoc#syntax#style#underline_special = 1
+let g:pandoc#syntax#conceal#urls = 1
+" let g:pandoc#syntax#style#underline_special = 0
 let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 " autocmd FileType * setlocal conceallevel=0
+"
+let g:pandoc#hypertext#use_default_mappings=0
+" let g:pandoc#filetypes#pandoc_markdown=0
+let g:pandoc#modules#disabled = ["folding"]
 
 let hostname = substitute(system('hostname'), '\n', '', '')
 if hostname == "chaconmo-ThinkPad-L470-W10DG"

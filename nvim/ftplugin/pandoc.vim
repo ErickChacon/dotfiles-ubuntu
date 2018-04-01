@@ -1,6 +1,6 @@
 " setlocal foldcolumn=10
 UltiSnipsAddFiletypes markdown
-setlocal foldlevel=0
+setlocal foldlevel=1
 " function! MyFoldText() " {{{
 "     let line = getline(v:foldstart)
 "
@@ -18,3 +18,12 @@ setlocal foldlevel=0
 "     return line
 " endfunction " }}}
 setlocal foldtext=MyFoldText()
+
+
+" Mapping for note taking
+
+nmap <cr> :e <cfile><cr>
+nmap <backspace> :e#<cr>
+nmap <tab> :call search("(.\\+)")<cr>
+nmap <s-tab> :call search("(.\\+)", "b")<cr>
+
