@@ -159,6 +159,11 @@ sudo apt-get install evolution -y
 sudo apt-get install texlive-full -y
 sudo apt-get install latexmk -y
 
+# titlesec package fix with version 2.10.2(2016-03-21)
+sudo wget http://mirrors.ctan.org/macros/latex/contrib/titlesec/titlesec.sty -O /usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+
+
+
 # additional latex tools
 sudo apt-get install dot2tex -y
 
