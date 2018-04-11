@@ -151,10 +151,10 @@ sudo apt-get install r-cran-rjava -y
 echo "install.packages(\"spatsurv\")" > r-packages.R
 R CMD BATCH r-packages.R
 
-# # language client
-# echo "source(\"https://install-github.me/REditorSupport/languageserver\")" \
-#   > r-packages.R
-# R CMD BATCH r-packages.R
+# language client
+echo "source(\"https://install-github.me/REditorSupport/languageserver\")" \
+  > r-packages.R
+R CMD BATCH r-packages.R
 
 # # references
 # echo "install.packages(\"RefManageR\")" >> r-packages.R
