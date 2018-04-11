@@ -283,12 +283,13 @@ sudo apt-get install atom -y
 # CPP {{{1
 
 sudo apt-add-repository \
-  "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-5.0 main"
+  "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
 sudo apt-get update
-sudo apt-get install clang-5.0 lldb-5.0 clang-tools-5.0 -y
-sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-5.0 100
-sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-5.0 100
-sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-5.0 100
+sudo apt-get install clang-6.0 lldb-6.0 lld-6.0 clang-tools-6.0 -y
+sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 200
+sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 200
+sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-6.0 200
+
 
 sudo apt-get install libgoogle-perftools4 libgoogle-perftools-dev -y
 sudo apt-get install google-perftools -y
