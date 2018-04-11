@@ -58,10 +58,10 @@ Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets' " snippets scripts
 " Plug 'roxma/nvim-completion-manager'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 if !exists("g:gui_oni")
   " Plug 'vim-airline/vim-airline' " status and tab lines
@@ -207,7 +207,7 @@ autocmd FileType r,python inoremap ' ''<left>
 ino ( ()<left>
 ino [ []<left>
 ino { {}<left>
-autocmd FileType tex inoremap $ $$<left>
+autocmd FileType tex,pandoc inoremap $ $$<left>
 ino {<CR> {<CR>}<ESC>O
 
 
@@ -921,16 +921,16 @@ let cmdline_in_buffer          = 0      " Start the interpreter in a Neovim buff
 " let cmdline_external_term_cmd = "xterm -e '%s' &"
 " }}}
 " IDE: LANGUAGE SERVER PROTOCOL {{{
-" set hidden
+set hidden
 "     " \ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()'],
 "     " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-" let g:LanguageClient_serverCommands = {
-"     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-"     \ 'javascript': ['javascript-typescript-stdio'],
-"     \ 'javascript.jsx': ['javascript-typescript-stdio'],
-"     \ 'cpp': ['clangd'],
-"     \ }
-" let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'cpp': ['clangd'],
+    \ }
+let g:LanguageClient_autoStart = 1
 " let g:LanguageClient_trace = 'verbose'
 " nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -1048,8 +1048,8 @@ elseif hostname == "chaconmo-Precision-5510"
     let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
   endif
   " Open R in a tmux split
-  let R_applescript = 0
-  let R_tmux_split = 1
+  " let R_applescript = 0
+  " let R_tmux_split = 1
 endif
 
 " Open R in an external tmux terminal

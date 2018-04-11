@@ -5,7 +5,8 @@ setlocal foldmethod=syntax
 " call tcomment#DefineType('rmd',         "# %s"    )
 " setlocal background=light
 " setlocal conceallevel=2
-UltiSnipsAddFiletypes rmd.markdown.r
+" UltiSnipsAddFiletypes rmd.markdown.r.tex
+UltiSnipsAddFiletypes rmd.r.tex
 " UltiSnipsAddFiletypes markdown
 " map <C-c>r :exe "SlimuxShellRun library(knitr); knit('" . expand("%:p") . "')"<CR>
 
