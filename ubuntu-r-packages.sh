@@ -8,6 +8,10 @@ echo "install.packages(\"purrrlyr\")" >> r-packages.R
 echo "install.packages(\"data.table\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
+# visualization
+echo "devtools::install_github(\"clauswilke/ggridges\")" > r-packages.R
+R CMD BATCH r-packages.R
+
 # models
 echo "install.packages(\"mgcv\")" > r-packages.R
 echo "install.packages(\"lme4\")" > r-packages.R
