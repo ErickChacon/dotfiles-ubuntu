@@ -1048,6 +1048,7 @@ elseif hostname == "chaconmo-Precision-5510"
     let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
   endif
   " Open R in a tmux split
+  let R_source = '~/.local/share/nvim/plugged/Nvim-R/R/tmux_split.vim'
   " let R_applescript = 0
   " let R_tmux_split = 1
 endif
