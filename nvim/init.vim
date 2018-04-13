@@ -1038,20 +1038,20 @@ let g:pandoc#hypertext#use_default_mappings=0
 " let g:pandoc#filetypes#pandoc_markdown=0
 let g:pandoc#modules#disabled = ["folding"]
 
-let hostname = substitute(system('hostname'), '\n', '', '')
-if hostname == "chaconmo-ThinkPad-L470-W10DG"
-  let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
-elseif hostname == "chaconmo-Precision-5510"
-  if exists("g:gui_oni")
-    let R_in_buffer = 1 " 0 to not open in an nvim external terminal emulator
-  else
-    let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
-  endif
+" let hostname = substitute(system('hostname'), '\n', '', '')
+" if hostname == "chaconmo-ThinkPad-L470-W10DG"
+  " let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+" elseif hostname == "chaconmo-Precision-5510"
+  " if exists("g:gui_oni")
+  "   let R_in_buffer = 1 " 0 to not open in an nvim external terminal emulator
+  " else
+  "   let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
+  " endif
   " Open R in a tmux split
   let R_source = '~/.local/share/nvim/plugged/Nvim-R/R/tmux_split.vim'
   " let R_applescript = 0
   " let R_tmux_split = 1
-endif
+" endif
 
 " Open R in an external tmux terminal
 " let R_in_buffer = 0 " 0 to not open in an nvim external terminal emulator
