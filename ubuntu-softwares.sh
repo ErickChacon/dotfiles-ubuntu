@@ -273,6 +273,11 @@ pip3 install jupyter --user
 git clone --depth 1 https://github.com/GPflow/GPflow.git
 pip3 install GPflow/ --user
 rm -rf GPflow
+
+# probabilistic programming
+pip3 install eduard --user
+
+
 # JULIA {{{1
 # sudo ln -s ~/julia-d386e40c17/bin/julia /usr/local/bin/julia
 # ATOM {{{1
