@@ -828,9 +828,11 @@ let g:tmuxline_preset = {
       \'win'  : ['#I:#W'],
       \'cwin' : ['#I:#W ✔'],
       \'x'    : '',
-      \'y'    : ['%Y-%m-%d'],
-      \'z'    : ['$USER ' . '\uF080' . ' '],
+      \'y'    : '',
+      \'z'    : ['\uF080' . ' '],
       \'options' : {'status-justify' : 'left'}}
+      " \'y'    : ['%Y-%m-%d'],
+      " \'z'    : ['$USER' . '\uF080' . ' '],
 let g:tmuxline_theme = {
       \'a'    : [ s:fg_focus[0], s:bg_focus[0], 'bold'],
       \'b'    : [ s:fg_soft[0], s:bg_soft[0] ],
