@@ -60,6 +60,15 @@ export TERM=xterm-256color-italic
 # openblas set number of threads
 export OPENBLAS_NUM_THREADS=4
 
+# r headers
+export CPLUS_INCLUDE_PATH=/usr/share/R/include
+
+# export CPATH=/usr/share/R/include
+# export C_INCLUDE_PATH=/usr/share/R/include
+export CPLUS_INCLUDE_PATH="/home/chaconmo/R/x86_64-pc-linux-gnu-library/3.4/Rcpp/include":"/home/chaconmo/R/x86_64-pc-linux-gnu-library/3.4/RcppArmadillo/include":"/home/chaconmo/R/x86_64-pc-linux-gnu-library/3.4/RcppTN/include"
+# /usr/share/R/include
+# export GCC_INCLUDE_DIR=/usr/share/R/include
+
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
