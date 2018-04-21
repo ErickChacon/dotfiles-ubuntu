@@ -301,6 +301,16 @@ sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-6.0 20
 sudo apt-get install libgoogle-perftools4 libgoogle-perftools-dev -y
 sudo apt-get install google-perftools -y
 
+# Armadillo dependencies
+sudo apt-get install cmake libopenblas-dev liblapack-dev libarpack2-dev -y
+
+# Armadillo
+wget http://sourceforge.net/projects/arma/files/armadillo-8.500.0.tar.xz
+tar -xvf armadillo-8.500.0.tar.xz
+cd armadillo-8.500.0/
+cmake .
+make
+sudo make install
 
 # }}}
 # RUST {{{
