@@ -80,10 +80,8 @@ echo "install.packages(\"formatR\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # c++ integration
-echo "install.packages(\"Rcpp\")" > r-packages.R
-echo "install.packages(\"RcppArmadillo\")" >> r-packages.R
-echo "install.packages(\"inline\")" >> r-packages.R
-R CMD BATCH r-packages.R
+sudo apt-get install r-cran-rcpp r-cran-rcpparmadillo r-cran-rcppeigen \
+  r-cran-rinside r-cran-inline -y
 
 # python integration
 echo "install.packages(\"reticulate\")" > r-packages.R
