@@ -277,7 +277,7 @@ pip3 install GPflow/ --user
 rm -rf GPflow
 
 # probabilistic programming
-pip3 install eduard --user
+pip3 install edward --user
 
 
 # JULIA {{{1

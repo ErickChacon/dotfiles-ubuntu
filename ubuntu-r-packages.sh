@@ -9,7 +9,10 @@ echo "install.packages(\"data.table\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # visualization
-echo "devtools::install_github(\"clauswilke/ggridges\")" > r-packages.R
+# echo "devtools::install_github(\"ggobi/GGally\")" > r-packages.R
+# echo "install.packages(\"GGally\")" > r-packages.R
+echo "devtools::install_github(\"ggobi/ggally#266\")" > r-packages.R
+echo "devtools::install_github(\"clauswilke/ggridges\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
 # models
