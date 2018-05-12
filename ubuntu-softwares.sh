@@ -279,6 +279,11 @@ rm -rf GPflow
 # probabilistic programming
 pip3 install edward --user
 
+# python language server
+pip3 install python-language-server --user
+pip3 install python-language-server[all] --user
+pip3 install jedi --user
+
 
 # JULIA {{{1
 # sudo ln -s ~/julia-d386e40c17/bin/julia /usr/local/bin/julia
