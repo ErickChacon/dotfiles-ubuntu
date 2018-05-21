@@ -57,6 +57,11 @@ echo "install.packages(\"gstat\")" >> r-packages.R
 echo "install.packages(\"ggmap\")" >> r-packages.R
 echo "install.packages(\"rgdal\")" >> r-packages.R
 echo "install.packages(\"rgeos\")" >> r-packages.R
+echo "install.packages(\"spdep\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
+# spatial related packages
+echo "install.packages(\"pdist\")" > r-packages.R
 R CMD BATCH r-packages.R
 
 # visualization
@@ -142,6 +147,12 @@ R CMD BATCH r-packages.R
 echo "install.packages(\"testthat\")" > r-packages.R
 R CMD BATCH r-packages.R
 
+# language client
+echo "source(\"https://install-github.me/REditorSupport/languageserver\")" \
+  > r-packages.R
+R CMD BATCH r-packages.R
+
+
 # exploratory data analysis
 echo "install.packages(\"corrplot\")" > r-packages.R
 R CMD BATCH r-packages.R
@@ -159,11 +170,6 @@ sudo apt-get install libcgal-dev libglu1-mesa libglu1-mesa-dev -y
 sudo apt-get install r-cran-rjava -y
 echo "install.packages(\"spatsurv\")" > r-packages.R
 R CMD BATCH r-packages.R
-
-# # language client
-# echo "source(\"https://install-github.me/REditorSupport/languageserver\")" \
-#   > r-packages.R
-# R CMD BATCH r-packages.R
 
 # # references
 # echo "install.packages(\"RefManageR\")" >> r-packages.R
