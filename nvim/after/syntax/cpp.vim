@@ -13,7 +13,7 @@ syn match roxTitle "\(@title.*\)" containedin=cCommentL,cComment contains=Roxyge
 hi! link roxTitle GruvboxGreenBold
 
 " Matching operators
-syn match Operator "\(/\)" contains=ALLBUT,cComment
+" syn match Operator "\(/\)" contains=ALLBUT,cComment
 syn match Operator "\(,\|:\|\.\|=\|;\|*\|+\|-\|<\|>\|!\)"
 
 " Namespace libraries

@@ -90,10 +90,8 @@ function! BuildComposer(info) " markdown preview
   endif
 endfunction
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-" Plug 'suan/vim-instant-markdown' " does not work
 Plug 'cespare/vim-toml' " toml: syntax highlight
 Plug 'jalvesaq/Nvim-R' " R: run code, rmarkdown, help and more
-" Plug 'jalvesaq/Nvim-R', {'commit': '511ac10'} " R: run code, rmarkdown, help and more
 Plug 'tpope/vim-fugitive' " git: wrapper
 Plug 'airblade/vim-gitgutter' " git: shows added and remove lines of git
 Plug 'mhinz/vim-signify'
@@ -106,6 +104,8 @@ Plug 'vim-python/python-syntax' " Python: syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'JuliaEditorSupport/julia-vim'
 " Plug 'JuliaEditorSupport/deoplete-julia' " initialize problem
+" Plug 'mattpenney89/vimify' " Spotify
+" Plug 'HendrikPetertje/vimify' " Spotify
 
 " Motions
 Plug 'tpope/vim-surround' " sorround
@@ -344,47 +344,47 @@ if exists("g:gui_oni")
   " colorscheme material-theme
   " colorscheme gruvbox
 else
-  " if g:random_number == 1
-  "   colorscheme nord
-  "   hi Conceal guibg=NONE guifg=#8be9fd gui=none
-  "   hi Folded gui=none guibg=#3b4252 guifg=#7b88a1
-  "   hi Title gui=bold guifg=#d8dee9
-  " elseif g:random_number == 2
+  if g:random_number == 1
+    colorscheme nord
+    hi Conceal guibg=NONE guifg=#8be9fd gui=none
+    hi Folded gui=none guibg=#3b4252 guifg=#7b88a1
+    hi Title gui=bold guifg=#d8dee9
+  elseif g:random_number == 2
     colorscheme gruvbox
     hi link Function GruvboxAqua
-  " elseif g:random_number == 3
-  "   colorscheme material-theme
-  "   hi Conceal guibg=NONE guifg=#F77669 gui=none
-  " elseif g:random_number == 4
-  "   colorscheme deus
-  " hi texBeginEnd gui=bold,italic guifg=#ffffff
-  " elseif g:random_number == 5
-  "   let g:one_allow_italics = 1
-  "   colorscheme one
-  "   call one#highlight('Folded', '5c6370', '2c323c', 'italic')
-  "   " call one#highlight('Conceal', '5c6370', '2c323c')
-  "   hi Conceal guibg=NONE guifg=#e5c07b gui=none
-  " elseif g:random_number == 6
-  "   colorscheme dracula
-  "   hi Conceal guibg=NONE guifg=#8be9fd gui=none
-  "   hi Folded guibg=#333333 guifg=#6272a4 gui=none
-  " elseif g:random_number == 7
-  "   colorscheme neodark
+  elseif g:random_number == 3
+    colorscheme material-theme
+    hi Conceal guibg=NONE guifg=#F77669 gui=none
+  elseif g:random_number == 4
+    colorscheme deus
+  hi texBeginEnd gui=bold,italic guifg=#ffffff
+  elseif g:random_number == 5
+    let g:one_allow_italics = 1
+    colorscheme one
+    call one#highlight('Folded', '5c6370', '2c323c', 'italic')
+    " call one#highlight('Conceal', '5c6370', '2c323c')
+    hi Conceal guibg=NONE guifg=#e5c07b gui=none
+  elseif g:random_number == 6
+    colorscheme dracula
+    hi Conceal guibg=NONE guifg=#8be9fd gui=none
+    hi Folded guibg=#333333 guifg=#6272a4 gui=none
+  elseif g:random_number == 7
+    colorscheme neodark
+    hi SpellBad guibg=none guifg=none gui=underline
+    hi Folded guibg=#263a45 guifg=#658595
+  elseif g:random_number == 8
+    colorscheme space-vim-dark
+    hi Conceal guibg=none guifg=#2aa1ae
+    hi SpellBad guibg=none guifg=none gui=underline
+    hi Function gui=none
+    hi Folded gui=none
+    hi Comment gui=italic guifg=#2A6B74
+  " elseif g:random_number == 9
+  "   colorscheme challenger_deep
+  "   hi Conceal guibg=none guifg=#ff5458
+  "   hi Folded gui=none guibg=#100e23 guifg=#767676
   "   hi SpellBad guibg=none guifg=none gui=underline
-  "   hi Folded guibg=#263a45 guifg=#658595
-  " elseif g:random_number == 8
-  "   colorscheme space-vim-dark
-  "   hi Conceal guibg=none guifg=#2aa1ae
-  "   hi SpellBad guibg=none guifg=none gui=underline
-  "   hi Function gui=none
-  "   hi Folded gui=none
-  "   hi Comment gui=italic guifg=#2A6B74
-  " " elseif g:random_number == 9
-  " "   colorscheme challenger_deep
-  " "   hi Conceal guibg=none guifg=#ff5458
-  " "   hi Folded gui=none guibg=#100e23 guifg=#767676
-  " "   hi SpellBad guibg=none guifg=none gui=underline
-  " endif
+  endif
 endif
 
 let g:profile_id = system('dconf read /org/gnome/terminal/legacy/profiles:/default')
@@ -931,6 +931,8 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'cpp': ['clangd'],
+    \ 'python': ['pyls'],
+    \ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()'],
     \ }
 let g:LanguageClient_autoStart = 1
 " let g:LanguageClient_trace = 'verbose'
@@ -1185,3 +1187,6 @@ let python_highlight_all = 1
 " PROGRAMS: JULIA {{{
 let g:default_julia_version = "current"
 " }}}
+" PROGRAMS: SPOTITY {{{
+
+" let g:spotify_token='NWU0MDJhNDg2Yjk4NDUzODkxNjY2Y2NlMDFkYjE3Y2U6ZDc5OTc5OGYwODg5NDFjMzk3MzQ5OTgwNmQwMDZmNTY='

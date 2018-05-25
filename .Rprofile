@@ -34,6 +34,13 @@ if (interactive()) {
 
   # rstan::rstan_options(auto_write = TRUE)
   # options(mc.cores = 4)
+  options(languageserver.default_linters = lintr::with_defaults(
+      line_length_linter = lintr::line_length_linter(100),
+      object_length_linter = NULL,
+      object_name_linter = NULL,
+      commented_code_linter = NULL
+  ))
+
 }
 
 
