@@ -148,6 +148,7 @@ echo "install.packages(\"testthat\")" > r-packages.R
 R CMD BATCH r-packages.R
 
 # language client
+echo "devtools::install_github(\"jimhester/lintr\")" > r-packages.R
 echo "source(\"https://install-github.me/REditorSupport/languageserver\")" \
   > r-packages.R
 R CMD BATCH r-packages.R

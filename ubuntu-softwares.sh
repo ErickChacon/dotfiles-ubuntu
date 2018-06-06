@@ -14,8 +14,8 @@ sudo apt-get install curl -y
 # requirements
 sudo apt-get install software-properties-common -y
 sudo apt-get install python-pip python3-pip -y
-pip2 install neovim
-pip3 install neovim
+pip2 install neovim --user
+pip3 install neovim --user
 sudo apt-get install ruby ruby-dev -y
 sudo gem install neovim
 
