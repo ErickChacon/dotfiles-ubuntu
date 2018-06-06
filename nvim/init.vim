@@ -111,8 +111,9 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'tpope/vim-surround' " sorround
 Plug 'kana/vim-textobj-indent' " copy indented block
 Plug 'kana/vim-textobj-user' " custom text object
-Plug 'tomtom/tcomment_vim' " easy comment
-Plug 'scrooloose/nerdcommenter'
+" Plug 'tpope/vim-commentary' " easy comment and uncomment: slow for rmd
+Plug 'tomtom/tcomment_vim' " easy comment: nice for rmd
+" Plug 'scrooloose/nerdcommenter'
 Plug 'godlygeek/tabular'
 
 call plug#end()
@@ -282,7 +283,6 @@ let g:deus_italic=1
 " Neodark colorscheme
 " let g:neodark#use_256color = 1
 let g:neodark#italics = 1
-
 
 " spelling problem
 " let g:spacegray_low_contrast = 1
@@ -933,6 +933,7 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['clangd'],
     \ 'python': ['pyls'],
     \ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()'],
+    \ 'rmd': ['R', '--quiet', '--slave', '-e', 'languageserver::run()'],
     \ }
 let g:LanguageClient_autoStart = 1
 " let g:LanguageClient_trace = 'verbose'
@@ -1037,7 +1038,9 @@ let g:pandoc#syntax#conceal#urls = 1
 " let g:pandoc#syntax#style#underline_special = 0
 let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 " autocmd FileType * setlocal conceallevel=0
-"
+" let g:pandoc#keyboard#blacklist_submodule_mappings =  ["lists", "references", "styles", "sections", "links"]
+" let g:pandoc#keyboard#blacklist_submodule_mappings =  ["references"]
+
 let g:pandoc#hypertext#use_default_mappings=0
 " let g:pandoc#filetypes#pandoc_markdown=0
 let g:pandoc#modules#disabled = ["folding"]

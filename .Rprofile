@@ -20,29 +20,26 @@ if (interactive()) {
     options(width = system("tput cols", intern = TRUE))
   }
 
-  # library(inline)
-  openblas.set.num.threads <- inline::cfunction( signature(ipt="integer"),
-    body = 'openblas_set_num_threads(*ipt);',
-    otherdefs = c ('extern void openblas_set_num_threads(int);'),
-    libargs = c ('-L/opt/openblas/lib -lopenblas'),
+  openblas.set.num.threads <- inline::cfunction(signature(ipt = "integer"),
+    body = "openblas_set_num_threads(*ipt);",
+    otherdefs = c ("extern void openblas_set_num_threads(int);"),
+    libargs = c ("-L/opt/openblas/lib -lopenblas"),
     language = "C",
     convention = ".C"
     )
 
   # openblas.set.num.threads(4)
-  # openblas.set.num.threads(4)
 
   # rstan::rstan_options(auto_write = TRUE)
   # options(mc.cores = 4)
-  options(languageserver.default_linters = lintr::with_defaults(
-      line_length_linter = lintr::line_length_linter(100),
-      object_length_linter = NULL,
-      object_name_linter = NULL,
-      commented_code_linter = NULL
-  ))
-
+  # options(languageserver.default_linters = lintr::with_defaults(
+  #     line_length_linter = lintr::line_length_linter(100),
+  #     object_length_linter = NULL,
+  #     object_name_linter = NULL,
+  #     commented_code_linter = NULL
+  # ))
+  #
 }
-
 
 # if(interactive()){
 #        # Suggested libraries:

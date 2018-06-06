@@ -1,9 +1,9 @@
-#						Emacs please make this -*- R -*-
-# empty Rprofile.site for R on Debian
-#
-# Copyright (C) 2008 Dirk Eddelbuettel and GPL'ed
-#
-# see help(Startup) for documentation on ~/.Rprofile and Rprofile.site
+##						Emacs please make this -*- R -*-
+## empty Rprofile.site for R on Debian
+##
+## Copyright (C) 2008 - 2018  Dirk Eddelbuettel and GPL'ed
+##
+## see help(Startup) for documentation on ~/.Rprofile and Rprofile.site
 
 # ## Example of .Rprofile
 # options(width=65, digits=5)
@@ -20,13 +20,11 @@
 #  old <- getOption("defaultPackages"); r <- getOption("repos")
 #  r["CRAN"] <- "http://my.local.cran"
 #  options(defaultPackages = c(old, "MASS"), repos = r)
-# })
-#
+#})
 
-## Rprofile.site with colorout
+## We set the cloud mirror, which is 'network-close' to everybody, as default
 local({
- old <- getOption("defaultPackages")
- r <- getOption("repos")
- r["CRAN"] <- "https://cloud.r-project.org/"
- options(defaultPackages = c(old, "colorout"), repos = r)
- })
+    r <- getOption("repos")
+    r["CRAN"] <- "https://cloud.r-project.org"
+    options(repos = r)
+})
