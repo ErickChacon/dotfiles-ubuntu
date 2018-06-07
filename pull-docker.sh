@@ -13,7 +13,7 @@ cp custom.aliases.bash ~/.bash_it/aliases/custom.aliases.bash
 # Neovim
 mkdir -p ~/.config/nvim/
 # cp -r nvim ~/.config/
-cp nvim/init.vim ~/.config/nvim/init.vim
+cp nvim/init-docker.vim ~/.config/nvim/init.vim
 # cp -r UltiSnips ~/Documents/Nvim/
 
 # # R
