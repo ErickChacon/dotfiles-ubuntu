@@ -26,7 +26,6 @@ cp nvim/init.vim ~/.config/nvim/init.vim
 # cp default.prf ~/.unison/default.prf
 
 # Tmux
-mkdir -p ~/.tmux.conf
 cp .tmux.conf ~/.tmux.conf
 cp -r .tmux ~/
 
