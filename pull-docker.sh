@@ -11,7 +11,7 @@ cp .bashrc ~/.bashrc
 cp custom.aliases.bash ~/.bash_it/aliases/custom.aliases.bash
 
 # Neovim
-cp -r nvim ~/.config/
+# cp -r nvim ~/.config/
 # cp -r UltiSnips ~/Documents/Nvim/
 
 # # R
