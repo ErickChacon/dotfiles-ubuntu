@@ -8,6 +8,10 @@ echo "install.packages(\"purrrlyr\")" >> r-packages.R
 echo "install.packages(\"data.table\")" >> r-packages.R
 R CMD BATCH r-packages.R
 
+# ggplot extensions
+echo "install.packages(\"ggrepel\")" > r-packages.R
+R CMD BATCH r-packages.R
+
 # visualization
 # echo "devtools::install_github(\"ggobi/GGally\")" > r-packages.R
 # echo "install.packages(\"GGally\")" > r-packages.R
@@ -48,6 +52,10 @@ sudo apt-get install libgdal-dev libgeos-dev libproj-dev libudunits2-dev \
 echo "install.packages(\"sf\")" > r-packages.R
 R CMD BATCH r-packages.R
 
+echo "install.packages(\"lwgeom\")" > r-packages.R
+R CMD BATCH r-packages.R
+
+
 # spatial packages
 echo "install.packages(\"spatstat\")" > r-packages.R
 echo "install.packages(\"fields\")" >> r-packages.R
@@ -58,6 +66,22 @@ echo "install.packages(\"ggmap\")" >> r-packages.R
 echo "install.packages(\"rgdal\")" >> r-packages.R
 echo "install.packages(\"rgeos\")" >> r-packages.R
 echo "install.packages(\"spdep\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
+# spatial visualization
+sudo apt-get install -y libv8-3.14-dev
+sudo add-apt-repository -y ppa:opencpu/jq
+sudo apt-get update -q
+sudo apt-get install -y libjq-dev
+sudo apt-get install -y libprotobuf-dev protobuf-compiler
+sudo apt-get install -y libssl-dev
+sudo apt-get install -y libcairo2-dev
+echo "devtools::install_github(\"mtennekes/tmaptools\")" > r-packages.R
+echo "devtools::install_github(\"mtennekes/tmap\")" >> r-packages.R
+R CMD BATCH r-packages.R
+
+sudo apt-get install -y r-cran-rjava
+echo "install.packages(\"OpenStreetMap\")" > r-packages.R
 R CMD BATCH r-packages.R
 
 # spatial related packages
