@@ -133,11 +133,11 @@ RUN apt-get install silversearcher-ag -y && \
 # RUN apt-get install -y texlive-full latexmk dot2tex okular && \
 #  wget http://mirrors.ctan.org/macros/latex/contrib/titlesec/titlesec.sty -O /usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 #
-# # Add my user {{{1
-# ARG user1=chaconmo
-# RUN useradd -ms /bin/bash $user1
-# USER $user1
-# WORKDIR /home/$user1
+# Add my user {{{1
+ARG user1=chaconmo
+RUN useradd -ms /bin/bash $user1
+USER $user1
+WORKDIR /home/$user1
 #
 # # User configuration: terminal settings and dotfiles {{{1
 #
